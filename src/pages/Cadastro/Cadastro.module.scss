@@ -1,0 +1,64 @@
+.container {
+    height: 100vh;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .titleForm {
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            gap: 50px;
+            
+            div.dataNascimento div.optionsD{
+                display: flex;
+                gap: 50px;
+                
+                div {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                input {
+                    width: 5.813rem;
+                    height: 37px;
+                    border: 1px solid black;
+                    border-radius: 20px;
+                }
+
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+
+            div.genero div.optionsG, div.visibilidade div.optionsV{
+                display: flex;
+                gap: 50px;
+
+                div {
+                    width: 121px;
+                    height: 40px;
+
+                    border-radius: 10px;
+                    border: 1px solid black;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    gap: 15px;
+                }
+            }
+        }
+    }
+}
