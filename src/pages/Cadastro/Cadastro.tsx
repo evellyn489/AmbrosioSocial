@@ -9,17 +9,35 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const minAno = 2013;
 
 const createUserFormSchema = z.object({
-    dia: z.number().min(1, "Número inválido para dia").max(31, "Número inválido para dia"),
-    mes: z.number().min(1, "Número inválido para mês").max(12, "Número inválido para mês"),
-    ano: z.number().min(1970).min(2024).refine((ano) => {
-        return ano >= minAno;
+    dia: z.string().refine((dia) => {
+        const numberDia = parseInt(dia);
+        return numberDia >= 1 && numberDia <= 31;
     }, {
-        message: `A idade mínima para ter acesso a rede social é de ${minAno} anos.`
+        message: "Insira valores entre 1 e 31"
     }),
 
-    genero: z.string().refine((value => ["feminino", "masculino", "neutro"].includes(value))),
+    mes: z.string().refine((mes) => {
+        const numberMes = parseInt(mes);
+        return numberMes >= 1 && numberMes <= 12;
+    }, {
+        message: "Insira valores entre 1 e 12"
+    }),
 
-    visibilidade: z.string().refine((visibilidade => ["publica", "privada"].includes(visibilidade)))
+    ano: z.string().refine((ano) => {
+        const numberAno = parseInt(ano);
+
+        return (numberAno >= 1970 && numberAno <= 2024) && (numberAno <= minAno)
+    }, {
+        message: "Insira o ano de 1970 até 2024 / idade mínima é 13 anos."
+    }),
+
+    genero: z.string().nullable().refine(value => value !== null, {
+        message: "Insira uma opção de gênero."
+      }),
+
+    visibilidade: z.string().nullable().refine(value => value !== null, {
+        message: "Insira uma opção de visibilidade."
+      })
 })
 
 type CreateUserFormData = z.infer<typeof createUserFormSchema>;
@@ -98,6 +116,7 @@ export function Cadastro() {
                                 <input type="radio" {...register("visibilidade")} value="privada"/>
                             </div>
                         </div>
+                        {errors.visibilidade && <span>{errors.visibilidade.message}</span>}
                     </div>
 
                     <button type="submit">Cadastrar</button>
