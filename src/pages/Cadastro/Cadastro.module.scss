@@ -8,14 +8,17 @@
     .titleForm {
         display: flex;
         flex-direction: column;
-
+        align-items: center;
+    
         flex: 1;
 
         h1 {
             font-weight: 700;
             color: #9829D1;
 
+            align-self: flex-start;
             margin-bottom: 0.9em;
+            margin-left: 88px;
         }
 
         form {
@@ -40,7 +43,7 @@
 
             div.dataNascimento div.optionsD{
                 display: flex;
-                gap: 50px;
+                gap: 70px;
                 
                 div {
                     display: flex;
@@ -66,7 +69,7 @@
 
             div.genero div.optionsG, div.visibilidade div.optionsV{
                 display: flex;
-                gap: 50px;
+                gap: 70px;
 
                 div {
                     width: 121px;

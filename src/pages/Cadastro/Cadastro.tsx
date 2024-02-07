@@ -7,24 +7,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
 
-const minAno = 2013;
+const minAno = 2011;
 
 const createUserFormSchema = z.object({
-    dia: z.string().refine((dia) => {
+    dia: z.string()
+    .refine((dia) => {
         const numberDia = parseInt(dia);
         return numberDia >= 1 && numberDia <= 31;
     }, {
         message: "Insira valores entre 1 e 31"
     }),
 
-    mes: z.string().refine((mes) => {
+    mes: z.string()
+    .refine((mes) => {
         const numberMes = parseInt(mes);
         return numberMes >= 1 && numberMes <= 12;
     }, {
         message: "Insira valores entre 1 e 12"
     }),
 
-    ano: z.string().refine((ano) => {
+    ano: z.string()
+    .refine((ano) => {
         const numberAno = parseInt(ano);
 
         return numberAno >= 1970 && numberAno <= 2024
@@ -39,11 +42,13 @@ const createUserFormSchema = z.object({
         message: "Idade mínima de 13 anos."
     }),
 
-    genero: z.string().nullable().refine(value => value !== null, {
+    genero: z.string().nullable()
+    .refine(value => value !== null, {
         message: "Insira uma opção de gênero."
       }),
 
-    visibilidade: z.string().nullable().refine(value => value !== null, {
+    visibilidade: z.string().nullable()
+    .refine(value => value !== null, {
         message: "Insira uma opção de visibilidade."
       })
 })
@@ -63,7 +68,7 @@ export function Cadastro() {
         <div className={styles.container}>
             <Logo />
 
-            <div className={styles.titleForm}>
+            <main className={styles.titleForm}>
                 <h1>Finalize o cadastro</h1>
 
                 <form onSubmit={handleSubmit(createUser)}>
@@ -127,7 +132,7 @@ export function Cadastro() {
 
                     <Button name="CADASTRAR"/>
                 </form>
-            </div>
+            </main>
         </div>
     );
 }
