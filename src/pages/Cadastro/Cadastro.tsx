@@ -5,6 +5,7 @@ import logo from "../../assets/logos/gradient.png";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../../components/Button";
 
 const minAno = 2013;
 
@@ -26,9 +27,16 @@ const createUserFormSchema = z.object({
     ano: z.string().refine((ano) => {
         const numberAno = parseInt(ano);
 
-        return (numberAno >= 1970 && numberAno <= 2024) && (numberAno <= minAno)
+        return numberAno >= 1970 && numberAno <= 2024
     }, {
-        message: "Insira o ano de 1970 até 2024 / idade mínima é 13 anos."
+        message: "Insira o ano de 1970 até 2024."
+    })
+    .refine((ano) => {
+        const numberAno = parseInt(ano);
+
+        return numberAno <= minAno
+    }, {
+        message: "Idade mínima de 13 anos."
     }),
 
     genero: z.string().nullable().refine(value => value !== null, {
@@ -53,49 +61,49 @@ export function Cadastro() {
 
     return (
         <div className={styles.container}>
-            <div>
+            <div className={styles.image}>
                 <img src={logo} alt="Logo da rede social Ambrosio Social que contém as siglas A e S e o nome da rede social logo em baixo com um gradiente roxo com azul claro." />
             </div>
 
             <div className={styles.titleForm}>
-                <h1>Finalizando o cadastro</h1>
+                <h1>Finalize o cadastro</h1>
 
                 <form onSubmit={handleSubmit(createUser)}>
                     <div className={styles.dataNascimento}>
-                        <label htmlFor="dataNascimento">Data de Nascimento</label>
+                        <label htmlFor="dataNascimento" className={styles.title}>Data de Nascimento</label>
                         <div className={styles.optionsD}>
                             <div>
-                                <input type="number" {...register("dia")}/>
+                                <input type="number" {...register("dia")} placeholder="Dia"/>
                                 {errors.dia && <span>{errors.dia.message}</span>}
                             </div>
                             
                             <div>
-                                <input type="number" {...register("mes")} />
+                                <input type="number" {...register("mes")} placeholder="Mês" />
                                 {errors.mes && <span>{errors.mes.message}</span>}
                             </div>
                            
                            <div>
-                                <input type="number" {...register("ano")}/>
+                                <input type="number" {...register("ano")} placeholder="Ano"/>
                                 {errors.ano && <span>{errors.ano.message}</span>}
                            </div>
                         </div>
                     </div>
                     
                     <div className={styles.genero}>
-                        <label htmlFor="">Gênero</label>
+                        <label htmlFor="genero" className={styles.title}>Gênero</label>
                         <div className={styles.optionsG}>
                             <div>
-                                <label htmlFor="">Feminino</label>
+                                <label htmlFor="genero">Feminino</label>
                                 <input type="radio" {...register("genero")} value="feminino"/>
                             </div>
                             
                             <div>
-                                <label htmlFor="">Masculino</label>
+                                <label htmlFor="genero">Masculino</label>
                                 <input type="radio" {...register("genero")} value="masculino"/>
                             </div>
                             
                             <div>
-                                <label htmlFor="">Neutro</label>
+                                <label htmlFor="genero">Neutro</label>
                                 <input type="radio" {...register("genero")} value="neutro"/>
                             </div>
                         </div>
@@ -103,23 +111,23 @@ export function Cadastro() {
                     </div>
 
                     <div className={styles.visibilidade}>
-                        <label htmlFor="">Visibilidade da conta</label>
+                        <label htmlFor="visibilidade" className={styles.title}>Visibilidade da conta</label>
 
                         <div className={styles.optionsV}>
                             <div>
-                                <label htmlFor="">Pública</label>
+                                <label htmlFor="visibilidade">Pública</label>
                                 <input type="radio" {...register("visibilidade")} value="publica"/>
                             </div>
                             
                             <div>
-                                <label htmlFor="">Privada</label>
+                                <label htmlFor="visibilidade">Privada</label>
                                 <input type="radio" {...register("visibilidade")} value="privada"/>
                             </div>
                         </div>
                         {errors.visibilidade && <span>{errors.visibilidade.message}</span>}
                     </div>
 
-                    <button type="submit">Cadastrar</button>
+                    <Button name="CADASTRAR"/>
                 </form>
             </div>
         </div>

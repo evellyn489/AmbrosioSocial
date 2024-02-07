@@ -5,19 +5,48 @@
     justify-content: space-around;
     align-items: center;
 
+    div.image {
+        flex: 1;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
     .titleForm {
-        border: 1px solid red;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+
+        flex: 1;
+
+        h1 {
+            font-weight: 700;
+            color: #9829D1;
+
+            margin-bottom: 0.9em;
+        }
 
         form {
             display: flex;
             flex-direction: column;
             justify-content: center;
 
-            gap: 50px;
-            
+            min-height: 445px;
+
+            gap: 40px;
+
+            div.dataNascimento, div.genero, div.visibilidade {
+                display: flex;
+                flex-direction: column;
+
+                gap: 16px;
+
+                color: #9C9C9C;
+                font-weight: 500;
+                font-size: 0.9rem;
+           }
+
             div.dataNascimento div.optionsD{
                 display: flex;
                 gap: 50px;
@@ -30,8 +59,11 @@
                 input {
                     width: 5.813rem;
                     height: 37px;
-                    border: 1px solid black;
-                    border-radius: 20px;
+                    
+                    border: 1px solid #000;
+                    border-radius: 8px;
+
+                    padding-left: 1em;
                 }
 
                 input[type="number"]::-webkit-inner-spin-button,
@@ -58,6 +90,13 @@
 
                     gap: 15px;
                 }
+            }
+
+            span {
+                font-size: 0.7rem;
+                font-weight: 700;
+
+                color: #ff0000;
             }
         }
     }
