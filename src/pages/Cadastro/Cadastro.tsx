@@ -1,11 +1,11 @@
 import styles from "./Cadastro.module.scss";
 
-import logo from "../../assets/logos/gradient.png";
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Button } from "../../components/Button";
+import { Logo } from "../../components/Logo";
 
 const minAno = 2013;
 
@@ -61,9 +61,7 @@ export function Cadastro() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.image}>
-                <img src={logo} alt="Logo da rede social Ambrosio Social que contém as siglas A e S e o nome da rede social logo em baixo com um gradiente roxo com azul claro." />
-            </div>
+            <Logo />
 
             <div className={styles.titleForm}>
                 <h1>Finalize o cadastro</h1>
