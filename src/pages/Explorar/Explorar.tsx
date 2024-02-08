@@ -1,4 +1,4 @@
-import styles from "./Menu.module.scss";
+import styles from "./Explorar.module.scss";
 
 import { MenuComponent } from "../../components/Menu";
 
