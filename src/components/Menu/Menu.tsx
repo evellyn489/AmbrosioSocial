@@ -6,7 +6,7 @@ import notification from "../../assets/menu/white/notification.png";
 import publish from "../../assets/menu/white/publish.png";
 import config from "../../assets/menu/white/config.png";
 
-export function MenuComponent() {
+export function Menu() {
     return (
         <header className={styles.header}>
             <div id="icons" className={styles.icons}>
