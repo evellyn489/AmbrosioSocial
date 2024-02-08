@@ -130,7 +130,7 @@ export function Cadastro() {
                         {errors.visibilidade && <span>{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR"/>
+                    <Button name="CADASTRAR" type={false}/>
                 </form>
             </main>
         </div>
