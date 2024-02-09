@@ -1,11 +1,3 @@
-.container{
-    height: 100vh;
-
-    display: contents;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .publication{
     margin-left: 450px;
 }
@@ -37,6 +29,12 @@ p {
     margin-right: 500px; 
 }
 
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .interation {
     display: flex;
     margin-top: 30px;
@@ -62,4 +60,19 @@ p {
 
 .iconContainer span {
     font-size: 12px; 
+}
+
+.commentSpace {
+    display: none;
+    flex-direction: row;
+    margin-top: 90px;
+    margin-left: -270px;
+}
+
+.commentSpace.visible {
+    display: block; 
+}
+
+.commentInput {
+    width: 100%; 
 }

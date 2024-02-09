@@ -9,7 +9,18 @@ import comment from "../../assets/interaction/comment.png"
 export function Publication() {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
-    const [comments, setComments] = useState(0);
+    const [comments, setComments] = useState(0);//Pode mudar
+    const [commentVisible, setCommentVisible] = useState(false);
+    const [commentText, setCommentText] = useState('');
+
+    const toggleComentVisibility = () => {
+        setCommentVisible(!commentVisible); // Alternar a visibilidade do espaço de comentário
+    };
+
+    const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCommentText(event.target.value); // Atualizar o texto do comentário conforme o usuário digita
+    };
+
 
     const handleLikeClick = () => {
         setLikes(likes + 1);
@@ -21,6 +32,7 @@ export function Publication() {
 
     const handleCommentClick = () => {
         setComments(comments + 1);
+        setCommentText("")
     };
 
     return (
@@ -35,22 +47,31 @@ export function Publication() {
             <div id="interation" className={styles.interation}>
 
                <div className={styles.iconContainer}>  
-                   <img src={like} alt="botão de curtida" onClick={handleLikeClick}/>
+                   <img src={like} alt="botão de curtida" onClick={handleLikeClick} title='Curti'/>
                    <span>{likes}</span>
                </div>
 
                <div className={styles.iconContainer}>
-                    <img src={dislike} alt="botão de não curtida" onClick={handleDislikeClick}/>
+                    <img src={dislike} alt="botão de não curtida" onClick={handleDislikeClick} title='Não curti'/>
                     <span>{dislikes}</span>
                </div>
 
                 <div className={styles.iconContainer}>
-                    <img src={comment} alt="botão de comentar" onClick={handleCommentClick}/>
+                    <img src={comment} alt="botão de comentar" onClick={toggleComentVisibility} title='Comentar'/>
                     <span>{comments}</span>
                 </div>
 
+                <div className={`${styles.commentSpace} ${commentVisible ? styles.visible : ''}`}>
+                        <textarea
+                            value={commentText}
+                            onChange={handleCommentChange}
+                            placeholder="Digite seu comentário..."
+                            className={styles.commentInput}
+                        />
+                        <button onClick={(handleCommentClick)}>Enviar</button>
+                    </div>
+                </div>
+
             </div>
-            
-        </div>
     );
 }
