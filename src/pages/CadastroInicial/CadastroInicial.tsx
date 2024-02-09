@@ -11,9 +11,10 @@ export function CadastroInicial() {
             <aside>
                 <img src={logo} alt="Logo do Ambrosio social da cor branca com o símbolo AS dentro de um quadrado com bordas brancas e no fundo tem um gradiente com roxo e azul." />
 
-                <strong>Seja bem-vindo ao Ambrosio Social!</strong>
-
-                <p>Acesse sua conta agora mesmo!</p>
+                <div className={styles.texts}>
+                    <strong>Seja bem-vindo ao Ambrosio Social!</strong>
+                    <p>Acesse sua conta agora mesmo!</p>
+                </div>
 
                 <Button name="ENTRAR" type={3}/>
             </aside>
