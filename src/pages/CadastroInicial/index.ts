@@ -1,0 +1,1 @@
+export { CadastroInicial } from "./CadastroInicial";
