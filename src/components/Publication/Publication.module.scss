@@ -1,0 +1,49 @@
+.container{
+    height: 100vh;
+
+    display: contents;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.publication{
+    margin-left: 450px;
+}
+
+.publication img.foto_perfil{
+    width: 55px;
+    margin-top: 90px;
+}
+
+.publication img.foto{
+    width: 500px;
+    margin-left: 100px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15pt;
+    font-weight: 500;
+    margin-top: -50px;
+    margin-left: 100px;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10pt;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    margin-left: 100px;
+    margin-right: 500px; 
+}
+
+.interation {
+    margin-top: 30px;
+    margin-left: 580px;
+    
+}
+
+.interation img {
+    height: 20px;
+    margin-right: 70px;
+}
