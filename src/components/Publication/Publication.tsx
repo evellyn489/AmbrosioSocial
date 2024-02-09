@@ -9,16 +9,16 @@ import comment from "../../assets/interaction/comment.png"
 export function Publication() {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
-    const [comments, setComments] = useState(0);//Pode mudar
+    const [comments, setComments] = useState(0);
     const [commentVisible, setCommentVisible] = useState(false);
     const [commentText, setCommentText] = useState('');
 
     const toggleComentVisibility = () => {
-        setCommentVisible(!commentVisible); // Alternar a visibilidade do espaço de comentário
+        setCommentVisible(!commentVisible); 
     };
 
     const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setCommentText(event.target.value); // Atualizar o texto do comentário conforme o usuário digita
+        setCommentText(event.target.value); 
     };
 
 
