@@ -56,9 +56,10 @@ p {
 }
 
 .iconContainer img {
-    margin-bottom: 15px; /* Espaçamento entre o ícone e o número */
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .iconContainer span {
-    font-size: 12px; /* Tamanho do número */
+    font-size: 12px; 
 }

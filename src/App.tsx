@@ -4,11 +4,12 @@ import { Login } from "./pages/Login";
 import { CadastroInicial } from "./pages/CadastroInicial";
 
 import "./styles/global.scss";
+import { Explorar } from "./pages/Explorar";
 
 export function App() {
   return (
     <>
-      <CadastroInicial />
+      <Explorar />
     </>
   )
 }
