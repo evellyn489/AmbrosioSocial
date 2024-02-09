@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Logo } from "../../components/Logo";
 import { Button } from "../../components/Button";
+import { Input } from "../../components/Input/Input";
 
 const loginSchema = z.object({
     email: z.string().email("Insira um email válido"),
@@ -30,9 +31,9 @@ export function Login() {
             <main className={styles.forms}>
                 <form onSubmit={handleSubmit(login)}>
                     <div className={styles.inputs}>
-                        <input type="email" placeholder="Email" id={styles.email} {...register("email")}/>
+                        <Input type="email" placeholder="Email" id="email" {...register("email")}/>
                         {errors.email && <span>{errors.email.message}</span>}
-                        <input type="password" placeholder="Senha" id={styles.password} {...register("password")}/>
+                        <Input type="password" placeholder="Senha" id="password" {...register("password")}/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </div>
 

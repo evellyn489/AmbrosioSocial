@@ -11,7 +11,6 @@ export function Button(props: ButtonProps) {
         {
             props.type == 1 && (
                 <button className={styles.button} type="submit">{props.name}</button>   
-                
             )
         }
 
