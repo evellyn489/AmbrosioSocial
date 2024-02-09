@@ -1,7 +1,9 @@
 import styles from "./CadastroInicial.module.scss";
 
 import logo from "../../assets/logos/white.png"
+
 import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 export function CadastroInicial() {
     return (
@@ -23,9 +25,14 @@ export function CadastroInicial() {
                 </div>
 
                 <form action="">
-                    
-                </form>
+                    <div className={styles.inputs}>
+                        <Input type="text" placeholder="Nome" id="user"/>
+                        <Input type="email" placeholder="Email" id="email2"/>
+                        <Input type="password" placeholder="Senha" id="password2"/>
+                    </div>
 
+                    <Button name="AVANÇAR" type={1}/>
+                </form>
             </main>
         </div>
     );

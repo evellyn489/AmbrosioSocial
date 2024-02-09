@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Logo } from "../../components/Logo";
 import { Button } from "../../components/Button";
-import { Input } from "../../components/Input/Input";
+import { Input } from "../../components/Input";
 
 const loginSchema = z.object({
     email: z.string().email("Insira um email válido"),

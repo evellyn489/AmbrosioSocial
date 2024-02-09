@@ -14,11 +14,11 @@
 }
 
 
-input#email {
+input#email, input#email2 {
     background: url("../../assets/login/email.png") no-repeat left 12px center /16px;
 }
 
-input#password {
+input#password, input#password2 {
     background: url("../../assets/login/password.png") no-repeat left 12px center/13px;
 }
 
@@ -26,6 +26,6 @@ input#user {
     background: url("../../assets/login/user.png") no-repeat left 12px center/16px;
 }
 
-input#email, input#password, input#user {
+input#email, input#email2, input#password, input#password2, input#user {
     background-color: #F5F5F5;
 }
