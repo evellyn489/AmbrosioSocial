@@ -25,33 +25,6 @@
                 display: flex;
                 flex-direction: column;
                 gap: 22px;
-
-                input {
-                    width: 464px;
-                    height: 60px;
-
-                    padding-left: 3em;
-
-                    border: 0;
-                    border-radius: 2px;
-
-                    font-family: 'Poppins', sans-serif;
-                    font-weight: 500;
-
-                    color: #9C9C9C;
-                }
-                    
-                input#email {
-                    background: url("../../assets/login/email.png") no-repeat left 12px center /16px;
-                }
-
-                input#password {
-                    background: url("../../assets/login/password.png") no-repeat left 12px center/13px;
-                }
-
-                input#email, input#password {
-                    background-color: #F5F5F5;
-                }
             }
 
             div.buttonLink {
