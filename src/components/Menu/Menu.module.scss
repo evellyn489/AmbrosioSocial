@@ -5,6 +5,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 .logo {
     height: 55px;
@@ -32,42 +35,3 @@
     width: 30px;
     display: flex;
 }
-
-/*
-.icons {
-    height: 60px;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    margin-left: 150px;
-}
-
-.icons img {
-    height: auto;
-    object-fit: cover;
-    width: 90px;
-    margin-right: 200px;
-}
-
-.icons a img {
-    width: 30px;
-    margin-left: 30px;
-    margin-right: 80px;
-}
-
-.icons a img.search {
-    width: 35px;
-    margin-top: 8px;
-    height: auto;
-}
-
-.icons a {
-    display: flex;
-    margin-right: 5px;
-}
-*/
