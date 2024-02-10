@@ -2,10 +2,44 @@ import styles from "./CadastroInicial.module.scss";
 
 import logo from "../../assets/logos/white.png"
 
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
+
+const cadastroInicialSchema = z.object({
+    user: z.string().transform(value => value.trim()).refine(value => {
+        const regex = /^[a-zA-Z\u00C0-\u017F´]+\s+[a-zA-Z\u00C0-\u017F´]{0,}$/
+        return regex.test(value)
+
+    },{
+        message: "Nome inválido"
+    }).refine(value => value !== "",{
+        message: "Insira um nome válido"
+    }),
+    email2: z.string().email("Insira um email válido").transform(value => value.trim()).refine(value => {
+        const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        return regex.test(value);
+    },{
+        message: "Email inválido"
+    }),
+    password2: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim())
+}) 
+
+type CadastroInicialFormData = z.infer<typeof cadastroInicialSchema>;
+
 export function CadastroInicial() {
+    const { register, handleSubmit, formState: { errors } } = useForm<CadastroInicialFormData>({
+        resolver: zodResolver(cadastroInicialSchema)
+    })
+
+    function cadastroInicial() {
+        console.log("Cadastro feito.")
+    }
+
     return (
         <div className={styles.container}>
             <aside>
@@ -25,11 +59,14 @@ export function CadastroInicial() {
                     <p>Não tem uma conta? Crie uma agora:</p>
                 </div>
 
-                <form action="">
+                <form onSubmit={handleSubmit(cadastroInicial)}>
                     <div className={styles.inputs}>
-                        <Input type="text" placeholder="Nome" id="user"/>
-                        <Input type="email" placeholder="Email" id="email2"/>
-                        <Input type="password" placeholder="Senha" id="password2"/>
+                        <Input type="text" placeholder="Nome" id="user" register={register}/>
+                        {errors.user && <span>{errors.user.message}</span>}
+                        <Input type="email" placeholder="Email" id="email2" register={register}/>
+                        {errors.email2 && <span>{errors.email2.message}</span>}
+                        <Input type="password" placeholder="Senha" id="password2" register={register}/>
+                        {errors.password2 && <span>{errors.password2.message}</span>}
                     </div>
 
                     <Button name="AVANÇAR" type={1}/>

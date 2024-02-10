@@ -9,8 +9,13 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
 const loginSchema = z.object({
-    email: z.string().email("Insira um email válido"),
-    password: z.string().min(8, "A senha deve ter no mínimo 8 caracteres")
+    email: z.string().email("Insira um email válido").transform(value => value.trim()).refine(value => {
+        const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        return regex.test(value);
+    },{
+        message: "Email inválido"
+    }),
+    password: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim())
 })
 
 type loginFormData = z.infer<typeof loginSchema>;
@@ -19,7 +24,7 @@ export function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm<loginFormData>({
         resolver: zodResolver(loginSchema)
     })
-
+    console.log(errors)
     function login() {
         console.log("Login feito.")
     }
@@ -31,9 +36,9 @@ export function Login() {
             <main className={styles.forms}>
                 <form onSubmit={handleSubmit(login)}>
                     <div className={styles.inputs}>
-                        <Input type="email" placeholder="Email" id="email" {...register("email")}/>
+                        <Input type="email" placeholder="Email" id="email" register={register}/>
                         {errors.email && <span>{errors.email.message}</span>}
-                        <Input type="password" placeholder="Senha" id="password" {...register("password")}/>
+                        <Input type="password" placeholder="Senha" id="password" register={register}/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </div>
 

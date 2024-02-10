@@ -2,7 +2,7 @@
 import { CadastroInicial } from "./pages/CadastroInicial";
 //import { Publication } from "./components/Publication";
 //import { Explorar } from "./pages/Explorar";
-//import { Login } from "./pages/Login";
+///import { Login } from "./pages/Login";
 
 import "./styles/global.scss";
 
