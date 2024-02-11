@@ -102,7 +102,7 @@ export function Publication() {
             </div>
 
             <div className={styles.information}>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit bibendum aliquet volutpat habitasse, montes porttitor netus erat eget vitae varius penatibus posuere.</p>
+                <p className={styles.p}>Lorem ipsum dolor sit amet consectetur adipiscing elit bibendum aliquet volutpat habitasse, montes porttitor netus erat eget vitae varius penatibus posuere.</p>
                 <img src={rectangle_photo} alt="foto postada pelo usuário" title="" className={styles.photo}/>
             </div>
 
