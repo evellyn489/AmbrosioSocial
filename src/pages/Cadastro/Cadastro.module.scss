@@ -100,8 +100,6 @@
 
 @media (max-width: 850px){
     .container {
-        border: 1px solid red;
-
         .titleForm {
             form {
                 padding-right: 2.5em;
@@ -145,6 +143,93 @@
     
                 span {
                     font-size: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        img {
+            max-width: 100px;
+            max-height: 40px;
+        }
+
+        .titleForm {
+            h1 {
+                margin-right: 2em;
+                font-size: 0.9rem;
+            }
+    
+            form {
+                min-height: 400px;
+    
+                gap: 10px;
+    
+                div.dataNascimento, div.genero, div.visibilidade {
+                    gap: 5px;
+    
+                    font-size: 0.8rem;
+               }
+    
+                div.dataNascimento div.optionsD{
+                    gap: 25px;
+                    
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                    }
+    
+                    input {
+                        width: 4rem;
+                        height: 37px;
+                    }
+                }
+    
+                div.genero div.optionsG, div.visibilidade div.optionsV{
+                    gap: 20px;
+    
+                    div {
+                        width: 105px;
+                    }
+                }
+    
+                span {
+                    font-size: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        .titleForm {
+            form {    
+                div.genero div.optionsG, div.visibilidade div.optionsV{
+                    gap: 10px;
+    
+                    div {
+                        width: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        .titleForm {
+            form {    
+                div.genero div.optionsG, div.visibilidade div.optionsV{
+                    gap: 12px;
+
+                    div {
+                        gap: 4px;
+                        width: 90px;
+                    }
                 }
             }
         }
