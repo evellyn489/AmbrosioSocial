@@ -115,7 +115,7 @@ export function Publication() {
                     </div>
 
                     <div id="dislikeButton" className={`${styles.dislike} ${dislikeClicked ? styles.clicked : ''}`} onClick={handleDislikeClick}>
-                        <img src={dislikeIcon} alt="botão de não curtida" title='Descurtir'/>
+                        <img src={dislikeIcon} alt="botão de não curtida" title='Não curti'/>
                         <span className={dislikeNumColor}>{dislikes}</span>
                     </div>
                     
@@ -132,7 +132,7 @@ export function Publication() {
                         placeholder="Digite seu comentário..."
                         className={styles.commentInput}
                     />
-                    <button onClick={handleCommentClick}>Enviar</button>
+                    <button onClick={handleCommentClick} className={styles.button} >Enviar</button>
                 </div>
             </div>
         </div>
