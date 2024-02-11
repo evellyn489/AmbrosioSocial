@@ -71,6 +71,24 @@ h1 {
     cursor: pointer;
 }
 
+.like img,
+.dislike img,
+.comment img {
+  transition: transform 0.2s ease; // Adicionando uma transição de 0.2 segundos no efeito de transformação
+}
+
+.like.clicked img,
+.dislike.clicked img {
+  transform: scale(1.2); 
+}
+
+.defaultNumColor {
+    color: black;
+}
+
+.likeNumColor, .dislikeNumColor {
+    color: #004AAD; 
+}
 .iconContainer span {
     font-size: 12px; 
 }
