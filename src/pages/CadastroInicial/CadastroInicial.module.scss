@@ -21,6 +21,11 @@
         img {
             max-width: 125px;
         }
+        
+        button {
+            border: 2px solid #ffff;
+            background: rgba(217, 217, 217, 0.28);
+        }
 
         div.texts {
             width: 100%;
@@ -100,11 +105,6 @@
                 color: #ff0000;
 
                 text-align: center;
-            }
-
-            button {
-                border: 2px solid #ffff;    
-                background: rgba(217, 217, 217, 0.28);
             }
         }
     }

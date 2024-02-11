@@ -50,7 +50,7 @@ export function CadastroInicial() {
                     <p>Acesse sua conta agora mesmo!</p>
                 </div>
 
-                <Button name="ENTRAR" type={3}/>
+                <Button name="ENTRAR"/>
             </aside>
 
             <main>
