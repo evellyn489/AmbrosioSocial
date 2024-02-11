@@ -26,6 +26,8 @@
             flex-direction: column;
             justify-content: center;
 
+            padding-right: 4em;
+
             min-height: 445px;
 
             gap: 40px;
@@ -91,6 +93,59 @@
                 font-weight: 700;
 
                 color: #ff0000;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px){
+    .container {
+        border: 1px solid red;
+
+        .titleForm {
+            form {
+                padding-right: 2.5em;
+    
+                div.dataNascimento div.optionsD{
+                    gap: 40px;
+                }
+    
+                div.genero div.optionsG, div.visibilidade div.optionsV{
+                    display: flex;
+                    gap: 40px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 730px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: 1em;
+
+        img {
+            max-width: 150px;
+            max-height: 80px;
+        }
+    
+        .titleForm {
+            padding-left: 1.3em;
+
+            form {
+                align-items: center;
+
+                gap: 10px;
+
+                div.dataNascimento, div.genero, div.visibilidade {
+                    align-items: center;
+                }
+    
+                span {
+                    font-size: 0.5rem;
+                }
             }
         }
     }
