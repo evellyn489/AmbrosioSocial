@@ -115,3 +115,52 @@
         }
     }
 }
+
+@media (max-width: 425px) {
+    .container {
+        img {
+            max-width: 120px;
+            max-height: 60px;
+        }
+
+        main.forms {
+            max-width: 100%;
+
+            form {
+                div.inputs {
+                    input {
+                        width: 380px;
+                    }   
+                }
+    
+                div.buttonLink {
+                    a {
+                        font-size: 0.6rem;
+                    }
+                }
+    
+                span {
+                    font-size: 0.6rem;
+                }
+            }
+    
+            p {
+                font-size: 0.6rem;
+            }
+        }   
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        main.forms {
+            form {
+                div.inputs {
+                    input {
+                        width: 300px;
+                    }   
+                } 
+            }
+        }   
+    }
+}
