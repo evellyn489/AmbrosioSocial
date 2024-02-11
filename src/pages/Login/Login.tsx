@@ -10,7 +10,7 @@ import { Input } from "../../components/Input";
 
 const loginSchema = z.object({
     email: z.string().email("Insira um email válido").transform(value => value.trim()).refine(value => {
-        const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
         return regex.test(value);
     },{
         message: "Email inválido"
