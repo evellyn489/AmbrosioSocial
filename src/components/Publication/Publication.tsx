@@ -5,6 +5,8 @@ import rectangle_photo from "../../assets/publications/rectangle_photo.png"
 import like from "../../assets/interaction/like.png"
 import dislike from "../../assets/interaction/dislike.png"
 import comment from "../../assets/interaction/comment.png"
+import like_clicked from "../../assets/interaction/like_clicked.png"
+import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
 
 export function Publication() {
     const [likes, setLikes] = useState(0);
@@ -12,6 +14,12 @@ export function Publication() {
     const [comments, setComments] = useState(0);
     const [commentVisible, setCommentVisible] = useState(false);
     const [commentText, setCommentText] = useState('');
+    const [likeClicked, setLikeClicked] = useState(false);
+    const [dislikeClicked, setDislikeClicked] = useState(false);
+    const [likeIcon, setLikeIcon] = useState(like);
+    const [dislikeIcon, setDislikeIcon] = useState(dislike);
+    const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
+    const [dislikeNumColor, setDislikeNumColor] = useState<string>(styles.defaultNumColor);
 
     const toggleComentVisibility = () => {
         setCommentVisible(!commentVisible); 
@@ -21,18 +29,68 @@ export function Publication() {
         setCommentText(event.target.value); 
     };
 
-
     const handleLikeClick = () => {
-        setLikes(likes + 1);
+        if (!likeClicked) {
+            setLikes(likes + 1);
+            setLikeClicked(true);
+            setLikeIcon(like_clicked);
+            setLikeNumColor(styles.likeNumColor);
+            if (dislikeClicked) {
+                setDislikes(dislikes - 1);
+                setDislikeClicked(false);
+                setDislikeIcon(dislike);
+                setDislikeNumColor(styles.defaultNumColor);
+            }
+        } else {
+            setLikes(likes - 1);
+            setLikeClicked(false);
+            setLikeIcon(like);
+            setLikeNumColor(styles.defaultNumColor);
+        }
+        setDislikeClicked(false);
+
+        
+        const likeButton = document.getElementById("likeButton");
+        if (likeButton) {
+            likeButton.classList.add(styles.clicked);
+            setTimeout(() => {
+                likeButton.classList.remove(styles.clicked);
+            }, 200);
+        }
     };
 
     const handleDislikeClick = () => {
-        setDislikes(dislikes + 1);
+        if (!dislikeClicked) {
+            setDislikes(dislikes + 1);
+            setDislikeClicked(true);
+            setDislikeIcon(dislike_clicked);
+            setDislikeNumColor(styles.dislikeNumColor);
+            if (likeClicked) {
+                setLikes(likes - 1);
+                setLikeClicked(false);
+                setLikeIcon(like);
+                setLikeNumColor(styles.defaultNumColor);
+            }
+        } else {
+            setDislikes(dislikes - 1);
+            setDislikeClicked(false);
+            setDislikeIcon(dislike);
+            setDislikeNumColor(styles.defaultNumColor);
+        }
+        setLikeClicked(false);
+
+        const dislikeButton = document.getElementById("dislikeButton");
+        if (dislikeButton) {
+            dislikeButton.classList.add(styles.clicked);
+            setTimeout(() => {
+                dislikeButton.classList.remove(styles.clicked);
+            }, 200);
+        }
     };
 
     const handleCommentClick = () => {
         setComments(comments + 1);
-        setCommentText("")
+        setCommentText("");
     };
 
     return (
@@ -50,34 +108,33 @@ export function Publication() {
 
             <div className={styles.interation}>
 
-               <div className={styles.iconContainer}>  
-                    <div className={styles.like}>
-                        <img src={like} alt="botão de curtida" onClick={handleLikeClick} title='Curti'/>
-                        <span>{likes}</span>
+                <div className={styles.iconContainer}>  
+                    <div id="likeButton" className={`${styles.like} ${likeClicked ? styles.clicked : ''}`} onClick={handleLikeClick}>
+                        <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
+                        <span className={likeNumColor}>{likes}</span>
                     </div>
 
-                    <div className={styles.dislike}>
-                        <img src={dislike} alt="botão de não curtida" onClick={handleDislikeClick} title='Não curti'/>
-                        <span>{dislikes}</span>
+                    <div id="dislikeButton" className={`${styles.dislike} ${dislikeClicked ? styles.clicked : ''}`} onClick={handleDislikeClick}>
+                        <img src={dislikeIcon} alt="botão de não curtida" title='Descurtir'/>
+                        <span className={dislikeNumColor}>{dislikes}</span>
                     </div>
                     
                     <div className={styles.comment}>
                         <img src={comment} alt="botão de comentar" onClick={toggleComentVisibility} title='Comentar'/>
                         <span>{comments}</span>
                     </div>
-            
                 </div>
 
                 <div className={`${styles.commentSpace} ${commentVisible ? styles.visible : ''}`}>
-                        <textarea
-                            value={commentText}
-                            onChange={handleCommentChange}
-                            placeholder="Digite seu comentário..."
-                            className={styles.commentInput}
-                        />
-                        <button onClick={(handleCommentClick)}>Enviar</button>
-                </div>
+                    <textarea
+                        value={commentText}
+                        onChange={handleCommentChange}
+                        placeholder="Digite seu comentário..."
+                        className={styles.commentInput}
+                    />
+                    <button onClick={handleCommentClick}>Enviar</button>
                 </div>
             </div>
+        </div>
     );
 }
