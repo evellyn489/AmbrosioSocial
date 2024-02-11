@@ -43,7 +43,7 @@ export function Login() {
                     </div>
 
                     <div className={styles.buttonLink}>
-                        <Button name="ENTRAR" type={2}/> 
+                        <Button name="ENTRAR"/> 
                         <a href="#">Esqueci minha senha</a>
                     </div>
                 </form>

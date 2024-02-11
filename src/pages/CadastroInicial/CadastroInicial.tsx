@@ -69,7 +69,7 @@ export function CadastroInicial() {
                         {errors.password2 && <span>{errors.password2.message}</span>}
                     </div>
 
-                    <Button name="AVANÇAR" type={1}/>
+                    <Button name="AVANÇAR" />
                 </form>
             </main>
         </div>
