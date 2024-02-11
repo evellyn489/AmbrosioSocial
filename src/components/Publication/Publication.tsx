@@ -11,9 +11,9 @@ import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
 export function Publication() {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
-    const [comments, setComments] = useState(0);
+    const [comments, setComments] = useState<string[]>([]);
     const [commentVisible, setCommentVisible] = useState(false);
-    const [commentText, setCommentText] = useState('');
+    const [commentText, setCommentText] = useState<string>('');
     const [likeClicked, setLikeClicked] = useState(false);
     const [dislikeClicked, setDislikeClicked] = useState(false);
     const [likeIcon, setLikeIcon] = useState(like);
@@ -89,7 +89,7 @@ export function Publication() {
     };
 
     const handleCommentClick = () => {
-        setComments(comments + 1);
+        setComments([commentText, ...comments]);
         setCommentText("");
     };
 
@@ -121,11 +121,24 @@ export function Publication() {
                     
                     <div className={styles.comment}>
                         <img src={comment} alt="botão de comentar" onClick={toggleComentVisibility} title='Comentar'/>
-                        <span>{comments}</span>
+                        {comments.length > 0 && <span>{comments.length}</span>}
+                        {comments.length === 0 && <span>0</span>}
                     </div>
                 </div>
 
                 <div className={`${styles.commentSpace} ${commentVisible ? styles.visible : ''}`}>
+                    {comments.length > 0 && comments.map((comment) => (
+
+                        <div className={styles.containerUser}>
+                            <img src={profile_picture} alt="Foto do usuário" className={styles.photoUserComment} />
+                            <div className={styles.commentDetails}>
+                                <p className={styles.nameUserComment}>Nome do usuário</p>
+                                <p className={styles.contentComment}>{comment}</p>
+                            </div>
+                        </div>
+
+                    ))}
+
                     <textarea
                         value={commentText}
                         onChange={handleCommentChange}

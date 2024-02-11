@@ -92,10 +92,10 @@ h1 {
 .likeNumColor, .dislikeNumColor {
     color: #004AAD; 
 }
+
 .iconContainer span {
     font-size: 12px; 
 }
-
 .commentSpace {
     display: none;
     flex-direction: row;
@@ -117,11 +117,45 @@ h1 {
     font-family: "Poppins", "serif";
 }
 
+.comment {
+    margin-bottom: 10px; 
+    min-height: 50px;
+}
+
+
+.containerUser {
+    display: flex;
+    align-items: flex-start;
+}
+
+.photoUserComment {
+    display: flex;
+    margin-right: 20px;
+}
+
+.commentDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start; 
+}
+
+.nameUserComment {
+    font-size: 10pt;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.contentComment {
+    word-break: break-all; 
+    max-width: 300px; 
+}
+
+
 .button {
     display: flex;
     background-color: #e1dfdf;
     padding: 1%;
     border: 1px solid;
-    border-radius: 2px;
-    
+    border-radius: 2px;    
 }
