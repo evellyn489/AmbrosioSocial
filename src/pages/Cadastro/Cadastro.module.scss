@@ -119,7 +119,6 @@
 
 @media (max-width: 730px) {
     .container {
-        display: flex;
         flex-direction: column;
 
         padding-top: 1em;
@@ -172,20 +171,6 @@
     
                     font-size: 0.8rem;
                }
-    
-                div.dataNascimento div.optionsD{
-                    gap: 25px;
-                    
-                    div {
-                        display: flex;
-                        flex-direction: column;
-                    }
-    
-                    input {
-                        width: 4rem;
-                        height: 37px;
-                    }
-                }
     
                 div.genero div.optionsG, div.visibilidade div.optionsV{
                     gap: 20px;
