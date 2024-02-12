@@ -26,7 +26,12 @@ const cadastroInicialSchema = z.object({
     },{
         message: "Email inválido"
     }),
-    password2: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim())
+    password2: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim()).refine(value => {
+        const regex = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
+        return regex.test(value);
+    }, {
+        message: "A senha deve conter no mínimo 1 letra maiúscula, número e símbolo."
+    })
 }) 
 
 type CadastroInicialFormData = z.infer<typeof cadastroInicialSchema>;
