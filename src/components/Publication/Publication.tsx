@@ -7,6 +7,7 @@ import dislike from "../../assets/interaction/dislike.png"
 import comment from "../../assets/interaction/comment.png"
 import like_clicked from "../../assets/interaction/like_clicked.png"
 import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
+import { Comment } from "../Comment"
 
 export function Publication() {
     const [likes, setLikes] = useState(0);
@@ -89,9 +90,10 @@ export function Publication() {
     };
 
     const handleCommentClick = () => {
-        setComments([commentText, ...comments]);
-        setCommentText("");
+        setComments([...comments, commentText]);
+        setCommentText(""); 
     };
+
 
     return (
         <div className={styles.container}>
@@ -127,16 +129,8 @@ export function Publication() {
                 </div>
 
                 <div className={`${styles.commentSpace} ${commentVisible ? styles.visible : ''}`}>
-                    {comments.length > 0 && comments.map((comment) => (
-
-                        <div className={styles.containerUser}>
-                            <img src={profile_picture} alt="Foto do usuário" className={styles.photoUserComment} />
-                            <div className={styles.commentDetails}>
-                                <p className={styles.nameUserComment}>Nome do usuário</p>
-                                <p className={styles.contentComment}>{comment}</p>
-                            </div>
-                        </div>
-
+                    {comments.map((comment, index) => (
+                        <Comment key={index} nomeUsuario="Nome do usuário" texto={comment} />
                     ))}
 
                     <textarea

@@ -96,6 +96,7 @@ h1 {
 .iconContainer span {
     font-size: 12px; 
 }
+
 .commentSpace {
     display: none;
     flex-direction: row;
@@ -116,41 +117,6 @@ h1 {
     resize: vertical;
     font-family: "Poppins", "serif";
 }
-
-.comment {
-    margin-bottom: 10px; 
-    min-height: 50px;
-}
-
-
-.containerUser {
-    display: flex;
-    align-items: flex-start;
-}
-
-.photoUserComment {
-    display: flex;
-    margin-right: 20px;
-}
-
-.commentDetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start; 
-}
-
-.nameUserComment {
-    font-size: 10pt;
-    white-space: nowrap;
-    margin-bottom: 5px;
-}
-
-.contentComment {
-    word-break: break-all; 
-    max-width: 300px; 
-}
-
 
 .button {
     display: flex;

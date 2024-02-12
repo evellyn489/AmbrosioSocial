@@ -1,0 +1,27 @@
+.containerUser {
+    display: flex;
+    align-items: flex-start;
+}
+
+.photoUserComment {
+    display: flex;
+    margin-right: 20px;
+}
+
+.commentDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start; 
+}
+
+.nameUserComment {
+    font-size: 10pt;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.contentComment {
+    word-break: break-word; 
+    max-width: 300px
+}
