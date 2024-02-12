@@ -139,7 +139,7 @@ export function Publication() {
                         placeholder="Digite seu comentário..."
                         className={styles.commentInput}
                     />
-                    <button onClick={handleCommentClick} className={styles.button} >Enviar</button>
+                    <button onClick={handleCommentClick} className={styles.button}>Enviar</button>
                 </div>
             </div>
         </div>
