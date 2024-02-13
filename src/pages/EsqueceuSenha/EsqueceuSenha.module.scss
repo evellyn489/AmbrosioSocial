@@ -43,3 +43,59 @@ div.container {
         }
     }
 }
+
+@media (max-width: 970px) {
+    main {
+        margin-right: 3em;
+    }
+}
+
+@media (max-width: 740px) {
+    .container {
+        flex-direction: column;
+
+        padding: 2em;
+
+        img {
+            max-height: 100px;
+        }
+
+        main {
+            min-height: 450px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin-left: 2em;
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        margin-top: 1em;
+
+        main {
+            input {
+                width: 350px;
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        margin-left: 3em;
+
+        img {
+            max-width: 90px;
+        }
+
+        main {
+            input {
+                width: 300px;
+            }
+        }
+    }
+}
