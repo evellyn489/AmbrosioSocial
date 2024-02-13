@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "../../components/Input";
 import { Logo } from "../../components/Logo";
+import { Button } from "../../components/Button";
 
 const esqueceuSenhaSchema = z.object({
     password3: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim()).refine(value => {
@@ -36,7 +37,12 @@ export function EsqueceuSenha() {
                 <h1>Digite sua nova senha</h1>
 
                 <form onSubmit={handleSubmit(esqueceuSenha)}>
-                    <Input type="password" placeholder="Nova senha" id="password3" register={register}/>
+                    <div className={styles.inputData}>
+                        <Input type="password" placeholder="Nova senha" id="password3" register={register}/>
+                        {errors.password3 && <span>{errors.password3.message}</span>}
+                    </div>
+
+                    <Button name="ENVIAR"/>
                 </form>
             </main>
         </div>
