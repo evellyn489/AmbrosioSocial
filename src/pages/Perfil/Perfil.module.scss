@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+
+    aside {
+        width: 25%;
+        background: linear-gradient(to bottom, rgba(152, 41, 209, 1), rgba(0, 74, 173, 0.61));
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        color: #fff;
+
+        padding: 4em 0;
+
+        strong {
+            font-weight: 500;
+
+            padding-top: 2em;
+        }
+
+        div.data{
+            display: flex;
+            gap: 18px;
+
+            padding-top: 4em;
+        }
+
+        button {
+            border: 2px solid #ffff;
+            background: rgba(217, 217, 217, 0.28);
+
+            margin-top: 10em;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        div.logoImg {
+            width: 100%;
+            max-height: 80px;
+            border-bottom: 1px solid #9C9C9C;
+
+            padding: 1em;
+
+            display: flex;
+            justify-content: center;
+            
+            img {
+                max-width: 50px;
+            }        
+        }
+    }
+
+    div.menu {
+        header {
+            width: 200px;
+            height: 100%; 
+            
+            flex-direction: column;
+        }
+
+        display: flex;
+        flex-direction: column;
+    }
+}
