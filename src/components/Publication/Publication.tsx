@@ -99,11 +99,11 @@ export function Publication() {
         <div className={styles.container}>
 
             <div className={styles.id}>
-                <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>
-                <h1>Nome do usuário</h1>
+                <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
             </div>
 
             <div className={styles.information}>
+                <h1>Nome do usuário</h1>
                 <p className={styles.p}>Lorem ipsum dolor sit amet consectetur adipiscing elit bibendum aliquet volutpat habitasse, montes porttitor netus erat eget vitae varius penatibus posuere.</p>
                 <img src={rectangle_photo} alt="foto postada pelo usuário" title="" className={styles.photo}/>
             </div>

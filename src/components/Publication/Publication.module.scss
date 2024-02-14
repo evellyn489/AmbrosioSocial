@@ -7,14 +7,14 @@
 
 .id {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
 
-    padding: 1.4em;
-    padding-top: 5%;
+
+    padding: 1em;
     padding-right: 30em;
+
+    h1{
+        white-space: nowrap;
+    }
 }
 
 .information {
@@ -32,6 +32,10 @@
 .profile_picture {
     height: 55px;
     display: flex;
+    margin-right: 700px;
+    position: relative;
+    left: 260px;
+    top: 60px
 }
 
 .information img.photo {
@@ -39,7 +43,7 @@
 }
 
 p {
-    display: flex;
+    word-wrap: break-word;
     text-align: left;
     max-width: 60%;
 }
@@ -124,4 +128,110 @@ h1 {
     padding: 1%;
     border: 1px solid;
     border-radius: 2px;    
+}
+
+@media (max-width: 744px){
+    .container {
+        display: flex;
+        margin-left: 90px;
+    }
+}
+
+@media (max-width: 670px){
+    .container {
+        display: flex;
+        margin-left: 90px;
+    }
+
+    .p {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 660px){
+    .container {
+        display: flex;
+        margin-left: 90px;
+    }
+
+    .profile_picture {
+        height: 50px;
+        padding-left: 20px;
+    }
+
+    .photo {
+        height: 300px;
+    }
+}
+
+@media (max-width: 632px) {
+    .container {
+        padding-left: 20px;
+    }
+
+    .photo {
+        position: relative;
+        right: 30px;
+
+    }
+}
+@media (max-width: 618px){
+    .container {
+        margin-left: 100px;
+    }
+
+    .profile_picture {
+        height: 45px;
+        padding-left: 40px;
+    }
+
+    .photo {
+        position: relative;
+        right: 30px
+    }
+
+    .p {
+        max-width: 45%;
+        font-size: 10pt;
+    }
+}
+
+@media (max-width: 591px){
+    .container {
+        display: flex;
+        margin-left: 200px;
+    }
+
+    .profile_picture {
+        height: 45px;
+        padding-left: 50px;
+    }
+
+    .p {
+        max-width: 40%;
+    }
+
+}
+
+@media (max-width: 588px){
+    .profile_picture {
+        height: 40px;
+    }
+
+    .photo {
+        width: 20px;
+        padding-left: 30px;
+        padding-right: 100px;
+    }
+
+    .interation {
+        padding-right: 10%;
+    }
+}
+
+@media (max-width: 516px){
+    .p {
+        max-width: 40%;
+    }
+
 }

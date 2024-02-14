@@ -35,4 +35,59 @@
     width: 30px;
     display: flex;
 }
-//#7175CE e #9431D1
+
+
+@media (max-width: 768px) {
+    .header {
+        height: 80px;
+        display: flex;
+        top: 0;
+    }
+    .logo {
+        height: 55px;
+    }
+    .icons {
+        gap: 4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 80px;
+        display: flex;
+        top: 0;
+    }
+    .logo {
+        height: 45px;
+    }
+    .icons {
+        gap: 4em;
+    }
+    .icons img{
+        width: 25px;
+    }
+}
+
+@media (max-width: 634px) {
+    .header {
+        height: 80px;
+        display: flex;
+        top: 0;
+    }
+    .logo {
+        height: 45px;
+    }
+    .icons {
+        margin-left: 40px;
+        gap: 3em;
+    }
+    .icons img{
+        width: 25px;
+    }
+}
+
+@media (max-width: 618px) {
+    .logo {
+        height: 55px;
+    }
+}

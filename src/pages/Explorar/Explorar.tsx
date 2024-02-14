@@ -4,27 +4,27 @@ import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
 
 export function Explorar() {
-    const [numPublications, setNumPublications] = useState(2); // Começa com o número padrão de publicações
+    const [numPublications, setNumPublications] = useState(2); 
 
     const handleMorePublication = () => {
-        setNumPublications(prevNumPublications => prevNumPublications + 2); // Aumenta o número de publicações em 2
+        setNumPublications(prevNumPublications => prevNumPublications + 2); 
     };
 
     return (
         <div className={styles.container}>
+            <Menu />
             <div className={styles.content}>
-                <Menu />
                 <div className={styles.publicationsContainer}>
                     {[...Array(numPublications)].map((_, index) => (
-                        <Publication key={index} /> // Renderiza o número atual de publicações
+                        <Publication key={index} /> 
                     ))}
                 </div>
+                <footer className={styles.footer}>
+                    <p>
+                        <span onClick={handleMorePublication}>More...</span>
+                    </p>
+                </footer>
             </div>
-            <footer className={styles.footer}>
-            <p>
-                <span onClick={handleMorePublication}>More...</span>
-            </p>
-            </footer>
         </div>
     );
 }
