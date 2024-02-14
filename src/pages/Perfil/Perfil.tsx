@@ -36,7 +36,7 @@ export function Perfil() {
             </main>
 
             <div className={styles.menu}>
-                <Menu />
+                <Menu isHome={false}/>
             </div>
         </div>
     );

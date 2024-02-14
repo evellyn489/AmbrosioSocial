@@ -4,7 +4,7 @@ import { Menu } from "../../components/Menu";
 export function Configuracoes() {
   return (
     <div>
-        <Menu />
+        <Menu isHome={true}/>
             <div className={styles.container}>
                 <button>ALTERAR TAMANHO DA LETRA</button>
                 <button>ALTERAR TEMA DO SISTEMA</button>

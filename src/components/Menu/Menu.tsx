@@ -5,8 +5,13 @@ import search from "../../assets/menu/white/search.png";
 import notification from "../../assets/menu/white/notification.png";
 import publish from "../../assets/menu/white/publish.png";
 import config from "../../assets/menu/white/config.png";
+import home_screen from "../../assets/menu/white/home_screen.png";
 
-export function Menu() {
+interface MenuProps {
+    isHome: boolean; 
+}
+
+export function Menu({ isHome }: MenuProps) { 
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -17,7 +22,11 @@ export function Menu() {
                 <a href=""><img src={search} alt="ícone de busca representado por uma lupa branca" className={styles.search} title="Buscar perfil"/></a>
                 <a href=""><img src={notification} alt="ícone de notificação representado por um sino branco" title="Notificações"/></a>
                 <a href=""><img src={publish} alt="ícone branco de publicação representado por uma seta para cima tocando uma barra" title="Publicar"/></a>
-                <a href=""><img src={config} alt="ícone de configuração representado por uma engrenagem" title="Configurações"/></a>
+                {isHome ? (
+                    <a href=""><img src={home_screen} alt="ícone de tela inicial representado por uma casa branca" title="Página Inicial" className={styles.home_screen}/></a>
+                ) : (
+                    <a href=""><img src={config} alt="ícone de configuração representado por uma engrenagem" title="Configurações"/></a>
+                )}
             </div>
         </header>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Explorar.module.scss";
 import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
@@ -12,7 +12,7 @@ export function Explorar() {
 
     return (
         <div className={styles.container}>
-            <Menu />
+            <Menu isHome={false}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>
                     {[...Array(numPublications)].map((_, index) => (
