@@ -6,6 +6,7 @@ import { Cadastro } from "../pages/Cadastro";
 import { Explorar } from "../pages/Explorar";
 import { EsqueceuSenha } from "../pages/EsqueceuSenha";
 import { Perfil } from "../pages/Perfil";
+import { Configuracoes } from "../pages/Configuracoes";
 
 export function AppRoutes() {
     return(
@@ -17,6 +18,7 @@ export function AppRoutes() {
                 <Route path="/esqueceusenha" element={<EsqueceuSenha />}/>
                 <Route path="/explorar" element={<Explorar />}/>
                 <Route path="/perfil" element={<Perfil />}/>
+                <Route path="/configuracoes" element={<Configuracoes />}/>
             </Routes>
         </BrowserRouter>
     );
