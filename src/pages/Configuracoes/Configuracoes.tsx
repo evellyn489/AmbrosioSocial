@@ -5,7 +5,7 @@ import { Menu } from "../../components/Menu";
 export function Configuracoes() {
     const [darkTheme, setDarkTheme] = useState(false);
     const [contaVisivel, setContaVisivel] = useState(true);
-    const [opcoesVisiveis, setOpcoesVisiveis] = useState(false); // Estado para controlar a visibilidade das opções
+    const [opcoesVisiveis, setOpcoesVisiveis] = useState(false);
   
     const handleThemeChange = () => {
         setDarkTheme(!darkTheme);
@@ -46,7 +46,7 @@ export function Configuracoes() {
 
     return (
         <div style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
-            <Menu isHome={true}/>
+            <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
                 <button>ALTERAR TAMANHO DA LETRA</button>
 
