@@ -9,7 +9,7 @@ import { Menu } from "../../components/Menu";
 export function Perfil() {
     return (
         <div className={styles.container}>
-            <Menu isHome={false}/>
+            <Menu isHome={false} isPerfil={true}/>
 
             <div className={styles.asideMain}>
                 <aside>
