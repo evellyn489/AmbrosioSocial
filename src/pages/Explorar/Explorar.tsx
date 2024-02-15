@@ -12,7 +12,7 @@ export function Explorar() {
 
     return (
         <div className={styles.container}>
-            <Menu isHome={false}/>
+            <Menu isHome={false} isPerfil={false}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>
                     {[...Array(numPublications)].map((_, index) => (
