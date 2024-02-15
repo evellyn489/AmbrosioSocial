@@ -13,6 +13,20 @@ interface MenuProps {
 }
 
 export function Menu({ isHome, isPerfil }: MenuProps) { 
+
+    const handlePublishClick = () => {
+        const fileInput = document.getElementById('fileInput');
+        fileInput?.click(); 
+    };
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            // Para onde o arquivo irá
+            console.log('Arquivo selecionado:', file);
+        }
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -29,13 +43,22 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                 }
                 <a href=""><img src={search} alt="ícone de busca representado por uma lupa branca" className={styles.search} title="Buscar perfil"/></a>
                 <a href=""><img src={notification} alt="ícone de notificação representado por um sino branco" title="Notificações"/></a>
-                <a href=""><img src={publish} alt="ícone branco de publicação representado por uma seta para cima tocando uma barra" title="Publicar"/></a>
+
+                <button className={styles.submitImage} onClick={handlePublishClick}><img src={publish} alt="ícone branco de publicação representado por uma seta para cima tocando uma barra" title="Publicar"/></button>
+
                 {isHome ? (
                     <a href=""><img src={home_screen} alt="ícone de tela inicial representado por uma casa branca" title="Página Inicial" className={styles.home_screen}/></a>
                 ) : (
                     <a href=""><img src={config} alt="ícone de configuração representado por uma engrenagem" title="Configurações"/></a>
                 )}
             </div>
+
+            <input
+                type="file"
+                style={{ display: 'none' }}
+                id="fileInput"
+                onChange={handleFileChange}
+            />
         </header>
     );
 }
