@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react"; 
 import styles from "./Configuracoes.module.scss";
 import { Menu } from "../../components/Menu";
+import { useTheme } from "../../contexts/ThemeProvider"; 
 
 export function Configuracoes() {
-    const [darkTheme, setDarkTheme] = useState(false);
+    const { darkTheme, toggleTheme } = useTheme(); 
+
     const [contaVisivel, setContaVisivel] = useState(true);
     const [opcoesVisiveis, setOpcoesVisiveis] = useState(false);
-  
-    const handleThemeChange = () => {
-        setDarkTheme(!darkTheme);
-    };
 
     const toggleVisibilidadeConta = () => {
         setContaVisivel(!contaVisivel);
@@ -27,16 +25,16 @@ export function Configuracoes() {
     };
 
     const publicAccount = () => {
-      //Funcionalidades da conta pública
-      console.log("Conta pública selecionada");
+        //Funcionalidades da conta pública
+        console.log("Conta pública selecionada");
     }
 
     const privateAccount = () => {
-      //Funcionalidades da conta privada
-      console.log("Conta privada selecionada");
+        //Funcionalidades da conta privada
+        console.log("Conta privada selecionada");
     }
-    
-    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.value === "Pública") {
             publicAccount();
         } else if (event.target.value === "Privada") {
@@ -50,8 +48,7 @@ export function Configuracoes() {
             <div className={styles.container}>
                 <button>ALTERAR TAMANHO DA LETRA</button>
 
-                <button onClick={handleThemeChange}>ALTERAR TEMA DO SISTEMA</button>
-
+                <button onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
                 <button onClick={toggleOpcoesVisiveis}>ALTERAR VISIBILIDADE DA CONTA</button>
                 {opcoesVisiveis && (
                     <div >
