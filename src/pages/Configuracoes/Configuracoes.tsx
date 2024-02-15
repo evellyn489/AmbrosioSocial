@@ -5,12 +5,12 @@ export function Configuracoes() {
   return (
     <div>
         <Menu isHome={true}/>
-            <div className={styles.container}>
-                <button>ALTERAR TAMANHO DA LETRA</button>
-                <button>ALTERAR TEMA DO SISTEMA</button>
-                <button>ALTERAR VISIBILIDADE DA CONTA</button>
-                <button>SAIR DA CONTA</button>
-            </div>
+        <div className={styles.container}>
+            <button>ALTERAR TAMANHO DA LETRA</button>
+            <button>ALTERAR TEMA DO SISTEMA</button>
+            <button>ALTERAR VISIBILIDADE DA CONTA</button>
+            <button>SAIR DA CONTA</button>
+        </div>
     </div>
   );
 }

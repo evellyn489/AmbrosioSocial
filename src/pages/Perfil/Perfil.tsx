@@ -1,7 +1,6 @@
 import styles from "./Perfil.module.scss";
 
 import profile from "../../assets/publications/profile_picture.png";
-import logo from "../../assets/logos/gray.png";
 
 import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
@@ -10,33 +9,27 @@ import { Menu } from "../../components/Menu";
 export function Perfil() {
     return (
         <div className={styles.container}>
-            <aside>
-                <div className={styles.foto}>
-                    <img src={profile} alt="" />
-                </div>
+            <Menu isHome={false}/>
 
-                <strong>Nome do usuário</strong>
+            <div className={styles.asideMain}>
+                <aside>
+                    <div className={styles.foto}>
+                        <img src={profile} alt="" />
+                    </div>
 
-                <div className={styles.data}>
-                    <p>x seguidores</p>
-                    <p>y seguindo</p>
-                </div>
+                    <strong>Nome do usuário</strong>
 
-                <Button name="Editar dados"/>
-            </aside>
+                    <div className={styles.data}>
+                        <p>x seguidores</p>
+                        <p>y seguindo</p>
+                    </div>
 
-            <main>
-                <div className={styles.logoImg}>
-                    <img src={logo} alt="Logo do AmbrosioSocial que tem o símbolo AS da cor cinza dentro de um quadrado com bordas cinzas e fundo branco."/>
-                </div>
+                    <Button name="Editar dados"/>
+                </aside>
 
-                <div className={styles.content}>
+                <main>
                     <Publication />
-                </div>
-            </main>
-
-            <div className={styles.menu}>
-                <Menu isHome={false}/>
+                </main>
             </div>
         </div>
     );
