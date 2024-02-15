@@ -44,8 +44,115 @@
             max-height: calc(100vh - 50px);
             overflow-x: hidden;
 
-            padding-top: 7em;
-            
+            padding-top: 8em;
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    .container {
+       div.asideMain {
+            flex-direction: column;
+            max-height: 550px;
+
+            aside {
+                flex-direction: row;
+
+                img {
+                    width: 100px;
+                }
+            }
+
+            main {
+                padding-top: 14em;
+            }
+       }
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        div.asideMain {
+            aside button {    
+                align-self: start;
+            }
+        }
+    }
+}
+
+@media (max-width: 670px) {
+    .container {
+        div.asideMain {
+            aside {
+                font-size: 0.9rem;
+
+                img {
+                    width: 80px;
+                }
+
+                button {
+                    max-width: 150px;
+                    align-self: start;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 575px) {
+    .container {
+        div.asideMain {
+            aside {
+                font-size: 0.8rem;
+
+                img {
+                    width: 70px;
+                }
+
+                button {
+                    max-width: 120px;
+                    align-self: start;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 500px) {
+    .container {
+        div.asideMain {
+            aside {
+                font-size: 0.7rem;
+
+                img {
+                    width: 50px;
+                }
+
+                button {
+                    max-width: 100px;
+                    align-self: flex-start;
+                    margin-bottom: 1em;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        div.asideMain {
+            aside {
+                font-size: 0.65rem;
+                margin-top: 2em;
+
+                button {
+                    max-width: 90px;
+                }
+            }
+
+            main {
+                margin-left: 4em;
+            }
         }
     }
 }
