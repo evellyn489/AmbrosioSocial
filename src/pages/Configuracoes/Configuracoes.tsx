@@ -6,22 +6,22 @@ import { useTheme } from "../../contexts/ThemeProvider";
 export function Configuracoes() {
     const { darkTheme, toggleTheme } = useTheme(); 
 
-    const [visibleSizeOptions, setVisibleSizeOptions] = useState(false);
-    const [visibleOptionsVisibility, setVisibleOptionsVisibility] = useState(false);
+    const [opcoesVisiveisTamanho, setOpcoesVisiveisTamanho] = useState(false);
+    const [opcoesVisiveisVisibilidade, setOpcoesVisiveisVisibilidade] = useState(false);
 
     const toggleOpcoesVisiveisTamanho = () => {
-        setVisibleSizeOptions(!visibleSizeOptions);
-       
-        if (visibleOptionsVisibility) {
-            setVisibleOptionsVisibility(false);
+        setOpcoesVisiveisTamanho(!opcoesVisiveisTamanho);
+        
+        if (opcoesVisiveisVisibilidade) {
+            setOpcoesVisiveisVisibilidade(false);
         }
     };
 
     const toggleOpcoesVisiveisVisibilidade = () => {
-        setVisibleOptionsVisibility(!visibleOptionsVisibility);
-
-        if (visibleSizeOptions) {
-            setVisibleSizeOptions(false);
+        setOpcoesVisiveisVisibilidade(!opcoesVisiveisVisibilidade);
+        
+        if (opcoesVisiveisTamanho) {
+            setOpcoesVisiveisTamanho(false);
         }
     };
 
@@ -31,6 +31,10 @@ export function Configuracoes() {
             //Redirecionar para a tela inicial
         }
     };
+
+    const handleTamanhoChange = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log("Tamanho selecionado:", event.target.value);
+    }
 
     const publicAccount = () => {
         //Funcionalidades da conta pública
@@ -42,10 +46,8 @@ export function Configuracoes() {
         console.log("Conta privada selecionada");
     }
 
-    const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.value === "Pequena" || event.target.value === "Média" || event.target.value === "Grande") {
-            // Funcionalidade para alterar o tamanho da fonte
-        } else if (event.target.value === "Pública") {
+    const handleVisibilidadeChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.value === "Pública") {
             publicAccount();
         } else if (event.target.value === "Privada") {
             privateAccount();
@@ -57,33 +59,33 @@ export function Configuracoes() {
             <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
                 <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho}>ALTERAR TAMANHO DA LETRA</button>
-                {visibleSizeOptions && (
+                {opcoesVisiveisTamanho && (
                     <div className={styles.options}>
                         <div>
-                            <label htmlFor="TamanhoLetra">Pequena</label>
+                            <label htmlFor="Pequena">Pequena</label>
                             <input 
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Pequena" 
-                                onChange={handleRadioChange}
+                                onChange={handleTamanhoChange}
                             />
                         </div>
                         <div>
-                            <label htmlFor="TamanhoLetra">Média</label>
+                            <label htmlFor="Média">Média</label>
                             <input 
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Média" 
-                                onChange={handleRadioChange}
+                                onChange={handleTamanhoChange}
                             />
                         </div>
                         <div>
-                            <label htmlFor="TamanhoLetra">Grande</label>
+                            <label htmlFor="Grande">Grande</label>
                             <input 
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Grande" 
-                                onChange={handleRadioChange}
+                                onChange={handleTamanhoChange}
                             />
                         </div>
                     </div>
@@ -91,24 +93,24 @@ export function Configuracoes() {
 
                 <button className={styles.transitionButton} onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
                 <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisVisibilidade}>ALTERAR VISIBILIDADE DA CONTA</button>
-                {visibleOptionsVisibility && (
+                {opcoesVisiveisVisibilidade && (
                     <div className={styles.options}>
                         <div>
-                            <label htmlFor="visibilidade">Pública</label>
+                            <label htmlFor="Pública">Pública</label>
                             <input 
                                 type="radio" 
-                                name="visibilidade" 
+                                name="Visibilidade" 
                                 value="Pública" 
-                                onChange={handleRadioChange}
+                                onChange={handleVisibilidadeChange}
                             />
                         </div>
                         <div>
-                            <label htmlFor="visibilidade">Privada</label>
+                            <label htmlFor="Privada">Privada</label>
                             <input 
                                 type="radio" 
-                                name="visibilidade" 
+                                name="Visibilidade" 
                                 value="Privada" 
-                                onChange={handleRadioChange}
+                                onChange={handleVisibilidadeChange}
                             />
                         </div>
                     </div>
