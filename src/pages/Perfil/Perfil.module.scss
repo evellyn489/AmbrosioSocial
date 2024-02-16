@@ -140,6 +140,12 @@
 
 @media (max-width: 425px) {
     .container {
+        header {
+            div {
+                gap: 35px;
+            }
+        }
+
         div.asideMain {
             aside {
                 font-size: 0.65rem;
@@ -151,6 +157,20 @@
             }
 
             main {
+                div {
+                    align-items: flex-start;
+
+                    margin-right: 30em;
+                    h1 {
+                        font-size: 0.9rem;
+                    }
+
+                    p {
+                        font-size: 0.5rem;
+                    }
+
+                   width: 100%;
+                }
                 margin-left: 4em;
             }
         }
