@@ -46,10 +46,10 @@ export function Configuracoes() {
         <div style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
             <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
-                <button>ALTERAR TAMANHO DA LETRA</button>
+                <button className={styles.transitionButton}>ALTERAR TAMANHO DA LETRA</button>
 
-                <button onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
-                <button onClick={toggleOpcoesVisiveis}>ALTERAR VISIBILIDADE DA CONTA</button>
+                <button className={styles.transitionButton} onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
+                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveis}>ALTERAR VISIBILIDADE DA CONTA</button>
                 {opcoesVisiveis && (
                     <div >
                         <div className={styles.options}>
@@ -76,7 +76,7 @@ export function Configuracoes() {
                     </div>
                 )}
 
-                <button onClick={handleLogout}>SAIR DA CONTA</button>
+                <button className={styles.transitionButton} onClick={handleLogout}>SAIR DA CONTA</button>
                 
             </div>
         </div>
