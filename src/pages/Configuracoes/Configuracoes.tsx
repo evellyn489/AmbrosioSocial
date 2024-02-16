@@ -6,15 +6,23 @@ import { useTheme } from "../../contexts/ThemeProvider";
 export function Configuracoes() {
     const { darkTheme, toggleTheme } = useTheme(); 
 
-    const [contaVisivel, setContaVisivel] = useState(true);
-    const [opcoesVisiveis, setOpcoesVisiveis] = useState(false);
+    const [visibleSizeOptions, setVisibleSizeOptions] = useState(false);
+    const [visibleOptionsVisibility, setVisibleOptionsVisibility] = useState(false);
 
-    const toggleVisibilidadeConta = () => {
-        setContaVisivel(!contaVisivel);
+    const toggleOpcoesVisiveisTamanho = () => {
+        setVisibleSizeOptions(!visibleSizeOptions);
+       
+        if (visibleOptionsVisibility) {
+            setVisibleOptionsVisibility(false);
+        }
     };
 
-    const toggleOpcoesVisiveis = () => {
-        setOpcoesVisiveis(!opcoesVisiveis);
+    const toggleOpcoesVisiveisVisibilidade = () => {
+        setVisibleOptionsVisibility(!visibleOptionsVisibility);
+
+        if (visibleSizeOptions) {
+            setVisibleSizeOptions(false);
+        }
     };
 
     const handleLogout = () => {
@@ -35,7 +43,9 @@ export function Configuracoes() {
     }
 
     const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.value === "Pública") {
+        if (event.target.value === "Pequena" || event.target.value === "Média" || event.target.value === "Grande") {
+            // Funcionalidade para alterar o tamanho da fonte
+        } else if (event.target.value === "Pública") {
             publicAccount();
         } else if (event.target.value === "Privada") {
             privateAccount();
@@ -46,32 +56,60 @@ export function Configuracoes() {
         <div style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
             <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
-                <button className={styles.transitionButton}>ALTERAR TAMANHO DA LETRA</button>
+                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho}>ALTERAR TAMANHO DA LETRA</button>
+                {visibleSizeOptions && (
+                    <div className={styles.options}>
+                        <div>
+                            <label htmlFor="TamanhoLetra">Pequena</label>
+                            <input 
+                                type="radio" 
+                                name="Tamanho" 
+                                value="Pequena" 
+                                onChange={handleRadioChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="TamanhoLetra">Média</label>
+                            <input 
+                                type="radio" 
+                                name="Tamanho" 
+                                value="Média" 
+                                onChange={handleRadioChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="TamanhoLetra">Grande</label>
+                            <input 
+                                type="radio" 
+                                name="Tamanho" 
+                                value="Grande" 
+                                onChange={handleRadioChange}
+                            />
+                        </div>
+                    </div>
+                )}
 
                 <button className={styles.transitionButton} onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
-                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveis}>ALTERAR VISIBILIDADE DA CONTA</button>
-                {opcoesVisiveis && (
-                    <div >
-                        <div className={styles.options}>
-                            <div>
-                                <label htmlFor="visibilidade">Pública</label>
-                                <input 
-                                    type="radio" 
-                                    name="visibilidade" 
-                                    value="Pública" 
-                                    onChange={handleRadioChange}
-                                />
-                            </div>
-                            
-                            <div>
-                                <label htmlFor="visibilidade">Privada</label>
-                                <input 
-                                    type="radio" 
-                                    name="visibilidade" 
-                                    value="Privada" 
-                                    onChange={handleRadioChange}
-                                />
-                            </div>
+                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisVisibilidade}>ALTERAR VISIBILIDADE DA CONTA</button>
+                {visibleOptionsVisibility && (
+                    <div className={styles.options}>
+                        <div>
+                            <label htmlFor="visibilidade">Pública</label>
+                            <input 
+                                type="radio" 
+                                name="visibilidade" 
+                                value="Pública" 
+                                onChange={handleRadioChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="visibilidade">Privada</label>
+                            <input 
+                                type="radio" 
+                                name="visibilidade" 
+                                value="Privada" 
+                                onChange={handleRadioChange}
+                            />
                         </div>
                     </div>
                 )}
