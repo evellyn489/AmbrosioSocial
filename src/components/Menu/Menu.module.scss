@@ -61,43 +61,35 @@
     }
 }
 
-@media (max-width: 480px) {
-    .header {
-        height: 80px;
-        display: flex;
-        top: 0;
-    }
-    .logo {
-        height: 45px;
-    }
-    .icons {
-        gap: 4em;
-    }
-    .icons img{
-        width: 25px;
+@media (max-width: 730px){
+    .icons, .logo {
+        position: relative;
+        left: 1%;
     }
 }
 
+
 @media (max-width: 634px) {
-    .header {
-        height: 80px;
-        display: flex;
-        top: 0;
-    }
-    .logo {
-        height: 45px;
-    }
     .icons {
-        margin-left: 40px;
         gap: 3em;
-    }
-    .icons img{
-        width: 25px;
     }
 }
 
 @media (max-width: 618px) {
+    .icons{
+        position: relative;
+        padding-right: 20%;
+    }
+
     .logo {
-        height: 55px;
+        position: relative;
+        left: 10%;
+    }
+}
+
+@media(max-width: 426px){
+    .icons {
+        padding: 4em;
+        gap: 5em;
     }
 }
