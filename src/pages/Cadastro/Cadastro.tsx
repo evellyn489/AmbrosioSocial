@@ -76,17 +76,17 @@ export function Cadastro() {
                         <label htmlFor="dataNascimento" className={styles.title}>Data de Nascimento</label>
                         <div className={styles.optionsD}>
                             <div>
-                                <input type="number" {...register("dia")} placeholder="Dia"/>
+                                <input type="number" {...register("dia")} placeholder="Dia" aria-required/>
                                 {errors.dia && <span>{errors.dia.message}</span>}
                             </div>
                             
                             <div>
-                                <input type="number" {...register("mes")} placeholder="Mês" />
+                                <input type="number" {...register("mes")} placeholder="Mês" aria-required/>
                                 {errors.mes && <span>{errors.mes.message}</span>}
                             </div>
                            
                            <div>
-                                <input type="number" {...register("ano")} placeholder="Ano"/>
+                                <input type="number" {...register("ano")} placeholder="Ano" aria-required/>
                                 {errors.ano && <span>{errors.ano.message}</span>}
                            </div>
                         </div>
@@ -97,17 +97,17 @@ export function Cadastro() {
                         <div className={styles.optionsG}>
                             <div>
                                 <label htmlFor="genero">Feminino</label>
-                                <input type="radio" {...register("genero")} value="feminino"/>
+                                <input type="radio" {...register("genero")} value="feminino" aria-required/>
                             </div>
                             
                             <div>
                                 <label htmlFor="genero">Masculino</label>
-                                <input type="radio" {...register("genero")} value="masculino"/>
+                                <input type="radio" {...register("genero")} value="masculino" aria-required/>
                             </div>
                             
                             <div>
                                 <label htmlFor="genero">Neutro</label>
-                                <input type="radio" {...register("genero")} value="neutro"/>
+                                <input type="radio" {...register("genero")} value="neutro" aria-required/>
                             </div>
                         </div>
                         {errors.genero && <span>{errors.genero.message}</span>}
@@ -119,18 +119,18 @@ export function Cadastro() {
                         <div className={styles.optionsV}>
                             <div>
                                 <label htmlFor="visibilidade">Pública</label>
-                                <input type="radio" {...register("visibilidade")} value="publica"/>
+                                <input type="radio" {...register("visibilidade")} value="publica" aria-required/>
                             </div>
                             
                             <div>
                                 <label htmlFor="visibilidade">Privada</label>
-                                <input type="radio" {...register("visibilidade")} value="privada"/>
+                                <input type="radio" {...register("visibilidade")} value="privada" aria-required/>
                             </div>
                         </div>
                         {errors.visibilidade && <span>{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR" type={1}/>
+                    <Button name="CADASTRAR"/>
                 </form>
             </main>
         </div>

@@ -45,8 +45,10 @@
                     color: #9829D1;
                     font-size: 0.7rem;
                     font-weight: 500;
+                }
 
-                    text-decoration: none;
+                a:hover {
+                    color: #ae69d1;
                 }
             }
 
@@ -72,8 +74,10 @@
             a {
                 color: #4361EE;
                 font-weight: 400;
-                
-                text-decoration: none;
+            }
+            
+            a:hover {
+                color: #5772e7;
             }
         }
     }

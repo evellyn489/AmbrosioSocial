@@ -66,11 +66,11 @@ export function CadastroInicial() {
 
                 <form onSubmit={handleSubmit(cadastroInicial)}>
                     <div className={styles.inputs}>
-                        <Input type="text" placeholder="Nome" id="user" register={register}/>
+                        <Input type="text" placeholder="Nome" id="user" label="Adicionar o seu nome" register={register}/>
                         {errors.user && <span>{errors.user.message}</span>}
-                        <Input type="email" placeholder="Email" id="email2" register={register}/>
+                        <Input type="email" placeholder="Email" id="email2" label="Adicionar o email" register={register}/>
                         {errors.email2 && <span>{errors.email2.message}</span>}
-                        <Input type="password" placeholder="Senha" id="password2" register={register}/>
+                        <Input type="password" placeholder="Senha" id="password2" label="Adicionar a senha" register={register}/>
                         {errors.password2 && <span>{errors.password2.message}</span>}
                     </div>
 

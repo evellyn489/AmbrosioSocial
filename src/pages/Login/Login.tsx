@@ -36,9 +36,9 @@ export function Login() {
             <main className={styles.forms}>
                 <form onSubmit={handleSubmit(login)}>
                     <div className={styles.inputs}>
-                        <Input type="email" placeholder="Email" id="email" register={register}/>
+                        <Input type="email" placeholder="Email" id="email" label="Adicionar o email" register={register}/>
                         {errors.email && <span>{errors.email.message}</span>}
-                        <Input type="password" placeholder="Senha" id="password" register={register}/>
+                        <Input type="password" placeholder="Senha" id="password" label="Adicionar a senha" register={register}/>
                         {errors.password && <span>{errors.password.message}</span>}
                     </div>
 
