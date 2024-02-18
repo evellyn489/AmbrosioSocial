@@ -180,7 +180,10 @@
             }
 
             main {
-                min-width: 490px;
+                min-width: 500px;
+                div {
+                    gap: 10px;
+                }
             }
         }
     }
