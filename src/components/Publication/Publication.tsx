@@ -22,7 +22,7 @@ export function Publication() {
     const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
     const [dislikeNumColor, setDislikeNumColor] = useState<string>(styles.defaultNumColor);
 
-    const toggleComentVisibility = () => {
+    const toggleCommentVisibility = () => {
         setCommentVisible(!commentVisible); 
     };
 
@@ -111,21 +111,29 @@ export function Publication() {
             <div className={styles.interation}>
 
                 <div className={styles.iconContainer}>  
-                    <div id="likeButton" className={`${styles.like} ${likeClicked ? styles.clicked : ''}`} onClick={handleLikeClick}>
-                        <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
+                    <button 
+                        className={`${styles.like} ${likeClicked ? styles.clicked : ''}`}
+                        onClick={handleLikeClick}
+                        aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
+                        ><img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
                         <span className={likeNumColor}>{likes}</span>
-                    </div>
+                    </button>
 
-                    <div id="dislikeButton" className={`${styles.dislike} ${dislikeClicked ? styles.clicked : ''}`} onClick={handleDislikeClick}>
-                        <img src={dislikeIcon} alt="botão de não curtida" title='Não curti'/>
+                    <button 
+                        className={`${styles.dislike} ${dislikeClicked ? styles.clicked : ''}`} 
+                        onClick={handleDislikeClick}
+                        aria-label='Não curti'>
+                        <img src={dislikeIcon} alt="Não gostei" />
                         <span className={dislikeNumColor}>{dislikes}</span>
-                    </div>
-                    
-                    <div className={styles.comment}>
-                        <img src={comment} alt="botão de comentar" onClick={toggleComentVisibility} title='Comentar'/>
-                        {comments.length > 0 && <span>{comments.length}</span>}
-                        {comments.length === 0 && <span>0</span>}
-                    </div>
+                    </button>
+
+                    <button 
+                        className={styles.commentButton} 
+                        onClick={toggleCommentVisibility}
+                        aria-label='Comentar'>
+                        <img src={comment} alt="Comentar" />
+                        <span>{comments.length}</span>
+                    </button>
                 </div>
 
                 <div className={`${styles.commentSpace} ${commentVisible ? styles.visible : ''}`}>

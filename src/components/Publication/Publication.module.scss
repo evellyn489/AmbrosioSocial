@@ -54,14 +54,14 @@ h1 {
     flex-direction: row;
     gap: 50px;
     align-self: flex-start;
+
+    margin-bottom: 10%;
 }
 
 .like, .dislike, .comment {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-bottom: 10%;
 }
 
 .interation img{
@@ -69,16 +69,16 @@ h1 {
     margin-bottom: 30%;
 }
 
-.iconContainer img {
+.iconContainer button {
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
-.like img, .dislike img, .comment img {
-  transition: transform 0.2s ease; 
-}
-
-.like.clicked img, .dislike.clicked img {
-  transform: scale(1.2); 
+.like img:active,
+.dislike img:active {
+    transform: scale(1.2); 
+    transition: transform 0.2s ease; 
 }
 
 .defaultNumColor {
@@ -89,7 +89,7 @@ h1 {
     color: #004AAD; 
 }
 
-.iconContainer span {
+.interation {
     font-size: 12px; 
 }
 
