@@ -108,7 +108,7 @@ export function Publication() {
                 <p className={styles.p}>
                     <ReadMore text="Texto é uma produção, verbal ou não verbal, que se constitui com algum código, no intuito de comunicar algo a alguém, em determinado tempo e espaço. Sua definição ampla se deve ao fato de também abranger diversos formatos.
 
-                    Pode-se compreender o texto verbal, oral e escrito, como uma prática social que utiliza estruturas verbais, organizadas e caracterizadas por suas estruturas linguísticas e sua função social" maxLength={100} />
+                    Pode-se compreender o texto verbal, oral e escrito, como uma prática social que utiliza estruturas verbais, organizadas e caracterizadas por suas estruturas linguísticas e sua função social" maxLength={200} />
                 </p>
                 <img src={rectangle_photo} alt="foto postada pelo usuário" title="" className={styles.photo}/>
             </div>
