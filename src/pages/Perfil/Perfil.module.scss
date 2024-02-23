@@ -32,11 +32,25 @@
                 width: 200px;
                 gap: 18px;
             }
-    
+
             button {
                 border: 2px solid #ffff;
                 background: rgba(217, 217, 217, 0.28);
             }
+
+            button:hover {
+                background: rgba(217, 217, 217, 0.10);
+            }
+        }
+
+        aside button:first-of-type {
+            font-size: 1.1rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 13px;
         }
 
         main {
