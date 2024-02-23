@@ -44,10 +44,10 @@ export function Login() {
 
                     <div className={styles.buttonLink}>
                         <Button name="ENTRAR"/> 
-                        <a href="#">Esqueci minha senha</a>
+                        <a href="/esqueceusenha">Esqueci minha senha</a>
                     </div>
                 </form>
-                <p>Não tem uma conta? <a href="">Crie uma conta</a></p>
+                <p>Não tem uma conta? <a href="/">Crie uma conta</a></p>
             </main>
         </div>
     );

@@ -45,7 +45,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
             </div>
             <div className={styles.icons}>
                 {isPerfil ? (
-                    <a href="">
+                    <a href="/explorar">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -54,7 +54,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                         />
                     </a>
                 ) : (
-                    <a href="">
+                    <a href="/perfil">
                         <img
                             src={user}
                             alt="ícone branco de usuário como pessoa"

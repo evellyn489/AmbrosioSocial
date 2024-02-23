@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-
 const cadastroInicialSchema = z.object({
     user: z.string().transform(value => value.trim()).refine(value => {
         const regex = /^[a-zA-Z\u00C0-\u017F´]+\s+[a-zA-Z\u00C0-\u017F´]{0,}$/
