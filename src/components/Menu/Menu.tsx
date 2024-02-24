@@ -45,7 +45,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
             </div>
             <div className={styles.icons}>
                 {isPerfil ? (
-                    <a href="/explorar">
+                    <a href="/explorar" aria-label="Página Inicial">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -54,7 +54,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                         />
                     </a>
                 ) : (
-                    <a href="/perfil">
+                    <a href="/perfil" aria-label="Acessar perfil">
                         <img
                             src={user}
                             alt="ícone branco de usuário como pessoa"
@@ -63,7 +63,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                         />
                     </a>
                 )}
-                <a href="">
+                <a href="" aria-label="Procurar usuários">
                     <img
                         src={search}
                         alt="ícone de busca representado por uma lupa branca"
@@ -72,7 +72,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                     />
                 </a>
 
-                <a href="">
+                <a href="" aria-label="Acessar notificações">
                     <img
                         src={notification}
                         alt="ícone de notificação representado por um sino branco"
@@ -80,7 +80,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                     />
                 </a>
 
-                <button
+                <button aria-label="Publicar"
                     className={styles.submitImage}
                     onClick={handlePublishClick}
                 >
@@ -92,7 +92,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                 </button>
 
                 {isHome ? (
-                    <a href="/explorar">
+                    <a href="/explorar" aria-label="Página Inicial">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -101,7 +101,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                         />
                     </a>
                 ) : (
-                    <a href="/configuracoes">
+                    <a href="/configuracoes" aria-label="Configurações">
                         <img
                             src={config}
                             alt="ícone de configuração representado por uma engrenagem"
