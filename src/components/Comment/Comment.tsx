@@ -11,6 +11,7 @@ export function Comment({ nomeUsuario, texto }: ComentarioProps) {
     return (
         <div className={styles.containerUser}>
             <img src={profile_picture} alt="Foto do usuário" className={styles.photoUserComment} />
+
             <div className={styles.commentDetails}>
                 <p className={styles.nameUserComment}>{nomeUsuario}</p>
 

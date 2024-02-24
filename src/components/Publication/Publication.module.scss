@@ -1,142 +1,138 @@
 div.container {
     max-width: 45%;
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
 
     padding-top: 2em;
 
-    gap: 20px;
+    gap: 30px;
 
-    .id {
-        width: 100%;
-
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-        gap: 30px;
-
-        img {
-            max-width: 55px;
-        }
-
-        h1 {
-            font-size: 1rem;
-            white-space: nowrap;
-
-            font-weight: 500;
-        }
-
+    img {
+        max-width: 55px;
     }
-
-    .information {
+    
+    .content {
         display: flex;
         flex-direction: column;
-        justify-content: center;
 
-        align-items: flex-start;
-
-        gap: 40px;
-
-        p {
-            word-wrap: break-word;
-            text-align: left;
-            max-width: 100%;
-        }
-
-        img {
-            max-width: 100%;
-        }
-    }
-
-    .interation {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
-        font-size: 12px;
-
-        .like, .dislike, .commentButton {
-            border: 0;
-
+        gap: 20px;
+        
+        .information {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
 
-            gap: 10px;
-            
-            cursor: pointer;
-            background: none;
+            align-items: flex-start;
+
+            gap: 40px;
+
+            h1 {
+                font-size: 1rem;
+                white-space: nowrap;
+
+                font-weight: 500;
+            }
+
+            p {
+                word-wrap: break-word;
+                text-align: left;
+                max-width: 100%;
+            }
 
             img {
-                max-width: 20px;
+                max-width: 100%;
             }
         }
 
-        .like img:active,
-        .dislike img:active {
-            transform: scale(1.2); 
-            transition: transform 0.2s ease; 
-        }
-
-        .likeNumColor, .dislikeNumColor {
-            color: #004AAD; 
-        }
-    }
-
-    .commentSpace {
-        width: 100%;
-        display: none;
-        flex-direction: row;
-
-        div.reply {
+        .interation {
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
 
-            gap: 20px;
+            font-size: 12px;
 
-            .commentInput {
-                max-width: 100%;
-                height: 90px;
-    
-                background-color: #D9D9D9;
-    
-                margin-top: 2em;
-    
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                resize: vertical;
-    
-                font-family: "Poppins", "serif";
-            }  
+            .like, .dislike, .commentButton {
+                border: 0;
 
-            .button {
-                width: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                gap: 10px;
                 
-                background-color: #e1dfdf;
-                padding: 1em;
-                border: 1px solid;
-                border-radius: 10px;    
-            }
-
-            .button:hover {
                 cursor: pointer;
+                background: none;
 
-                background-color: #f0eaea;
+                img {
+                    max-width: 20px;
+                }
             }
-        }   
-    }
 
-    .commentSpace.visible {
-        display: block;
-    }
+            .like img:active,
+            .dislike img:active {
+                transform: scale(1.2); 
+                transition: transform 0.2s ease; 
+            }
+
+            .likeNumColor, .dislikeNumColor {
+                color: #004AAD; 
+            }
+        }
+
+        .commentSpace {
+            width: 100%;
+            display: none;
+            flex-direction: row;
+
+            div.reply {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                gap: 20px;
+
+                .commentInput {
+                    max-width: 100%;
+                    height: 90px;
+        
+                    background-color: #D9D9D9;
+        
+                    margin-top: 2em;
+        
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    resize: vertical;
+        
+                    font-family: "Poppins", "serif";
+                }  
+
+                .button {
+                    width: 100px;
+                    
+                    background-color: #e1dfdf;
+                    padding: 1em;
+                    border: 1px solid;
+                    border-radius: 10px;    
+                }
+
+                .button:hover {
+                    cursor: pointer;
+
+                    background-color: #f0eaea;
+                }
+            }   
+        }
+
+        .commentSpace.visible {
+            display: block;
+        }
+
+    }   
 
 }
 

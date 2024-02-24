@@ -1,31 +1,30 @@
 .containerUser {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
 
     padding: 2em 0;
 
     gap: 30px;
-}
 
-.photoUserComment {
-    max-width: 50px;
-}
+    .photoUserComment {
+        max-width: 50px;
+    }
 
-.commentDetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start; 
-}
+    .commentDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start; 
 
-.nameUserComment {
-    font-size: 10pt;
-    white-space: nowrap;
-    margin-bottom: 5px;
-}
+        .nameUserComment {
+            font-size: 10pt;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
 
-.contentComment {
-    word-break: break-word; 
-    max-width: 300px
+        .contentComment {
+            word-break: break-word; 
+            max-width: 300px
+        }
+    }
 }

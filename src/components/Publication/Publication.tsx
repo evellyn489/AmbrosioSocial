@@ -96,62 +96,62 @@ export function Publication({text}: { text: string }) {
     };
     return (
         <div className={styles.container}>
-            <div className={styles.id}>
-                <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
+            <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
                 
-                <h1>Nome do usuário</h1>
-            </div>
+            <div className={styles.content}>
+                <div className={styles.information}>
+                    <h1>Nome do usuário</h1>
+                    
+                    <p className={styles.p}>
+                        <ReadMore text={text} maxLength={200} />
+                    </p>
+                    <img src={rectangle_photo} alt="foto postada pelo usuário" className={styles.photo}/>
+                </div>
 
-            <div className={styles.information}>
-                <p className={styles.p}>
-                    <ReadMore text={text} maxLength={200} />
-                </p>
-                <img src={rectangle_photo} alt="foto postada pelo usuário" className={styles.photo}/>
-            </div>
+                <div className={styles.interation}>
+                    <button 
+                        className={`${styles.like} ${likeClicked && styles.clicked}`}
+                        onClick={handleLikeClick}
+                        aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
+                    >
+                        <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
 
-            <div className={styles.interation}>
-                <button 
-                    className={`${styles.like} ${likeClicked && styles.clicked}`}
-                    onClick={handleLikeClick}
-                    aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
-                >
-                    <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
+                        <span className={likeNumColor}>{likes}</span>
+                    </button>
 
-                    <span className={likeNumColor}>{likes}</span>
-                </button>
+                    <button 
+                        className={`${styles.dislike} ${dislikeClicked && styles.clicked}`} 
+                        onClick={handleDislikeClick}
+                        aria-label='Não curti'
+                    >
+                        <img src={dislikeIcon} alt="Não gostei" />
+                        <span className={dislikeNumColor}>{dislikes}</span>
+                    </button>
 
-                <button 
-                    className={`${styles.dislike} ${dislikeClicked && styles.clicked}`} 
-                    onClick={handleDislikeClick}
-                    aria-label='Não curti'
-                >
-                    <img src={dislikeIcon} alt="Não gostei" />
-                    <span className={dislikeNumColor}>{dislikes}</span>
-                </button>
+                    <button 
+                        className={styles.commentButton} 
+                        onClick={toggleCommentVisibility}
+                        aria-label='Comentar'
+                    >
+                        <img src={comment} alt="Comentar" />
+                        <span>{comments.length}</span>
+                    </button>
+                </div>
 
-                <button 
-                    className={styles.commentButton} 
-                    onClick={toggleCommentVisibility}
-                    aria-label='Comentar'
-                >
-                    <img src={comment} alt="Comentar" />
-                    <span>{comments.length}</span>
-                </button>
-            </div>
-
-            <div className={`${styles.commentSpace} ${commentVisible && styles.visible}`}>
-                {comments.map((comment, index) => (
-                    <Comment key={index} nomeUsuario="Nome do usuário" texto={comment} />
-                ))}
-                
-                <div className={styles.reply}>
-                    <textarea
-                        value={commentText}
-                        onChange={handleCommentChange}
-                        placeholder="Digite seu comentário..."
-                        className={styles.commentInput}
-                    />
-                    <button onClick={handleCommentClick} className={styles.button}>Enviar</button>
+                <div className={`${styles.commentSpace} ${commentVisible && styles.visible}`}>
+                    {comments.map((comment, index) => (
+                        <Comment key={index} nomeUsuario="Nome do usuário" texto={comment} />
+                    ))}
+                    
+                    <div className={styles.reply}>
+                        <textarea
+                            value={commentText}
+                            onChange={handleCommentChange}
+                            placeholder="Digite seu comentário..."
+                            className={styles.commentInput}
+                        />
+                        <button onClick={handleCommentClick} className={styles.button}>Enviar</button>
+                    </div>
                 </div>
             </div>
         </div>
