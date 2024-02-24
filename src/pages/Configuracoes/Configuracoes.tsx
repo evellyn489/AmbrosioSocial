@@ -58,7 +58,7 @@ export function Configuracoes() {
         <div style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
             <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
-                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho}>ALTERAR TAMANHO DA LETRA</button>
+                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho} aria-label="Botão de alterar tamanho da letra">ALTERAR TAMANHO DA LETRA</button>
                 {opcoesVisiveisTamanho && (
                     <div className={styles.options}>
                         <div>
@@ -67,6 +67,7 @@ export function Configuracoes() {
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Pequena" 
+                                aria-label="Pequena"
                                 onChange={handleTamanhoChange}
                             />
                         </div>
@@ -76,6 +77,7 @@ export function Configuracoes() {
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Média" 
+                                aria-label="Média"
                                 onChange={handleTamanhoChange}
                             />
                         </div>
@@ -85,14 +87,15 @@ export function Configuracoes() {
                                 type="radio" 
                                 name="Tamanho" 
                                 value="Grande" 
+                                aria-label="Grande"
                                 onChange={handleTamanhoChange}
                             />
                         </div>
                     </div>
                 )}
 
-                <button className={styles.transitionButton} onClick={toggleTheme}>ALTERAR TEMA DO SISTEMA</button> 
-                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisVisibilidade}>ALTERAR VISIBILIDADE DA CONTA</button>
+                <button className={styles.transitionButton} onClick={toggleTheme} aria-label="Botão de alterar tema do sistema">ALTERAR TEMA DO SISTEMA</button> 
+                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisVisibilidade} aria-label="Botão de alterar visibilidade da conta">ALTERAR VISIBILIDADE DA CONTA</button>
                 {opcoesVisiveisVisibilidade && (
                     <div className={styles.options}>
                         <div>
@@ -101,6 +104,7 @@ export function Configuracoes() {
                                 type="radio" 
                                 name="Visibilidade" 
                                 value="Pública" 
+                                aria-label="Pública"
                                 onChange={handleVisibilidadeChange}
                             />
                         </div>
@@ -110,13 +114,14 @@ export function Configuracoes() {
                                 type="radio" 
                                 name="Visibilidade" 
                                 value="Privada" 
+                                aria-label="Privada"
                                 onChange={handleVisibilidadeChange}
                             />
                         </div>
                     </div>
                 )}
 
-                <button className={styles.transitionButton} onClick={handleLogout}>SAIR DA CONTA</button>
+                <button className={styles.transitionButton} onClick={handleLogout} aria-label="Botão de sair da conta">SAIR DA CONTA</button>
                 
             </div>
         </div>
