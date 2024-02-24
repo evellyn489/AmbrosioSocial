@@ -68,6 +68,7 @@ export function Configuracoes() {
                                 name="Tamanho" 
                                 value="Pequena" 
                                 aria-label="Pequena"
+                                aria-required
                                 onChange={handleTamanhoChange}
                             />
                         </div>
@@ -78,6 +79,7 @@ export function Configuracoes() {
                                 name="Tamanho" 
                                 value="Média" 
                                 aria-label="Média"
+                                aria-required
                                 onChange={handleTamanhoChange}
                             />
                         </div>
@@ -105,6 +107,7 @@ export function Configuracoes() {
                                 name="Visibilidade" 
                                 value="Pública" 
                                 aria-label="Pública"
+                                aria-required
                                 onChange={handleVisibilidadeChange}
                             />
                         </div>
@@ -115,6 +118,7 @@ export function Configuracoes() {
                                 name="Visibilidade" 
                                 value="Privada" 
                                 aria-label="Privada"
+                                aria-required
                                 onChange={handleVisibilidadeChange}
                             />
                         </div>
