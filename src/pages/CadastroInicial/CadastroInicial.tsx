@@ -54,7 +54,7 @@ export function CadastroInicial() {
                     <p>Acesse sua conta agora mesmo!</p>
                 </div>
 
-                <Button name="ENTRAR"/>
+                <Button name="ENTRAR" label="Botão para fazer login"/>
             </aside>
 
             <main>
@@ -65,15 +65,17 @@ export function CadastroInicial() {
 
                 <form onSubmit={handleSubmit(cadastroInicial)}>
                     <div className={styles.inputs}>
-                        <Input type="text" placeholder="Nome" id="user" label="Adicionar o seu nome" register={register}/>
-                        {errors.user && <span>{errors.user.message}</span>}
-                        <Input type="email" placeholder="Email" id="email2" label="Adicionar o email" register={register}/>
-                        {errors.email2 && <span>{errors.email2.message}</span>}
-                        <Input type="password" placeholder="Senha" id="password2" label="Adicionar a senha" register={register}/>
-                        {errors.password2 && <span>{errors.password2.message}</span>}
+                        <Input type="text" placeholder="Nome" id="user" label="Adicionar nome" error="errorNome" register={register}/>
+                        {errors.user && <span id="errorNome">{errors.user.message}</span>}
+
+                        <Input type="email" placeholder="Email" id="email2" label="Adicionar email" error="errorEmail" register={register}/>
+                        {errors.email2 && <span id="errorEmail">{errors.email2.message}</span>}
+
+                        <Input type="password" placeholder="Senha" id="password2" label="Adicionar senha" error="errorSenha" register={register}/>
+                        {errors.password2 && <span id="errorSenha">{errors.password2.message}</span>}
                     </div>
 
-                    <Button name="AVANÇAR" />
+                    <Button name="AVANÇAR" label="Botão para avançar no cadastro"/>
                 </form>
             </main>
         </div>

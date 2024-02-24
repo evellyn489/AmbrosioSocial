@@ -28,14 +28,14 @@ export function Perfil() {
 
                     <strong>Nome do usuário</strong>
 
-                    <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={handleClickFollowing} icon={following && <FaCheck />}/>
+                    <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={handleClickFollowing} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
 
                     <div className={styles.data}>
                         <p>x seguidores</p>
                         <p>y seguindo</p>
                     </div>
 
-                    <Button name="Editar dados" click={() => 0}/>
+                    <Button name="Editar dados" label="Botão de editar os dados do usuário" click={() => 0}/>
                 </aside>
 
                 <main>

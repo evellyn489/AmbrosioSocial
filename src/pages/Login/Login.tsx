@@ -36,18 +36,19 @@ export function Login() {
             <main className={styles.forms}>
                 <form onSubmit={handleSubmit(login)}>
                     <div className={styles.inputs}>
-                        <Input type="email" placeholder="Email" id="email" label="Adicionar o email" register={register}/>
-                        {errors.email && <span>{errors.email.message}</span>}
-                        <Input type="password" placeholder="Senha" id="password" label="Adicionar a senha" register={register}/>
-                        {errors.password && <span>{errors.password.message}</span>}
+                        <Input type="email" placeholder="Email" id="email" label="Adicionar email" error="errorEmail2" register={register}/>
+                        {errors.email && <span id="errorEmail2">{errors.email.message}</span>}
+
+                        <Input type="password" placeholder="Senha" id="password" label="Adicionar senha" error="errorSenha2" register={register}/>
+                        {errors.password && <span id="errorSenha2">{errors.password.message}</span>}
                     </div>
 
                     <div className={styles.buttonLink}>
-                        <Button name="ENTRAR"/> 
-                        <a href="/esqueceusenha">Esqueci minha senha</a>
+                        <Button name="ENTRAR" label="Botão para logar na rede social"/> 
+                        <a href="/esqueceusenha" aria-label="Link que direciona para a tela de esqueci minha senha">Esqueci minha senha</a>
                     </div>
                 </form>
-                <p>Não tem uma conta? <a href="/">Crie uma conta</a></p>
+                <p>Não tem uma conta? <a href="/" aria-label="Linka que direciona para a tela de cadastro">Crie uma conta</a></p>
             </main>
         </div>
     );
