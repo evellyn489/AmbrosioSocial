@@ -6,6 +6,7 @@ interface InputProps<T extends FieldValues> {
     placeholder: string;
     register: UseFormRegister<T>;
     label: string;
+    error: string;
 } 
 
 export function Input<T extends FieldValues>(props: InputProps<T>) {
@@ -16,6 +17,7 @@ export function Input<T extends FieldValues>(props: InputProps<T>) {
             id={`${styles[`${props.id}`]}`}
             placeholder={props.placeholder}
             aria-label={props.label}
+            aria-describedby={props.error}
             aria-required
             {...props.register(props.id as Path<T>)}
         />

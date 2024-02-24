@@ -76,61 +76,112 @@ export function Cadastro() {
                         <label htmlFor="dataNascimento" className={styles.title}>Data de Nascimento</label>
                         <div className={styles.optionsD}>
                             <div>
-                                <input type="number" {...register("dia")} placeholder="Dia" aria-required/>
-                                {errors.dia && <span>{errors.dia.message}</span>}
+                                <input 
+                                    type="number" 
+                                    aria-label="Dia do seu nascimento" 
+                                    aria-describedby="errorDia"
+                                    {...register("dia")} 
+                                    placeholder="Dia" 
+                                    aria-required
+                                />
+                                {errors.dia && <span id="errorDia">{errors.dia.message}</span>}
                             </div>
                             
                             <div>
-                                <input type="number" {...register("mes")} placeholder="Mês" aria-required/>
-                                {errors.mes && <span>{errors.mes.message}</span>}
+                                <input 
+                                    type="number" 
+                                    aria-label="Mês do seu nascimento" 
+                                    aria-describedby="errorMes"
+                                    {...register("mes")} 
+                                    placeholder="Mês"
+                                     aria-required
+                                />
+                                {errors.mes && <span id="errorMes">{errors.mes.message}</span>}
                             </div>
                            
                            <div>
-                                <input type="number" {...register("ano")} placeholder="Ano" aria-required/>
-                                {errors.ano && <span>{errors.ano.message}</span>}
+                                <input 
+                                    type="number" 
+                                    aria-label="Ano do seu nascimento"
+                                    aria-describedby="errorAno" 
+                                    {...register("ano")} 
+                                    placeholder="Ano" 
+                                    aria-required
+                                />
+                                {errors.ano && <span id="errorAno">{errors.ano.message}</span>}
                            </div>
                         </div>
                     </div>
                     
                     <div className={styles.genero}>
                         <label htmlFor="genero" className={styles.title}>Gênero</label>
-                        <div className={styles.optionsG}>
+                        <div className={styles.optionsG} aria-describedby="errorGenero">
                             <div>
                                 <label htmlFor="genero">Feminino</label>
-                                <input type="radio" {...register("genero")} value="feminino" aria-required/>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Gênero Feminino" 
+                                    {...register("genero")} 
+                                    value="feminino" 
+                                    aria-required
+                                />
                             </div>
                             
                             <div>
                                 <label htmlFor="genero">Masculino</label>
-                                <input type="radio" {...register("genero")} value="masculino" aria-required/>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Gênero Masculino" 
+                                    {...register("genero")} 
+                                    value="masculino" 
+                                    aria-required
+                                />
                             </div>
                             
                             <div>
                                 <label htmlFor="genero">Neutro</label>
-                                <input type="radio" {...register("genero")} value="neutro" aria-required/>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Gênero neutro" 
+                                    {...register("genero")} 
+                                    value="neutro" 
+                                    aria-required
+                                />
                             </div>
                         </div>
-                        {errors.genero && <span>{errors.genero.message}</span>}
+                        {errors.genero && <span id="errorGenero">{errors.genero.message}</span>}
                     </div>
 
                     <div className={styles.visibilidade}>
                         <label htmlFor="visibilidade" className={styles.title}>Visibilidade da conta</label>
 
-                        <div className={styles.optionsV}>
+                        <div className={styles.optionsV} aria-describedby="errorVisibilidade">
                             <div>
                                 <label htmlFor="visibilidade">Pública</label>
-                                <input type="radio" {...register("visibilidade")} value="publica" aria-required/>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Visibilidade pública" 
+                                    {...register("visibilidade")} 
+                                    value="publica" 
+                                    aria-required
+                                />
                             </div>
                             
                             <div>
                                 <label htmlFor="visibilidade">Privada</label>
-                                <input type="radio" {...register("visibilidade")} value="privada" aria-required/>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Visibilidade privada" 
+                                    {...register("visibilidade")} 
+                                    value="privada" 
+                                    aria-required
+                                />
                             </div>
                         </div>
-                        {errors.visibilidade && <span>{errors.visibilidade.message}</span>}
+                        {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR"/>
+                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro"/>
                 </form>
             </main>
         </div>
