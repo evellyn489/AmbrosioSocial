@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react"; 
+import { useState, ChangeEvent } from "react"; 
 import styles from "./Configuracoes.module.scss";
 import { Menu } from "../../components/Menu";
 import { useTheme } from "../../contexts/ThemeProvider"; 
