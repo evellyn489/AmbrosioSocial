@@ -6,9 +6,11 @@
         width: 100%;
         display: flex;
 
+        padding-top: 80px;
+
         aside {
             min-width: 24%;
-            height: 100vh;
+            height: calc(100vh - 80px);
             background: linear-gradient(to bottom, rgba(152, 41, 209, 1), rgba(0, 74, 173, 0.61));
     
             display: flex;
@@ -17,8 +19,6 @@
             align-items: center;
     
             color: #fff;
-    
-            padding-top: 5em;
        
             strong {
                 font-weight: 500;
@@ -30,7 +30,7 @@
                 align-items: center;
 
                 width: 200px;
-                gap: 18px;
+                gap: 15px;
             }
 
             button {
@@ -55,14 +55,13 @@
 
         main {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
 
             flex-grow: 1; 
-            max-height: 100vh;
+            max-height: calc(100vh - 80px);
             overflow-x: hidden;
 
-            padding-top: 18em;
         }
     }
 }
