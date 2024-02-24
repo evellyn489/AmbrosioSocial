@@ -92,7 +92,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                 </button>
 
                 {isHome ? (
-                    <a href="">
+                    <a href="/explorar">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -101,7 +101,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                         />
                     </a>
                 ) : (
-                    <a href="">
+                    <a href="/configuracoes">
                         <img
                             src={config}
                             alt="ícone de configuração representado por uma engrenagem"
