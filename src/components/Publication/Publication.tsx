@@ -10,7 +10,7 @@ import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 
-export function Publication() {
+export function Publication({text}: { text: string }) {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
@@ -98,7 +98,6 @@ export function Publication() {
 
     return (
         <div className={styles.container}>
-
             <div className={styles.id}>
                 <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
             </div>
@@ -106,9 +105,7 @@ export function Publication() {
             <div className={styles.information}>
                 <h1>Nome do usuário</h1>
                 <p className={styles.p}>
-                    <ReadMore text="Texto é uma produção, verbal ou não verbal, que se constitui com algum código, no intuito de comunicar algo a alguém, em determinado tempo e espaço. Sua definição ampla se deve ao fato de também abranger diversos formatos.
-
-                    Pode-se compreender o texto verbal, oral e escrito, como uma prática social que utiliza estruturas verbais, organizadas e caracterizadas por suas estruturas linguísticas e sua função social" maxLength={200} />
+                    <ReadMore text={text} maxLength={200} />
                 </p>
                 <img src={rectangle_photo} alt="foto postada pelo usuário" title="" className={styles.photo}/>
             </div>

@@ -1,29 +1,8 @@
-.readMore {
-    position: absolute;
-    top: 0;
-    display: inline-block;
-}
-
 .readMoreLink {
+    display: flex;
     background: none;
     border: none;
     color: blue;
     font-size: 10pt;
     cursor: pointer;
-}
-
-// ReadMore.module.scss
-.readMoreContainer {
-    overflow: auto; 
-}
-
-.fullText {
-    word-wrap: break-word;
-    text-align: left;
-}
-
-.truncatedText {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }

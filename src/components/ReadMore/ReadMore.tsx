@@ -1,4 +1,3 @@
-// ReadMore.tsx
 import React, { useState } from 'react';
 import styles from "../ReadMore/ReadMore.module.scss";
 
@@ -8,13 +7,13 @@ interface ReadMoreProps {
 }
 
 export function ReadMore({ text, maxLength }: ReadMoreProps) {
-    const [showFullText, setShowFullText] = useState(false);
+    const [showFullText, setShowFullText] = useState(false); 
 
     const toggleText = () => {
         setShowFullText(!showFullText);
-    };
+    }; 
 
-    const shouldDisplayButton = text.length > maxLength;
+    const shouldDisplayButton = text.length > maxLength; 
 
     const displayText = () => {
         if (showFullText || text.length <= maxLength) {
