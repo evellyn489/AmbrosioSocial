@@ -1,0 +1,21 @@
+div.container {
+    position: absolute;
+    right: 20em;
+    top: 82px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    max-width: 50%;
+
+    background-color: #fff;
+
+    padding: 1em;
+
+    border: 1px solid #f0ebeb;
+
+    z-index: 2;
+
+}

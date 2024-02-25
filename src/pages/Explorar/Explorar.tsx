@@ -2,9 +2,11 @@ import { useState } from "react";
 import styles from "./Explorar.module.scss";
 import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
+import { ModalNotification } from "../../components/ModalNotification";
 
 export function Explorar() {
     const [numPublications, setNumPublications] = useState(2); 
+    const [openModal, setOpenModal] = useState(false);
 
     const handleMorePublication = () => {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
@@ -12,7 +14,13 @@ export function Explorar() {
 
     return (
         <div className={styles.container}>
-            <Menu isHome={false} isPerfil={false}/>
+            {
+                openModal && (
+                    <ModalNotification />
+                )
+            }
+
+            <Menu isHome={false} isPerfil={false} modal={setOpenModal} openModal = {openModal}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>
                     <Publication text="O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.

@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { Notification } from "../../components/Notification";
 
 const cadastroInicialSchema = z.object({
     user: z.string().transform(value => value.trim()).refine(value => {
@@ -59,8 +58,6 @@ export function CadastroInicial() {
             </aside>
 
             <main>
-                <Notification name="Nome de usuário" comment={true}/>
-                {/*
                 <div className={styles.titles}>
                     <h1>Crie sua conta</h1>
                     <p>Não tem uma conta? Crie uma agora:</p>
@@ -78,9 +75,8 @@ export function CadastroInicial() {
                         {errors.password2 && <span id="errorSenha">{errors.password2.message}</span>}
                     </div>
 
-                    <Button name="AVANÇAR" label="Botão para avançar no cadastro"/>
+                    <Button name="AVANÇAR" label="Botão para avançar no cadastro" click={() => 0}/>
                 </form>
-                */}
             </main>
         </div>
     );

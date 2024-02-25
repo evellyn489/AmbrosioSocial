@@ -11,9 +11,11 @@ import home_screen from "../../assets/menu/white/home_screen.png";
 interface MenuProps {
     isHome: boolean;
     isPerfil: boolean;
+    modal: (value: boolean) => void;
+    openModal: boolean
 }
 
-export function Menu({ isHome, isPerfil }: MenuProps) {
+export function Menu({ isHome, isPerfil, modal, openModal }: MenuProps) {
     const handlePublishClick = () => {
         const fileInput = document.getElementById("fileInput");
         fileInput?.click();
@@ -32,6 +34,10 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
             event.target.value = "";
         }
     };
+
+    const handleClickModal = () => {
+        modal(!openModal);
+    }
 
     return (
         <header className={styles.header}>
@@ -72,7 +78,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                     />
                 </a>
 
-                <a href="" aria-label="Acessar notificações">
+                <a href="#" aria-label="Acessar notificações" onClick={handleClickModal}>
                     <img
                         src={notification}
                         alt="ícone de notificação representado por um sino branco"
