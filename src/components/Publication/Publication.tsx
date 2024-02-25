@@ -10,7 +10,7 @@ import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 
-export function Publication({text}: { text: string }) {
+export function Publication({text}: { text: string}) {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);

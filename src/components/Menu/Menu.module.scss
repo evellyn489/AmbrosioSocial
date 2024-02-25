@@ -62,10 +62,21 @@
     }
 }
 
+@media (max-width: 752px) {
+    .header {
+        .icons {
+            gap: 6em;
+
+            
+        }
+    }
+}
+
 @media (max-width: 730px){
-    .icons, .logo {
-        position: relative;
-        left: 1%;
+    .header {
+        .icons {
+            gap: 4em;
+        }
     }
 }
 
@@ -88,13 +99,33 @@
     }
 }
 
+@media (max-width: 515px) {
+    .header {
+        .icons {
+            gap: 1.8em;
+        }
+    }
+}
+
 @media (max-width: 426px){
     .header {
         .icons {
-            gap: 2em;
+            gap: 3em;
     
             img {
                 width: 23px;
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .header {
+        .icons {
+            gap: 2em;
+
+            img {
+                width: 20px;
             }
         }
     }
