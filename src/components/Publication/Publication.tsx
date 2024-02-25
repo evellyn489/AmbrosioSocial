@@ -22,6 +22,7 @@ export function Publication({text}: { text: string}) {
     const [dislikeIcon, setDislikeIcon] = useState(dislike);
     const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
     const [dislikeNumColor, setDislikeNumColor] = useState<string>(styles.defaultNumColor);
+    const [commentError, setCommentError] = useState<string | null>(null);
 
     const toggleCommentVisibility = () => {
         setCommentVisible(!commentVisible); 
@@ -91,9 +92,17 @@ export function Publication({text}: { text: string}) {
     };
 
     const handleCommentClick = () => {
+        if (commentText.trim() === '') {
+            setCommentError('Por favor, digite um comentário antes de enviar.');
+            return;
+        }
+
+        setCommentError(null);
+
         setComments([...comments, commentText]);
         setCommentText(""); 
     };
+    
     return (
         <div className={styles.container}>
             <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
@@ -150,6 +159,7 @@ export function Publication({text}: { text: string}) {
                             placeholder="Digite seu comentário..."
                             className={styles.commentInput}
                         />
+                        {commentError && <span className={styles.error}>{commentError}</span>}
                         <button onClick={handleCommentClick} className={styles.button}>Enviar</button>
                     </div>
                 </div>
