@@ -1,0 +1,64 @@
+div.container {
+    width: 50%;
+
+    border: 1px solid #EEEE;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 1.2em;
+    
+    img {
+        max-width: 10%;
+    }
+
+    div.content {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        span {
+            font-weight: 700;
+        }
+
+        div.buttons {
+            display: flex;
+
+            gap: 10px;
+
+            button {
+                border: 0;
+                border-radius: 20px;
+
+                padding: 1em;
+
+                color: #ffff;
+
+                font-size: 0.9rem;
+                font-weight: 700;
+
+                cursor: pointer;
+            }
+
+            button.confirm {
+                background-color: #07c907;
+            }
+
+            button.confirm:hover {
+                background-color: #50db50;
+            }
+
+            button.delete {
+                background-color: #f30a0a;
+            }
+
+            button.delete:hover {
+                background-color: #df3838;
+            }
+        }
+    }
+}
