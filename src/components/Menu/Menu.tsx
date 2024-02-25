@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Menu.module.scss";
 import whiteLogo from "../../assets/logos/white.png";
 import user from "../../assets/menu/white/user.png";
@@ -7,15 +7,16 @@ import notification from "../../assets/menu/white/notification.png";
 import publish from "../../assets/menu/white/publish.png";
 import config from "../../assets/menu/white/config.png";
 import home_screen from "../../assets/menu/white/home_screen.png";
+import { ModalNotification } from "../ModalNotification";
 
 interface MenuProps {
     isHome: boolean;
     isPerfil: boolean;
-    modal: (value: boolean) => void;
-    openModal: boolean
 }
 
-export function Menu({ isHome, isPerfil, modal, openModal }: MenuProps) {
+export function Menu({ isHome, isPerfil }: MenuProps) {
+    const [openModal, setOpenModal] = useState(false);
+
     const handlePublishClick = () => {
         const fileInput = document.getElementById("fileInput");
         fileInput?.click();
@@ -36,11 +37,17 @@ export function Menu({ isHome, isPerfil, modal, openModal }: MenuProps) {
     };
 
     const handleClickModal = () => {
-        modal(!openModal);
+        setOpenModal(!openModal);
     }
 
     return (
         <header className={styles.header}>
+            {
+                openModal && (
+                    <ModalNotification />
+                )
+            }
+            
             <div className={styles.logo}>
                 <img
                     src={whiteLogo}
