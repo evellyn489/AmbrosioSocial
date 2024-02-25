@@ -1,5 +1,5 @@
 div.container {
-    max-width: 45%;
+    max-width: 53%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -158,6 +158,25 @@ div.container {
 @media(max-width: 320px) {
     .container {
         margin-left: 2em;
-        min-width: 100%;
+        min-width: 88%;
+
+        img.profile_picture {
+            min-width: 45px;
+        }
+
+        .information {
+            p {
+                font-size: 0.9rem;
+                width: 94%;
+            }
+
+            img {
+                width: 230px;
+            }
+        }
+
+        .commentInput {
+            width: 200px;
+        }
     }
 }
