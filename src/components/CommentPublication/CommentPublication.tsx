@@ -51,6 +51,7 @@ export function CommentPublication() {
                 onChange={handleFileChange}
                 accept="image/*"
                 aria-label="Adicionar imagem"
+                className={styles.file}
             />
 
             <button type="button" aria-label="Publicar" onClick={handleCommentClick}>Publicar</button>

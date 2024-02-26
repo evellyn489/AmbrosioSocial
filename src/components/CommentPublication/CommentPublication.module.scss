@@ -52,3 +52,21 @@ div.container {
     }
 
 }
+
+@media (max-width: 570px){
+    div.container{
+        width: 70%;
+    }
+}
+
+@media (max-width: 410px){
+    div.container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 360px){
+    div.container {
+        width: 90%;
+    }
+}
