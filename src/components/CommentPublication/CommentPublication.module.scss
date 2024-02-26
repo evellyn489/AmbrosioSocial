@@ -1,0 +1,54 @@
+div.container {
+    width: 50%;
+    border: 1px solid #c9c7c7ee;
+
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 20px;
+
+    gap: 20px;
+
+    .error {
+        color: #ff0000;
+        text-align: center;
+    }
+
+    .textareaPublication {
+        width: 100%;
+        height: 90px;
+
+        background-color: #D9D9D9;
+
+        margin-top: 2em;
+
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+
+        font-family: "Poppins", "serif";
+    }
+
+    button {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+
+        background: linear-gradient(to bottom, rgba(152, 41, 209, 1), rgba(0, 74, 173, 0.61));
+        color: #fff;
+
+        font-weight: 700;
+
+        padding: 1em 1.5em;
+
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: linear-gradient(to bottom, rgb(174, 48, 238), rgba(11, 96, 207, 0.61));
+    }
+
+}

@@ -3,7 +3,10 @@
     flex-direction: column;
     justify-content: center;
 
-    position: relative;
+    bottom: 100px;
+  
+
+    z-index: 1;
 
     .publicationsContainer {
         display: flex;
@@ -11,8 +14,7 @@
         align-items: center;
 
         margin-top: 150px; 
-        position: relative;
-        left: 5%;
+  
     }
 
     .footer {

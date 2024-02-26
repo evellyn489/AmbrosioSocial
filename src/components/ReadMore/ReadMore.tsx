@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from "../ReadMore/ReadMore.module.scss";
 
 interface ReadMoreProps {
