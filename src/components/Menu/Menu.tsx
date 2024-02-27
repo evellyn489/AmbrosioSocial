@@ -85,7 +85,10 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
                     />
                 </a>
 
-                <a href="#" aria-label="Acessar notificações" onClick={handleClickModal}>
+                <a href="#" aria-label="Acessar notificações" onClick={(event) => {
+                    event.preventDefault();
+                    handleClickModal();
+                }}>
                     <img
                         src={notification}
                         alt="ícone de notificação representado por um sino branco"
