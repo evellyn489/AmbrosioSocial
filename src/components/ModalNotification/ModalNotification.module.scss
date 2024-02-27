@@ -5,17 +5,36 @@ div.container {
 
     display: flex;
     flex-direction: column;
-
     gap: 15px;
 
     max-width: 50%;
 
     background-color: #fff;
+    border: 1px solid #f0ebeb;
 
     padding: 1em;
 
-    border: 1px solid #f0ebeb;
-
     z-index: 2;
+}
 
+@media (max-width: 785px) {
+    div.container {
+        right: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    div.container {
+        max-width: 80%;
+
+        right: 50px;
+    }
+}
+
+@media (max-width: 320px) {
+    div.container {
+        max-width: 100%;
+
+        right: 20px;
+    }
 }

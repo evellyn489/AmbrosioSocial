@@ -1,6 +1,8 @@
 import styles from "./Notification.module.scss";
 
 import { FcLike, FcComments } from "react-icons/fc";
+import { FaCheck } from "react-icons/fa";
+import { FaRegCircleXmark } from "react-icons/fa6";
 
 import profile_picture from "../../assets/publications/profile_picture.png";
 import { useState } from "react";
@@ -52,9 +54,11 @@ export function Notification(props: NotificationProps) {
                                                 className={styles.confirm}
                                                 onClick={handleClickConfirm}
                                             >
-                                                Confirmar
+                                                <FaCheck size={20} />
                                             </button>
-                                            <button className={styles.delete}>Excluir</button>
+                                            <button className={styles.delete}>
+                                                <FaRegCircleXmark size={20}/>
+                                            </button>
                                         </div>
                                     </>
                                 )
