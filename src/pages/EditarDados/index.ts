@@ -1,0 +1,1 @@
+export { EditarDados } from "./EditarDados";

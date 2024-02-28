@@ -7,6 +7,7 @@ import { Explorar } from "../pages/Explorar";
 import { EsqueceuSenha } from "../pages/EsqueceuSenha";
 import { Perfil } from "../pages/Perfil";
 import { Configuracoes } from "../pages/Configuracoes";
+import { EditarDados } from "../pages/EditarDados";
 
 export function AppRoutes() {
     return(
@@ -19,6 +20,7 @@ export function AppRoutes() {
                 <Route path="/explorar" element={<Explorar />}/>
                 <Route path="/perfil" element={<Perfil />}/>
                 <Route path="/configuracoes" element={<Configuracoes />}/>
+                <Route path="/editardados" element={<EditarDados />}/>
             </Routes>
         </BrowserRouter>
     );
