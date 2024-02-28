@@ -12,16 +12,12 @@ import { ModalNotification } from "../ModalNotification";
 interface MenuProps {
     isHome: boolean;
     isPerfil: boolean;
+    openPublication: boolean;
+    setOpenPublication: (value: boolean) => void;
 }
 
-export function Menu({ isHome, isPerfil }: MenuProps) {
+export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: MenuProps) {
     const [openModal, setOpenModal] = useState(false);
-
-    const handlePublishClick = () => {
-        const fileInput = document.getElementById("fileInput");
-        fileInput?.click();
-    };
-
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         const maxSize = 300 * 1024; 
@@ -38,6 +34,10 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
 
     const handleClickModal = () => {
         setOpenModal(!openModal);
+    }
+
+    const handleClickPublication = () => {
+        setOpenPublication(!openPublication);
     }
 
     return (
@@ -98,7 +98,7 @@ export function Menu({ isHome, isPerfil }: MenuProps) {
 
                 <button aria-label="Publicar"
                     className={styles.submitImage}
-                    onClick={handlePublishClick}
+                    onClick={handleClickPublication}
                 >
                     <img
                         src={publish}

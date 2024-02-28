@@ -8,9 +8,11 @@ import { FaCheck } from "react-icons/fa";
 import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
+import { CommentPublication } from "../../components/CommentPublication";
 
 export function Perfil() {
     const [following, setFollowing] = useState(false);
+    const [openPublication, setOpenPublication] = useState(false);
 
     function handleClickFollowing() {
         setFollowing(!following);
@@ -18,7 +20,7 @@ export function Perfil() {
 
     return (
         <div className={styles.container}>
-            <Menu isHome={false} isPerfil={true}/>
+            <Menu isHome={false} isPerfil={true} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
 
             <div className={styles.asideMain}>
                 <aside>
@@ -39,6 +41,11 @@ export function Perfil() {
                 </aside>
 
                 <main>
+                    {
+                        openPublication && (
+                            <CommentPublication />
+                        )
+                    }
                     <Publication text="O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
                     De acordo com o percusso de investigações sobre o texto, nas mais diversas correntes teóricas que se debruçam sobre esse objeto, o conceito foi se modificando e se ampliando. Hoje o texto não é considerado uma estrutura pronta, com unidade de sentido completa, pois consideram-se também os processos de planejamento,construção e recepção do texto." />
 

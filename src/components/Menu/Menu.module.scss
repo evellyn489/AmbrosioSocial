@@ -25,7 +25,7 @@
     .icons {
         display: flex;
         flex-direction: row;
-    
+
         gap: 100px;
         flex-grow: 1;
     
@@ -66,9 +66,7 @@
 @media (max-width: 752px) {
     .header {
         .icons {
-            gap: 6em;
-
-            
+            gap: 6em;            
         }
     }
 }

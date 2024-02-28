@@ -6,6 +6,7 @@ import { CommentPublication } from "../../components/CommentPublication";
 
 export function Explorar() {
     const [numPublications, setNumPublications] = useState(2); 
+    const [openPublication, setOpenPublication] = useState(false);
 
     const handleMorePublication = () => {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
@@ -13,10 +14,15 @@ export function Explorar() {
 
     return (
         <div className={styles.container}>
-            <Menu isHome={false} isPerfil={false}/>
+            <Menu isHome={false} isPerfil={false} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>
-                    <CommentPublication />
+                    {
+                        openPublication && (
+                            <CommentPublication />
+                        )
+                    }
+
                     <Publication text="O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
                     De acordo com o percusso de investigações sobre o texto, nas mais diversas correntes teóricas que se debruçam sobre esse objeto, o conceito foi se modificando e se ampliando. Hoje o texto não é considerado uma estrutura pronta, com unidade de sentido completa, pois consideram-se também os processos de planejamento,construção e recepção do texto.O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
                     De acordo com o percusso de investigações sobre o texto, nas mais diversas correntes teóricas que se debruçam sobre esse objeto, o conceito foi se modificando e se ampliando. Hoje o texto não é considerado uma estrutura pronta, com unidade de sentido completa, pois consideram-se também os processos de planejamento,construção e recepção do texto.O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
