@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    gap: 1%;
+    padding-top: 140px; 
+
+
+    .submitImage {
+        border: none;
+        background: none;
+
+        margin-bottom: 50px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        flex-grow: 1;
+
+        margin-bottom: 60px;
+
+        div.inputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            gap: 30px;
+        }
+
+        span {
+            font-size: 0.7rem;
+            font-weight: 700;
+    
+            color: #ff0000;
+    
+            text-align: center;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, rgba(152, 41, 209, 0.9), rgba(0, 74, 173, 0.5));
+        }
+    }
+}
