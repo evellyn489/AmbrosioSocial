@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Menu.module.scss";
 import whiteLogo from "../../assets/logos/white.png";
 import user from "../../assets/menu/white/user.png";
@@ -18,6 +18,23 @@ interface MenuProps {
 
 export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: MenuProps) {
     const [openModal, setOpenModal] = useState(false);
+
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClick= (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                setOpenModal(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClick);
+        return () => {
+            document.removeEventListener("mousedown", handleClick);
+        };
+    }, []);
+
+
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         const maxSize = 300 * 1024; 
@@ -44,7 +61,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
         <header className={styles.header}>
             {
                 openModal && (
-                    <ModalNotification />
+                    <ModalNotification ref={modalRef} />
                 )
             }
             
