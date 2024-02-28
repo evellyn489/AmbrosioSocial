@@ -123,3 +123,11 @@ div.container {
         
     }
 }
+
+@media (max-width: 320px) {
+    div.content {
+        div.buttons {
+            margin-right: 3em;
+        }
+    }
+}

@@ -23,7 +23,7 @@ div.container {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 685px) {
     div.container {
         max-width: 80%;
 
@@ -31,10 +31,24 @@ div.container {
     }
 }
 
+@media (max-width: 425px) {
+    div.container {
+        max-width: 90%;
+
+        right: 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    div.container {
+        max-width: 95%;
+    }
+}
+
 @media (max-width: 320px) {
     div.container {
         max-width: 100%;
 
-        right: 20px;
+        right: 0;
     }
 }
