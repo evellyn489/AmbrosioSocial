@@ -157,7 +157,7 @@ div.container {
 
 @media (max-width: 375px) {
     .container {
-        margin-right: 4em;
+        margin-right: 1em;
     }
 }
 
@@ -178,7 +178,12 @@ div.container {
 
             img {
                 width: 230px;
+                padding-right: 2em;
             }
+        }
+
+        .interation, .commentSpace {
+            padding-right: 2em;
         }
 
         .commentInput {
