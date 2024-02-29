@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import styles from "./DadosInput.module.scss";
-
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../Input";
+import { Button } from "../Button"
 
 const dadosSchema = z.object({
     user: z.string().transform(value => value.trim()).refine(value => {
         const regex = /^[a-zA-Z\u00C0-\u017F´]+\s+[a-zA-Z\u00C0-\u017F´]{0,}$/
         return regex.test(value)
-
     },{
         message: "Nome inválido"
     }).refine(value => value !== "",{
@@ -30,28 +30,35 @@ const dadosSchema = z.object({
 
 type DadosFormData = z.infer<typeof dadosSchema>;
 
+interface DadosInputProps {
+    onSubmit: (data: DadosFormData) => void;
+    defaultValues?: Partial<DadosFormData>;
+    errorColor?: string;
+    textcolor?: string;
+    buttonName: string;
+}
 
-export function DadosInput() {
 
+export function DadosInput({ onSubmit, defaultValues, errorColor = 'red', buttonName }: DadosInputProps) {
     const { register, handleSubmit, formState: { errors } } = useForm<DadosFormData>({
-        resolver: zodResolver(dadosSchema)
-    })
+        resolver: zodResolver(dadosSchema),
+        defaultValues
+    });
 
-    {/*}
-    <form onSubmit = {handleSubmit(editData)}>
-                    
-        <div className={styles.inputs}>
-            <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} defaultValue={currentName} textColor='black'/>
-            {errors.user && <span id="errorNome">{errors.user.message}</span>}
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.inputs}>
+                <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} textColor="black"/>
+                {errors.user && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorNome">{errors.user.message}</span>}
 
-            <Input type="text" placeholder="Email" id="email2" label="Modificar email" error="errorEmail" register={register} defaultValue={currentEmail} textColor='black'/>
-            {errors.email2 && <span id="errorEmail">{errors.email2.message}</span>}
+                <Input type="text" placeholder="Email" id="email2" label="Modificar email" error="errorEmail" register={register} textColor="black"/>
+                {errors.email2 && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorEmail">{errors.email2.message}</span>}
 
-            <Input type="password" placeholder="Senha" id="password2" label="Modificar senha" error="errorSenha" register={register} defaultValue={currentPassword} textColor='black'/>
-            {errors.password2 && <span id="errorSenha">{errors.password2.message}</span>}
+                <Input type="password" placeholder="Senha" id="password2" label="Modificar senha" error="errorSenha" register={register} textColor="black"/>
+                {errors.password2 && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorSenha">{errors.password2.message}</span>}
+            </div>
 
-        </div>
-        
-        <Button name="SALVAR" label = "Botão de salvar" click={() => 0}/>
-</form>*/}
+            <Button name={buttonName} label="Botão de prosseguir" click={() => 0} />
+        </form>
+    );
 }
