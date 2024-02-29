@@ -38,8 +38,8 @@ export function EsqueceuSenha() {
 
                 <form onSubmit={handleSubmit(esqueceuSenha)}>
                     <div className={styles.inputData}>
-                        <Input type="password" placeholder="Nova senha" id="password3" register={register}/>
-                        {errors.password3 && <span>{errors.password3.message}</span>}
+                        <Input type="password" placeholder="Nova senha" label="Digitar nova senha" id="password3" register={register} error="passwordError"/>
+                        {errors.password3 && <span id="passwordError">{errors.password3.message}</span>}
                     </div>
 
                     <Button name="ENVIAR"/>
