@@ -1,8 +1,5 @@
 import styles from "./CadastroInicial.module.scss";
 import logo from "../../assets/logos/white.png";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/Button";
 import { DadosInput } from "../../components/DadosInput";
 

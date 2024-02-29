@@ -1,8 +1,5 @@
 import styles from "./EditarDados.module.scss";
 import { Menu } from "../../components/Menu";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import { useState } from "react";
 import { DadosInput } from "../../components/DadosInput";
