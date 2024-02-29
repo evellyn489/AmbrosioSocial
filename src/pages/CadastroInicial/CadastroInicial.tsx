@@ -13,12 +13,6 @@ interface DadosFormData {
   password2: string;
 }
 
-const initialValues: DadosFormData = {
-  user: "",
-  email2: "",
-  password2: ""
-};
-
 export function CadastroInicial() {
   
   function cadastroInicial(data: DadosFormData) {
@@ -40,7 +34,7 @@ export function CadastroInicial() {
           <h1>Crie sua conta</h1>
           <p>Não tem uma conta? Crie uma agora:</p>
         </div>
-        <DadosInput onSubmit={cadastroInicial} defaultValues={initialValues} buttonName="AVANÇAR" />
+        <DadosInput onSubmit={cadastroInicial} buttonName="AVANÇAR" />
       </main>
     </div>
   );
