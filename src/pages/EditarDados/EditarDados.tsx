@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
 import styles from "./EditarDados.module.scss";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { Menu } from "../../components/Menu";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import profile_picture from "../../assets/publications/profile_picture.png";
 
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
-
-
-import { Menu } from "../../components/Menu";
 
 const editarDadosSchema = z.object({
     user: z.string().transform(value => value.trim()).refine(value => {
@@ -38,13 +35,16 @@ const editarDadosSchema = z.object({
 type EditarDadosFormData = z.infer<typeof editarDadosSchema>;
 
 export function EditarDados(){
+    const currentName = "Nome sobrenome"
+    const currentEmail = "email123@gmail.com"
+    const currentPassword = "Password@123"
 
     const { register, handleSubmit, formState: { errors } } = useForm<EditarDadosFormData>({
         resolver: zodResolver(editarDadosSchema)
     })
 
-    function editarDados() {
-        console.log("Dados modificados")
+    function editData() {
+        console.log("Dado modificado")
     }
 
     const handlePublishClick = () => {
@@ -52,7 +52,6 @@ export function EditarDados(){
         fileInput?.click(); 
     }
     
-  
     return (
 
         <div>
@@ -61,17 +60,21 @@ export function EditarDados(){
            <div className={styles.container}>
                 <button className={styles.submitImage} onClick={handlePublishClick}><img src={profile_picture} alt="foto de perfil do usuário" title="Atualizar foto de perfil"/></button>
 
-                <form onSubmit = {handleSubmit(editarDados)}>
+                <form onSubmit = {handleSubmit(editData)}>
                     
                         <div className={styles.inputs}>
-                            <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register}/>
+                            <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} defaultValue={currentName} textColor='black'/>
                             {errors.user && <span id="errorNome">{errors.user.message}</span>}
-                            <Input type="text" placeholder="Email" id="email2" label="Modificar email" error="errorEmail" register={register}/>
+
+                            <Input type="text" placeholder="Email" id="email2" label="Modificar email" error="errorEmail" register={register} defaultValue={currentEmail} textColor='black'/>
                             {errors.email2 && <span id="errorEmail">{errors.email2.message}</span>}
-                            <Input type="password" placeholder="Senha" id="password2" label="Modificar senha" error="errorSenha" register={register}/>
+
+                            <Input type="password" placeholder="Senha" id="password2" label="Modificar senha" error="errorSenha" register={register} defaultValue={currentPassword} textColor='black'/>
                             {errors.password2 && <span id="errorSenha">{errors.password2.message}</span>}
+
                         </div>
-                        <Button name="SALVAR" label = "Botão de salvar" click={()=>0}/>
+                        
+                        <Button name="SALVAR" label = "Botão de salvar" click={() => 0}/>
                 </form>
            </div>
         </div>
