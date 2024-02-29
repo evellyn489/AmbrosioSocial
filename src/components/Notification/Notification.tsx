@@ -41,7 +41,7 @@ export function Notification(props: NotificationProps) {
                         <div className={styles.content}>
                             {
                                 confirm ? (
-                                    <p> <span>{props.name}</span> começou a seguir você</p>
+                                    <p><span>{props.name}</span> começou a seguir você</p>
                                 ):
                                 (
                                     <>
