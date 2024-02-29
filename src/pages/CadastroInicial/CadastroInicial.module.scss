@@ -5,6 +5,8 @@
     justify-content: space-around;
     align-items: center;
 
+    overflow-x: hidden;
+
     aside {
         width: 320px;
         height: 100%;
@@ -130,7 +132,8 @@
 
         aside {
             width: 100%;
-            max-height: 120px;
+
+            padding-top: 5em;
       
             flex-direction: row;
 
@@ -176,19 +179,19 @@
     }
 }
 
-
-
 @media (max-width: 425px) {
     .container {
         aside {
-            width: 100%;
+            margin-top: 2em;
+
+            width: 425px;
             
             img {
                 max-width: 100px;
             }
     
             div.texts {
-                gap: 5px;
+                gap: 10px;
             
                 strong {
                     font-size: 0.7rem;
@@ -199,10 +202,10 @@
                 }
             }
         }
-
+    
         main {
             div.titles {
-                padding-top: 1em;
+                padding-top: 5em;
     
                 h1 {
                     font-size: 1.4rem;
@@ -214,12 +217,12 @@
             }
     
             form {
-                div.inputs {
-                    input {
-                        width: 340px;
-                    }
+                width: 100%;
+        
+                input {
+                    width: 100%;
                 }
-
+            
                 span {
                     font-size: 0.5rem;
                 }
@@ -228,11 +231,24 @@
     }
 }
 
+@media (max-width: 375px) {
+    .container {
+        aside {
+            margin-right: 2em;
+            margin-top: 2em;
+        }
+    }
+}
+
 @media (max-width: 320px) {
     .container {
         aside {
+            margin-right: 4em;
+
             img {
-                max-width: 90px;
+                max-width: 70px;
+
+                margin-left: 2em;
             }
     
             div.texts {    

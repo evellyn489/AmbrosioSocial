@@ -3,7 +3,6 @@ import logo from "../../assets/logos/white.png";
 import { Button } from "../../components/Button";
 import { DadosInput } from "../../components/DadosInput";
 
-// Definindo a interface DadosFormData
 interface DadosFormData {
   user: string;
   email2: string;
