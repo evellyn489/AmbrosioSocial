@@ -5,24 +5,31 @@
     justify-content: space-around;
     align-items: center;
 
+    overflow-x: hidden;
+
     .titleForm {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: start;
     
         gap: 65px;
     
         flex: 1;
 
-        h1 {
-            font-weight: 700;
-            color: #9829D1;
+        div.titleH {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            align-self: flex-start;
-            margin-top: 1em;
-            margin-left: 88px;
+            h1 {
+                font-weight: 700;
+                color: #9829D1;
+    
+                margin-top: 1em;
+            }    
         }
 
+        
         form {
             display: flex;
             flex-direction: column;
@@ -96,6 +103,14 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .container {
+        div.titleH {
+            padding-top: 4em;
+        }
+    }
+}
+ 
 @media (max-width: 850px){
     .container {
         .titleForm {
@@ -115,6 +130,14 @@
     }
 }
 
+@media (max-width: 770px) {
+    .container {
+        img {
+            margin-left: 3em;
+        }
+    }
+}
+
 @media (max-width: 730px) {
     .container {
         flex-direction: column;
@@ -123,11 +146,13 @@
 
         img {
             max-width: 150px;
-            max-height: 80px;
+            max-height: 90px;
         }
     
         .titleForm {
-            padding-left: 1.3em;
+            div.titleH {
+                align-self: center;
+            }
 
             form {
                 align-items: center;
@@ -146,10 +171,18 @@
     }
 }
 
+@media (max-width: 560px) {
+    .container {
+        form {
+            margin-left: 4em;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .container {
         form {
-            margin-left: 3em;
+            margin-left: 5em;
         }
     }
 }
@@ -157,20 +190,26 @@
 @media (max-width: 425px) {
     .container {
         img {
+            margin-right: 4em;
+            
             max-width: 100px;
             max-height: 40px;
         }
 
         .titleForm {
+            div.titleH {
+                padding-top: 0;
+            }
+            max-width: 425px;
+
             h1 {
-                margin-right: 2em;
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
     
             form {
-                min-height: 400px;
-    
                 gap: 10px;
+
+                margin-left: 4em;
     
                 div.dataNascimento, div.genero, div.visibilidade {
                     gap: 5px;
@@ -197,6 +236,12 @@
 @media (max-width: 375px) {
     .container {
         .titleForm {
+            margin-right: 4em;
+
+            div.titleH {
+                margin-left: 2em;
+            }
+
             form {    
                 div.genero div.optionsG, div.visibilidade div.optionsV{
                     gap: 10px;
@@ -213,9 +258,11 @@
 @media (max-width: 320px) {
     .container {
         .titleForm {
-            form {    
-                div.genero div.optionsG, div.visibilidade div.optionsV{
-                    gap: 12px;
+            form {  
+                margin-left: 6em;
+
+                div.dataNascimento div.optionsD, div.genero div.optionsG, div.visibilidade div.optionsV{
+                    gap: 10px;
 
                     div {
                         gap: 4px;

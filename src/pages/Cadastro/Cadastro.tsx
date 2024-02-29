@@ -69,7 +69,9 @@ export function Cadastro() {
             <Logo />
 
             <main className={styles.titleForm}>
-                <h1>Finalize o cadastro</h1>
+                <div className={styles.titleH}>
+                    <h1>Finalize o cadastro</h1>
+                </div>
 
                 <form onSubmit={handleSubmit(createUser)}>
                     <div className={styles.dataNascimento}>
