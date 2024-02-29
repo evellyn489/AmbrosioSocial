@@ -37,9 +37,9 @@ export function EditarDados() {
                                 <span className={styles.photoAtualization}>Atualizar foto de perfil</span>
                             )
                         }
-                    </button>
+                </button>
 
-                    <DadosInput onSubmit={editData} defaultValues={{ user: currentName, email2: currentEmail, password2: currentPassword } } buttonName="SALVAR" />
+                <DadosInput onSubmit={editData} defaultValues={{ user: currentName, email2: currentEmail, password2: currentPassword } } buttonName="SALVAR"/>
             </div>
         </div>
     );

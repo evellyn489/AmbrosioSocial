@@ -29,3 +29,21 @@ input#user {
 input#email, input#email2, input#password, input#password2, input#user, input#password3 {
     background-color: #F5F5F5;
 }
+
+@media(max-width: 495px){
+    .input {
+        width: 350px;
+    }
+}
+
+@media(max-width: 370px){
+    .input{
+        width: 300px;
+    }
+}
+
+@media(max-width: 340px){
+    .input{
+        width: 200px;
+    }
+}
