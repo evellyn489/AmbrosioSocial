@@ -34,10 +34,10 @@ export function EditarDados() {
                         onMouseEnter={() => setIsHoverImage(true)}
                         onMouseLeave={() => setIsHoverImage(false)}
                     >
-                            <img src={profile_picture} alt="foto de perfil do usuário" title="Atualizar foto de perfil"/>
+                        <img src={profile_picture} alt="foto de perfil do usuário" title="Atualizar foto de perfil"/>
                         {
                             isHoverImage && (
-                                <span className="photoAtualization">Atualizar foto de perfil</span>
+                                <span className={styles.photoAtualization}>Atualizar foto de perfil</span>
                             )
                         }
                     </button>
