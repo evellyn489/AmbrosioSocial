@@ -82,7 +82,6 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
                             title="Página Inicial"
-                            className={styles.home_screen}
                         />
                     </a>
                 ) : (
@@ -90,7 +89,6 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                         <img
                             src={user}
                             alt="ícone branco de usuário como pessoa"
-                            className={styles.user}
                             title="Visualizar seu perfil"
                         />
                     </a>
@@ -99,7 +97,6 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                     <img
                         src={search}
                         alt="ícone de busca representado por uma lupa branca"
-                        className={styles.search}
                         title="Buscar perfil"
                     />
                 </a>
@@ -132,7 +129,6 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
                             title="Página Inicial"
-                            className={styles.home_screen}
                         />
                     </a>
                 ) : (
