@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import profile_picture from "../../assets/publications/profile_picture.png";
+import { useState } from "react";
 
 
 const editarDadosSchema = z.object({
@@ -35,6 +36,8 @@ const editarDadosSchema = z.object({
 type EditarDadosFormData = z.infer<typeof editarDadosSchema>;
 
 export function EditarDados(){
+    const [isHoverImage, setIsHoverImage] = useState(false);
+
     const currentName = "Nome sobrenome"
     const currentEmail = "email123@gmail.com"
     const currentPassword = "Password@123"
@@ -58,7 +61,19 @@ export function EditarDados(){
            <Menu isHome={true} isPerfil={false}/>
 
            <div className={styles.container}>
-                <button className={styles.submitImage} onClick={handlePublishClick}><img src={profile_picture} alt="foto de perfil do usuário" title="Atualizar foto de perfil"/></button>
+                <button 
+                    className={styles.submitImage} 
+                    onClick={handlePublishClick}
+                    onMouseEnter={() => setIsHoverImage(true)}
+                    onMouseLeave={() => setIsHoverImage(false)}
+                >
+                        <img src={profile_picture} alt="foto de perfil do usuário" title="Atualizar foto de perfil"/>
+                    {
+                        isHoverImage && (
+                            <span>Atualizar foto de perfil</span>
+                        )
+                    }
+                </button>
 
                 <form onSubmit = {handleSubmit(editData)}>
                     
