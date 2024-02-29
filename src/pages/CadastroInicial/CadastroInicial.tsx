@@ -65,7 +65,7 @@ export function CadastroInicial() {
 
                 <form onSubmit={handleSubmit(cadastroInicial)}>
                     <div className={styles.inputs}>
-                        <Input type="text" placeholder="Nome" id="user" label="Adicionar nome" error="errorNome" register={register}/>
+                        <Input type="text" placeholder="Nome (Ex: Ana Silva)" id="user" label="Adicionar nome" error="errorNome" register={register}/>
                         {errors.user && <span id="errorNome">{errors.user.message}</span>}
 
                         <Input type="email" placeholder="Email" id="email2" label="Adicionar email" error="errorEmail" register={register}/>

@@ -12,8 +12,8 @@ import { ModalNotification } from "../ModalNotification";
 interface MenuProps {
     isHome: boolean;
     isPerfil: boolean;
-    openPublication: boolean;
-    setOpenPublication: (value: boolean) => void;
+    openPublication?: boolean;
+    setOpenPublication?: (value: boolean) => void;
 }
 
 export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: MenuProps) {
@@ -54,7 +54,9 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
     }
 
     const handleClickPublication = () => {
-        setOpenPublication(!openPublication);
+        if (setOpenPublication){
+            setOpenPublication(!openPublication);
+        }
     }
 
     return (
