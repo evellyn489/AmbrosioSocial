@@ -1,0 +1,1 @@
+export { DadosInput } from './DadosInput';
