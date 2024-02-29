@@ -10,6 +10,8 @@
         flex-direction: column;
         align-items: center;
     
+        gap: 65px;
+    
         flex: 1;
 
         h1 {
@@ -17,7 +19,7 @@
             color: #9829D1;
 
             align-self: flex-start;
-            margin-bottom: 0.9em;
+            margin-top: 1em;
             margin-left: 88px;
         }
 
@@ -27,10 +29,6 @@
             justify-content: center;
 
             padding-right: 4em;
-
-            min-height: 445px;
-
-            gap: 40px;
 
             div.dataNascimento, div.genero, div.visibilidade {
                 display: flex;
@@ -144,6 +142,14 @@
                     font-size: 0.5rem;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        form {
+            margin-left: 3em;
         }
     }
 }
