@@ -83,24 +83,69 @@
 }
 
 @media (max-width: 618px) {
-    .icons{
-        position: relative;
-        padding-right: 20%;
+    .header{
+        .logo {
+            padding-right: 5%;
+        }
+        .icons{
+            padding-right: 15%;
     }
-
+}
     .logo {
         position: relative;
         left: 10%;
     }
 }
 
-@media (max-width: 515px) {
+@media (max-width: 555px) {
     .header {
+        .logo {
+            padding-left: 5%;
+        }
         .icons {
-            gap: 1.8em;
+            padding-right: 20%;
+            gap: 3.5em;
+
+            img {
+                height: 25px;
+                width: 25px;
+            }
         }
     }
 }
+
+@media (max-width: 490px){
+    .header {
+        .icons {
+            padding-right: 25%;
+            gap: 3em;
+
+            img {
+                height: 23px;
+                width: 23px;
+            }
+        }
+    }
+}
+
+@media(max-width: 450px){
+    .header {
+        .logo {
+            height: 50px;
+            padding-left: 30%;
+        }
+        .icons {
+            padding-right: 50%;
+            gap: 3em;
+
+            img {
+                height: 23px;
+                width: 23px;
+            }
+        }
+    }
+}
+
 
 @media (max-width: 400px){
     .header {
@@ -114,30 +159,15 @@
     }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 370px) {
     .header {
         .logo {
-            display: flex;
-            align-items: center;
             position: relative;
-            left: 10%;
-            height: 70%;
+            left: 40px;
         }
         .icons {
             gap: 2em;
-
-            img {
-                width: 20px;
-            }
-        }
-    }
-}
-
-@media (max-width: 345px) {
-    .header {
-        .icons {
-            padding-right: 25%;
-            gap: 1.3em;
+            padding-right: 65%;
 
             img {
                 width: 20px;
