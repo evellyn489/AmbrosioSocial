@@ -3,25 +3,19 @@ import styles from "./Publication.module.scss";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import rectangle_photo from "../../assets/publications/rectangle_photo.png"
 import like from "../../assets/interaction/like.png"
-import dislike from "../../assets/interaction/dislike.png"
 import comment from "../../assets/interaction/comment.png"
 import like_clicked from "../../assets/interaction/like_clicked.png"
-import dislike_clicked from "../../assets/interaction/dislike_clicked.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 
 export function Publication({text}: { text: string}) {
     const [likes, setLikes] = useState(0);
-    const [dislikes, setDislikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
     const [commentVisible, setCommentVisible] = useState(false);
     const [commentText, setCommentText] = useState<string>('');
     const [likeClicked, setLikeClicked] = useState(false);
-    const [dislikeClicked, setDislikeClicked] = useState(false);
     const [likeIcon, setLikeIcon] = useState(like);
-    const [dislikeIcon, setDislikeIcon] = useState(dislike);
     const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
-    const [dislikeNumColor, setDislikeNumColor] = useState<string>(styles.defaultNumColor);
     const [commentError, setCommentError] = useState<string | null>(null);
 
     const toggleCommentVisibility = () => {
@@ -33,25 +27,19 @@ export function Publication({text}: { text: string}) {
     };
 
     const handleLikeClick = () => {
+        
         if (!likeClicked) {
             setLikes(likes + 1);
             setLikeClicked(true);
             setLikeIcon(like_clicked);
             setLikeNumColor(styles.likeNumColor);
-            if (dislikeClicked) {
-                setDislikes(dislikes - 1);
-                setDislikeClicked(false);
-                setDislikeIcon(dislike);
-                setDislikeNumColor(styles.defaultNumColor);
-            }
+    
         } else {
             setLikes(likes - 1);
             setLikeClicked(false);
             setLikeIcon(like);
             setLikeNumColor(styles.defaultNumColor);
         }
-        setDislikeClicked(false);
-
         
         const likeButton = document.getElementById("likeButton");
         if (likeButton) {
@@ -62,34 +50,6 @@ export function Publication({text}: { text: string}) {
         }
     };
 
-    const handleDislikeClick = () => {
-        if (!dislikeClicked) {
-            setDislikes(dislikes + 1);
-            setDislikeClicked(true);
-            setDislikeIcon(dislike_clicked);
-            setDislikeNumColor(styles.dislikeNumColor);
-            if (likeClicked) {
-                setLikes(likes - 1);
-                setLikeClicked(false);
-                setLikeIcon(like);
-                setLikeNumColor(styles.defaultNumColor);
-            }
-        } else {
-            setDislikes(dislikes - 1);
-            setDislikeClicked(false);
-            setDislikeIcon(dislike);
-            setDislikeNumColor(styles.defaultNumColor);
-        }
-        setLikeClicked(false);
-
-        const dislikeButton = document.getElementById("dislikeButton");
-        if (dislikeButton) {
-            dislikeButton.classList.add(styles.clicked);
-            setTimeout(() => {
-                dislikeButton.classList.remove(styles.clicked);
-            }, 200);
-        }
-    };
 
     const handleCommentClick = () => {
         if (commentText.trim() === '') {
@@ -126,15 +86,6 @@ export function Publication({text}: { text: string}) {
                         <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
 
                         <span className={likeNumColor}>{likes}</span>
-                    </button>
-
-                    <button 
-                        className={`${styles.dislike} ${dislikeClicked && styles.clicked}`} 
-                        onClick={handleDislikeClick}
-                        aria-label='Não curti'
-                    >
-                        <img src={dislikeIcon} alt="Não gostei" />
-                        <span className={dislikeNumColor}>{dislikes}</span>
                     </button>
 
                     <button 
