@@ -8,6 +8,7 @@ import publish from "../../assets/menu/white/publish.png";
 import config from "../../assets/menu/white/config.png";
 import home_screen from "../../assets/menu/white/home_screen.png";
 import { ModalNotification } from "../ModalNotification";
+import { Search } from "../Search";
 
 interface MenuProps {
     isHome: boolean;
@@ -18,6 +19,7 @@ interface MenuProps {
 
 export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: MenuProps) {
     const [openModal, setOpenModal] = useState(false);
+    const [clickSearch, setClickSearch] = useState(false);
 
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -59,11 +61,21 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
         }
     }
 
+    const handleClickSearch = () => {
+        setClickSearch(!clickSearch);
+    }
+
     return (
         <header className={styles.header}>
             {
                 openModal && (
                     <ModalNotification ref={modalRef} />
+                )
+            }
+
+            {
+                clickSearch && (
+                    <Search />
                 )
             }
             
@@ -93,7 +105,10 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                         />
                     </a>
                 )}
-                <a href="" aria-label="Procurar usuários">
+                <a href="#" onClick={(event) => {
+                    event.preventDefault();
+                    handleClickSearch();
+                }} aria-label="Procurar usuários">
                     <img
                         src={search}
                         alt="ícone de busca representado por uma lupa branca"
