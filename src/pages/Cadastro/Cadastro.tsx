@@ -141,12 +141,23 @@ export function Cadastro() {
                             </div>
                             
                             <div>
-                                <label htmlFor="genero">Neutro</label>
+                                <label htmlFor="genero">Não binário</label>
                                 <input 
                                     type="radio" 
-                                    aria-label="Gênero neutro" 
+                                    aria-label="Gênero Não binário" 
                                     {...register("genero")} 
-                                    value="neutro" 
+                                    value="não binário" 
+                                    aria-required
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="genero" className={styles.genero3}>Prefiro não dizer</label>
+                                <input 
+                                    type="radio" 
+                                    aria-label="Prefiro não dizer" 
+                                    {...register("genero")} 
+                                    value="prefiro não dizer" 
                                     aria-required
                                 />
                             </div>
@@ -183,7 +194,7 @@ export function Cadastro() {
                         {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro"/>
+                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro" click={() => 0}/>
                 </form>
             </main>
         </div>
