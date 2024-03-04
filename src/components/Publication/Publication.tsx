@@ -83,7 +83,8 @@ export function Publication({text}: { text: string}) {
 
                 <div className={styles.interation}>
                     <button 
-                        className={`${styles.like} ${likeClicked && styles.clicked}`}
+                         className={`${styles.like} ${darkTheme ? styles['likeDark'] : ''} ${likeClicked ? styles['likeClicked'] : ''}`}
+
                         onClick={handleLikeClick}
                         aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
                     >
@@ -93,7 +94,8 @@ export function Publication({text}: { text: string}) {
                     </button>
 
                     <button 
-                        className={styles.commentButton} 
+                        className={`${styles.comment} ${darkTheme ? styles['commentDark']: ''}`} 
+
                         onClick={toggleCommentVisibility}
                         aria-label='Comentar'
                     >
