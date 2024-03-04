@@ -48,7 +48,7 @@ export function Explorar() {
                     Além disso, esse conceito de texto abrange todas as comunicações da vida humana, afinal, todas elas cumprem uma função na vida pessoal e/ou social das pessoas."/>
                     
                 </div>
-                <footer className={styles.footer}>
+                <footer className={styles.footer} style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
                     <p>
                         <span onClick={handleMorePublication}>More...</span>
                     </p>
