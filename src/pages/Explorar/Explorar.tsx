@@ -3,17 +3,19 @@ import styles from "./Explorar.module.scss";
 import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
 import { CommentPublication } from "../../components/CommentPublication";
+import { useTheme } from "../../contexts/ThemeProvider"; 
 
 export function Explorar() {
     const [numPublications, setNumPublications] = useState(2); 
     const [openPublication, setOpenPublication] = useState(false);
+    const { darkTheme } = useTheme(); 
 
     const handleMorePublication = () => {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
             <Menu isHome={false} isPerfil={false} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>

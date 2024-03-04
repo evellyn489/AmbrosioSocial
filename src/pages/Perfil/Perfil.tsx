@@ -9,17 +9,20 @@ import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
 import { CommentPublication } from "../../components/CommentPublication";
+import { useTheme } from "../../contexts/ThemeProvider";
+
 
 export function Perfil() {
     const [following, setFollowing] = useState(false);
     const [openPublication, setOpenPublication] = useState(false);
+    const { darkTheme } = useTheme(); 
 
     function handleClickFollowing() {
         setFollowing(!following);
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container}  style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
             <Menu isHome={false} isPerfil={true} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
 
             <div className={styles.asideMain}>

@@ -3,12 +3,16 @@ import styles from "./Publication.module.scss";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import rectangle_photo from "../../assets/publications/rectangle_photo.png"
 import like from "../../assets/interaction/like.png"
-import comment from "../../assets/interaction/comment.png"
+import like_darkTheme from "../../assets/interaction/like_darkTheme.png"
 import like_clicked from "../../assets/interaction/like_clicked.png"
+import comment from "../../assets/interaction/comment.png"
+import comment_darkTheme from "../..//assets/interaction/comment_darkTheme.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
+import { useTheme } from '../../contexts/ThemeProvider';
 
 export function Publication({text}: { text: string}) {
+    const { darkTheme } = useTheme();
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
     const [commentVisible, setCommentVisible] = useState(false);
@@ -83,7 +87,7 @@ export function Publication({text}: { text: string}) {
                         onClick={handleLikeClick}
                         aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
                     >
-                        <img src={likeIcon} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
+                        <img src={darkTheme ? (likeClicked ? like_clicked : like_darkTheme) : (likeClicked ? like_clicked : likeIcon)} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
 
                         <span className={likeNumColor}>{likes}</span>
                     </button>
@@ -93,7 +97,7 @@ export function Publication({text}: { text: string}) {
                         onClick={toggleCommentVisibility}
                         aria-label='Comentar'
                     >
-                        <img src={comment} alt="Comentar" />
+                        <img src={darkTheme ? comment_darkTheme : comment} alt="Comentar" />
                         <span>{comments.length}</span>
                     </button>
                 </div>

@@ -3,9 +3,12 @@ import { Menu } from "../../components/Menu";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import { useState } from "react";
 import { DadosInput } from "../../components/DadosInput";
+import { useTheme } from "../../contexts/ThemeProvider"; 
+
 
 export function EditarDados() {
     const [isHoverImage, setIsHoverImage] = useState(false);
+    const { darkTheme } = useTheme(); 
 
     const currentName = "Nome sobrenome";
     const currentEmail = "email123@gmail.com";
@@ -24,7 +27,7 @@ export function EditarDados() {
         <div>
             <Menu isHome={true} isPerfil={false}/>
             
-            <div className={styles.container}>
+            <div className={styles.container} style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
                 <button 
                         className={styles.submitImage} 
                         onClick={handlePublishClick}
