@@ -152,7 +152,7 @@ export function Cadastro() {
                             </div>
 
                             <div>
-                                <label htmlFor="genero" className={styles.genero3}>Prefiro não dizer</label>
+                                <label htmlFor="genero" className={styles.preferencia}>Prefiro não dizer</label>
                                 <input 
                                     type="radio" 
                                     aria-label="Prefiro não dizer" 
