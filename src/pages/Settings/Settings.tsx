@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from "react"; 
-import styles from "./Configuracoes.module.scss";
+import styles from "./Settings.module.scss";
 import { Menu } from "../../components/Menu";
 import { useTheme } from "../../contexts/ThemeProvider"; 
 
-export function Configuracoes() {
+export function Settings() {
     const { darkTheme, toggleTheme } = useTheme(); 
 
     const [opcoesVisiveisTamanho, setOpcoesVisiveisTamanho] = useState(false);

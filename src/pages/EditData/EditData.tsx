@@ -1,4 +1,4 @@
-import styles from "./EditarDados.module.scss";
+import styles from "./EditData.module.scss";
 import { Menu } from "../../components/Menu";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { DadosInput } from "../../components/DadosInput";
 import { useTheme } from "../../contexts/ThemeProvider"; 
 
 
-export function EditarDados() {
+export function EditData() {
     const [isHoverImage, setIsHoverImage] = useState(false);
     const { darkTheme } = useTheme(); 
 

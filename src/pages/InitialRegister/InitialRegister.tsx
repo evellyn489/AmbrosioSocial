@@ -1,4 +1,4 @@
-import styles from "./CadastroInicial.module.scss";
+import styles from "./InitialRegister.module.scss";
 import logo from "../../assets/logos/white.png";
 import { Button } from "../../components/Button";
 import { DadosInput } from "../../components/DadosInput";
@@ -9,7 +9,7 @@ interface DadosFormData {
   password2: string;
 }
 
-export function CadastroInicial() {
+export function InitialRegister() {
   
   function cadastroInicial(data: DadosFormData) {
     console.log("Cadastro feito.", data);

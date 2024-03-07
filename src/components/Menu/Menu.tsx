@@ -89,7 +89,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
             </div>
             <div className={styles.icons}>
                 {isPerfil ? (
-                    <a href="/explorar" aria-label="Página Inicial">
+                    <a href="/explore" aria-label="Página Inicial">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -97,7 +97,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                         />
                     </a>
                 ) : (
-                    <a href="/perfil" aria-label="Acessar perfil">
+                    <a href="/profile" aria-label="Acessar perfil">
                         <img
                             src={user}
                             alt="ícone branco de usuário como pessoa"
@@ -139,7 +139,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                 </button>
 
                 {isHome ? (
-                    <a href="/explorar" aria-label="Página Inicial">
+                    <a href="/explore" aria-label="Página Inicial">
                         <img
                             src={home_screen}
                             alt="ícone de tela inicial representado por uma casa branca"
@@ -147,7 +147,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                         />
                     </a>
                 ) : (
-                    <a href="/configuracoes" aria-label="Configurações">
+                    <a href="/settings" aria-label="Configurações">
                         <img
                             src={config}
                             alt="ícone de configuração representado por uma engrenagem"

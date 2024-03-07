@@ -1,1 +1,0 @@
-export { Explorar } from "./Explorar";

@@ -1,1 +1,0 @@
-export { EditarDados } from "./EditarDados";

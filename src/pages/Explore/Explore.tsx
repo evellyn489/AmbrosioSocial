@@ -1,11 +1,11 @@
 import { useState } from "react";
-import styles from "./Explorar.module.scss";
+import styles from "./Explore.module.scss";
 import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
 import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider"; 
 
-export function Explorar() {
+export function Explore() {
     const [numPublications, setNumPublications] = useState(2); 
     const [openPublication, setOpenPublication] = useState(false);
     const { darkTheme } = useTheme(); 

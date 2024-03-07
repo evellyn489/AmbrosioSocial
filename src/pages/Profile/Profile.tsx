@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import styles from "./Perfil.module.scss";
+import styles from "./Profile.module.scss";
 
 import profile from "../../assets/publications/profile_picture.png";
 import { FaCheck } from "react-icons/fa";
@@ -12,7 +12,7 @@ import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider";
 
 
-export function Perfil() {
+export function Profile() {
     const [following, setFollowing] = useState(false);
     const [openPublication, setOpenPublication] = useState(false);
     const { darkTheme } = useTheme(); 

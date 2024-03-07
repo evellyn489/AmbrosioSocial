@@ -1,26 +1,26 @@
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 
-import { CadastroInicial } from "../pages/CadastroInicial";
+import { InitialRegister } from "../pages/InitialRegister";
 import { Login } from "../pages/Login";
-import { Cadastro } from "../pages/Cadastro";
-import { Explorar } from "../pages/Explorar";
-import { EsqueceuSenha } from "../pages/EsqueceuSenha";
-import { Perfil } from "../pages/Perfil";
-import { Configuracoes } from "../pages/Configuracoes";
-import { EditarDados } from "../pages/EditarDados";
+import { Register } from "../pages/Register";
+import { Explore } from "../pages/Explore";
+import { ForgotPassword } from "../pages/ForgotPassword";
+import { Profile } from "../pages/Profile";
+import { Settings } from "../pages/Settings";
+import { EditData } from "../pages/EditData";
 
 export function AppRoutes() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<CadastroInicial />}/>
-                <Route path="/cadastro" element={<Cadastro />}/>
+                <Route path="/" element={<InitialRegister />}/>
+                <Route path="/register" element={<Register />}/>
                 <Route path="/login" element={<Login />}/>
-                <Route path="/esqueceusenha" element={<EsqueceuSenha />}/>
-                <Route path="/explorar" element={<Explorar />}/>
-                <Route path="/perfil" element={<Perfil />}/>
-                <Route path="/configuracoes" element={<Configuracoes />}/>
-                <Route path="/editardados" element={<EditarDados />}/>
+                <Route path="/forgotpassword" element={<ForgotPassword />}/>
+                <Route path="/explore" element={<Explore />}/>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/settings" element={<Settings />}/>
+                <Route path="/editdata" element={<EditData />}/>
             </Routes>
         </BrowserRouter>
     );

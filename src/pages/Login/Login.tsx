@@ -45,7 +45,7 @@ export function Login() {
 
                     <div className={styles.buttonLink}>
                         <Button name="ENTRAR" label="Botão para logar na rede social"/> 
-                        <a href="/esqueceusenha" aria-label="Link que direciona para a tela de esqueci minha senha">Esqueci minha senha</a>
+                        <a href="/forgotpassword" aria-label="Link que direciona para a tela de esqueci minha senha">Esqueci minha senha</a>
                     </div>
                 </form>
                 <p>Não tem uma conta? <a href="/" aria-label="Linka que direciona para a tela de cadastro">Crie uma conta</a></p>

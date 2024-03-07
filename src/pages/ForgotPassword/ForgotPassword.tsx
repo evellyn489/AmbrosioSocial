@@ -1,4 +1,4 @@
-import styles from "./EsqueceuSenha.module.scss";
+import styles from "./ForgotPassword.module.scss";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -19,8 +19,7 @@ const esqueceuSenhaSchema = z.object({
 
 type EsqueceuSenhaFormData = z.infer<typeof esqueceuSenhaSchema>;
 
-
-export function EsqueceuSenha() {
+export function ForgotPassword() {
     const { register, handleSubmit, formState: { errors } } = useForm<EsqueceuSenhaFormData>({
         resolver: zodResolver(esqueceuSenhaSchema)
     })
@@ -42,7 +41,7 @@ export function EsqueceuSenha() {
                         {errors.password3 && <span id="passwordError">{errors.password3.message}</span>}
                     </div>
 
-                    <Button name="ENVIAR"/>
+                    <Button name="ENVIAR" label="Botão de enviar nova senha" click={() => 0}/>
                 </form>
             </main>
         </div>

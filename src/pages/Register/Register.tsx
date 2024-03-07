@@ -1,4 +1,4 @@
-import styles from "./Cadastro.module.scss";
+import styles from "./Register.module.scss";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -55,7 +55,7 @@ const createUserFormSchema = z.object({
 
 type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 
-export function Cadastro() {
+export function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm<CreateUserFormData>({
         resolver: zodResolver(createUserFormSchema)
     });
