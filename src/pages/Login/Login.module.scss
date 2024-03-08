@@ -5,6 +5,8 @@
     justify-content: space-around;
     align-items: center;
 
+    overflow-x: hidden;
+
     main.forms {
         display: flex;
         flex-direction: column;
@@ -137,6 +139,8 @@
         main.forms {
             max-width: 100%;
 
+            margin-left: 4em;
+
             form {
                 div.inputs {
                     input {
@@ -173,5 +177,19 @@
                 } 
             }
         }   
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        main.forms {
+            form {
+                div.inputs {
+                    input {
+                        width: 250px;
+                    }   
+                } 
+            }
+        }
     }
 }

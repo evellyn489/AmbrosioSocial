@@ -24,7 +24,7 @@ export function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm<loginFormData>({
         resolver: zodResolver(loginSchema)
     })
-    console.log(errors)
+
     function login() {
         console.log("Login feito.")
     }
@@ -44,7 +44,7 @@ export function Login() {
                     </div>
 
                     <div className={styles.buttonLink}>
-                        <Button name="ENTRAR" label="Botão para logar na rede social"/> 
+                        <Button name="ENTRAR" label="Botão para logar na rede social" click={() => 0}/> 
                         <a href="/forgotpassword" aria-label="Link que direciona para a tela de esqueci minha senha">Esqueci minha senha</a>
                     </div>
                 </form>
