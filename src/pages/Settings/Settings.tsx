@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react"; 
 import styles from "./Settings.module.scss";
 import { Menu } from "../../components/Menu";
-import { useTheme } from "../../contexts/ThemeProvider"; 
+import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
 
 export function Settings() {
     const { darkTheme, toggleTheme } = useTheme(); 
@@ -55,7 +55,7 @@ export function Settings() {
     }
 
     return (
-        <div style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
+        <div >
             <Menu isHome={true} isPerfil={false}/>
             <div className={styles.container}>
                 <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho} aria-label="Botão de alterar tamanho da letra">ALTERAR TAMANHO DA LETRA</button>

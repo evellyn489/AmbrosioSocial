@@ -3,7 +3,7 @@ import styles from "./Explore.module.scss";
 import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
 import { CommentPublication } from "../../components/CommentPublication";
-import { useTheme } from "../../contexts/ThemeProvider"; 
+import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
 
 export function Explore() {
     const [numPublications, setNumPublications] = useState(2); 
@@ -15,7 +15,7 @@ export function Explore() {
     };
 
     return (
-        <div className={styles.container} style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
+        <div className={styles.container}>
             <Menu isHome={false} isPerfil={false} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
             <div className={styles.content}>
                 <div className={styles.publicationsContainer}>
@@ -48,7 +48,7 @@ export function Explore() {
                     Além disso, esse conceito de texto abrange todas as comunicações da vida humana, afinal, todas elas cumprem uma função na vida pessoal e/ou social das pessoas."/>
                     
                 </div>
-                <footer className={styles.footer} style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
+                <footer className={styles.footer} style={{ background: darkTheme ? "#121212" : "white", color: darkTheme ? "white" : "black" }}>
                     <p>
                         <span onClick={handleMorePublication}>More...</span>
                     </p>

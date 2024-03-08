@@ -8,13 +8,24 @@ div.container {
     gap: 15px;
 
     max-width: 50%;
-
-    background-color: #fff;
     border: 1px solid #f0ebeb;
 
     padding: 1em;
 
     z-index: 2;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    .light-theme {
+        --background-color: #ffffff; 
+        --text-color: #000000;
+    }
+    
+    .dark-theme {
+        --background-color: #121212; 
+        --text-color: #ffffff;
+    }
 }
 
 @media (max-width: 785px) {

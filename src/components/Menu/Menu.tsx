@@ -9,6 +9,7 @@ import config from "../../assets/menu/white/config.png";
 import home_screen from "../../assets/menu/white/home_screen.png";
 import { ModalNotification } from "../ModalNotification";
 import { Search } from "../Search";
+import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
 
 interface MenuProps {
     isHome: boolean;
@@ -18,6 +19,7 @@ interface MenuProps {
 }
 
 export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: MenuProps) {
+    const { darkTheme } = useTheme(); 
     const [openModal, setOpenModal] = useState(false);
     const [clickSearch, setClickSearch] = useState(false);
 
@@ -66,7 +68,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
     }
 
     return (
-        <header className={styles.header}>
+        <header className={styles.header} style={{background: darkTheme ? "linear-gradient(to bottom, #7439AB, #586CA8)" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}> 
             {
                 openModal && (
                     <ModalNotification ref={modalRef} />

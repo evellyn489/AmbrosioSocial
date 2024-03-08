@@ -9,7 +9,7 @@ import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
 import { CommentPublication } from "../../components/CommentPublication";
-import { useTheme } from "../../contexts/ThemeProvider";
+import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider";
 
 
 export function Profile() {
@@ -22,11 +22,12 @@ export function Profile() {
     }
 
     return (
-        <div className={styles.container}  style={{ background: darkTheme ? "black" : "white", color: darkTheme ? "white" : "black" }}>
+        <div className={styles.container}>
+            
             <Menu isHome={false} isPerfil={true} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
 
             <div className={styles.asideMain}>
-                <aside>
+                <aside style = {{background: darkTheme ? "linear-gradient(to bottom, rgba(148, 49, 209, 0.7), rgba(103, 136, 205, 0.8))" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}>
                     <div className={styles.foto}>
                         <img src={profile} alt="" />
                     </div>

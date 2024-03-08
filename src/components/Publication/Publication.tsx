@@ -5,11 +5,12 @@ import rectangle_photo from "../../assets/publications/rectangle_photo.png"
 import like from "../../assets/interaction/like.png"
 import like_darkTheme from "../../assets/interaction/like_darkTheme.png"
 import like_clicked from "../../assets/interaction/like_clicked.png"
+import like_clickedDark from "../../assets/interaction/like_clickedDark.png"
 import comment from "../../assets/interaction/comment.png"
 import comment_darkTheme from "../..//assets/interaction/comment_darkTheme.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
-import { useTheme } from '../../contexts/ThemeProvider';
+import { useTheme } from '../../contexts/ThemeProvider/ThemeProvider';
 
 export function Publication({text}: { text: string}) {
     const { darkTheme } = useTheme();
@@ -35,8 +36,15 @@ export function Publication({text}: { text: string}) {
         if (!likeClicked) {
             setLikes(likes + 1);
             setLikeClicked(true);
-            setLikeIcon(like_clicked);
-            setLikeNumColor(styles.likeNumColor);
+
+            if (!darkTheme){
+                setLikeIcon(like_clicked);
+                setLikeNumColor(styles.likeNumColor);
+            }
+
+            else {
+                setLikeIcon(like_clickedDark);
+            }
     
         } else {
             setLikes(likes - 1);
@@ -88,7 +96,7 @@ export function Publication({text}: { text: string}) {
                         onClick={handleLikeClick}
                         aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
                     >
-                        <img src={darkTheme ? (likeClicked ? like_clicked : like_darkTheme) : (likeClicked ? like_clicked : likeIcon)} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
+                        <img src={darkTheme ? (likeClicked ? like_clickedDark : like_darkTheme) : (likeClicked ? like_clicked : likeIcon)} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
 
                         <span className={likeNumColor}>{likes}</span>
                     </button>

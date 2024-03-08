@@ -8,3 +8,30 @@ body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
+
+.light-theme {
+    --background-color: white;
+    --text-color: "black";
+    --likeClicked: #004AAD;
+   }
+   
+   .dark-theme {
+    --background-color: #121212;
+    --text-color: white;
+    --likeClicked: #2274A5;
+    ::-webkit-scrollbar {
+        width: 10px;
+     }
+    
+     ::-webkit-scrollbar-track {
+        background: #222;
+     }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #444;
+     }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
