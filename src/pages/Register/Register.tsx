@@ -1,11 +1,14 @@
 import styles from "./Register.module.scss";
 
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
+
+import { useLocation } from "react-router-dom";
+import { createUser } from "../../services/Users/axios";
 
 const minAno = 2011;
 
@@ -55,15 +58,30 @@ const createUserFormSchema = z.object({
 
 type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 
+interface FormData {
+    birthdate: string;
+    gender: string;
+    visibility: string;
+}
+
 export function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm<CreateUserFormData>({
         resolver: zodResolver(createUserFormSchema)
     });
 
-    function createUser() {
-        console.log("usuário adicionado")
-    }
+    const location = useLocation();
+    const dataInitialRegister = location.state;
 
+    const onSubmit: SubmitHandler<CreateUserFormData> = (data) => {
+        const registerDataForm = {
+            birthdate: `${data.dia}/${data.mes}/${data.ano}`,
+            gender: data.genero,
+            visibility: data.visibilidade
+        };
+
+        console.log('Dados do formulário:', registerDataForm);
+    }
+    
     return (
         <div className={styles.container}>
             <Logo />
@@ -73,7 +91,7 @@ export function Register() {
                     <h1>Finalize o cadastro</h1>
                 </div>
 
-                <form onSubmit={handleSubmit(createUser)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.dataNascimento}>
                         <label htmlFor="dataNascimento" className={styles.title}>Data de Nascimento</label>
                         <div className={styles.optionsD}>
@@ -194,7 +212,7 @@ export function Register() {
                         {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro" click={() => 0}/>
+                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro" />
                 </form>
             </main>
         </div>

@@ -40,13 +40,21 @@ interface DadosInputProps {
 
 
 export function DadosInput({ onSubmit, defaultValues, errorColor = 'red', buttonName }: DadosInputProps) {
-    const { register, handleSubmit, formState: { errors } } = useForm<DadosFormData>({
+    const { register, formState: { errors }, getValues } = useForm<DadosFormData>({
         resolver: zodResolver(dadosSchema),
         defaultValues
     });
 
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit({
+                user: getValues("user"),
+                email2: getValues("email2"),
+                password2: getValues("password2")
+            })
+        }}>
             <div className={styles.inputs}>
                 <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} textColor="black"/>
                 {errors.user && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorNome">{errors.user.message}</span>}

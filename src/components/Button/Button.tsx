@@ -6,7 +6,7 @@ interface ButtonProps {
     name: string;
     label: string;
     icon?: ReactNode;
-    click: () => void;
+    click?: () => void;
 }
 
 export function Button(props: ButtonProps) {

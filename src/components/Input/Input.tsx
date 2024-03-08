@@ -18,7 +18,6 @@ export function Input<T extends FieldValues>(props: InputProps<T>) {
     const textStyle = textColor ? { color: textColor } : {};
     const registerProps = register && {...register(id as Path<T>)};
 
-
     return (
         <input 
             className={styles.input} 
