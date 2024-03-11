@@ -23,10 +23,8 @@ export function InitialRegister() {
     } catch (error) {
       if (error instanceof ZodError) {
         console.error("Erro de validação do Zod:", error.errors);
-        alert('Houve um erro de validação. Por favor, verifique os dados e tente novamente.');
       } else {
         console.error("Erro ao analisar os dados:", error);
-        alert('Houve um erro ao processar os dados. Por favor, tente novamente.');
       }
     }
   };
@@ -39,7 +37,7 @@ export function InitialRegister() {
           <strong>Seja bem-vindo ao AmbrosioSocial!</strong>
           <p>Acesse sua conta agora mesmo!</p>
         </div>
-        <Button name="ENTRAR" label="Botão para fazer login" />
+        <Button name="ENTRAR" label="Botão para fazer login" click={() => navigate("/login")} />
       </aside>
       <main>
         <div className={styles.titles}>

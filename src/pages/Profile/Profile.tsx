@@ -5,6 +5,8 @@ import styles from "./Profile.module.scss";
 import profile from "../../assets/publications/profile_picture.png";
 import { FaCheck } from "react-icons/fa";
 
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
@@ -20,6 +22,9 @@ export function Profile() {
     function handleClickFollowing() {
         setFollowing(!following);
     }
+
+    const navigate = useNavigate();
+
 
     return (
         <div className={styles.container}>
@@ -41,7 +46,7 @@ export function Profile() {
                         <p>y seguindo</p>
                     </div>
 
-                    <Button name="Editar dados" label="Botão de editar os dados do usuário" click={() => 0}/>
+                    <Button name="Editar dados" label="Botão de editar os dados do usuário" click={() => navigate("/editdata")}/>
                 </aside>
 
                 <main>
