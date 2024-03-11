@@ -1,8 +1,11 @@
 import styles from "./InitialRegister.module.scss";
 import logo from "../../assets/logos/white.png";
 import { Button } from "../../components/Button";
+
 import { DadosInput } from "../../components/DadosInput";
 import { useNavigate } from "react-router-dom";
+
+import { ZodError } from "zod";
 
 interface DadosFormData {
   user: string;
@@ -14,8 +17,18 @@ export function InitialRegister() {
   const navigate = useNavigate();
 
   const onSubmit = (data: DadosFormData) => {
-    console.log(data);
-    navigate('/register', { state: data });
+    try {
+      navigate('/register', { state: data });
+
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.error("Erro de validação do Zod:", error.errors);
+        alert('Houve um erro de validação. Por favor, verifique os dados e tente novamente.');
+      } else {
+        console.error("Erro ao analisar os dados:", error);
+        alert('Houve um erro ao processar os dados. Por favor, tente novamente.');
+      }
+    }
   };
 
   return (

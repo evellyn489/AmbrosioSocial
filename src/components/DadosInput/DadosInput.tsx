@@ -21,11 +21,15 @@ const dadosSchema = z.object({
         message: "Email inválido"
     }),
     password2: z.string().min(8, "A senha deve ter no mínimo 8 caracteres").transform(value => value.trim()).refine(value => {
-        const regex = /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
-        return regex.test(value);
+        const hasNumber = /[0-9]/.test(value);
+        const hasLowerCase = /[a-z]/.test(value);
+        const hasUpperCase = /[A-Z]/.test(value);
+        const hasSymbol = /[$*&@#]/.test(value);
+        return hasNumber && hasLowerCase && hasUpperCase && hasSymbol && value.length >= 8;
     }, {
         message: "A senha deve conter no mínimo 1 letra maiúscula, número e símbolo."
     })
+    
 }) 
 
 type DadosFormData = z.infer<typeof dadosSchema>;
@@ -38,23 +42,27 @@ interface DadosInputProps {
     buttonName: string;
 }
 
-
 export function DadosInput({ onSubmit, defaultValues, errorColor = 'red', buttonName }: DadosInputProps) {
-    const { register, formState: { errors }, getValues } = useForm<DadosFormData>({
+    const { handleSubmit, register, formState: { errors }, getValues } = useForm<DadosFormData>({
         resolver: zodResolver(dadosSchema),
         defaultValues
     });
 
+    const onSubmitHandler = () => {
+        const data: DadosFormData = {
+            user: getValues("user"),
+            email2: getValues("email2"),
+            password2: getValues("password2")
+        };
+        try {
+            onSubmit(data);
+        } catch (validationError) {
+            console.error('Erro de validação:', validationError);
+        }
+    };
 
     return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit({
-                user: getValues("user"),
-                email2: getValues("email2"),
-                password2: getValues("password2")
-            })
-        }}>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
             <div className={styles.inputs}>
                 <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} textColor="black"/>
                 {errors.user && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorNome">{errors.user.message}</span>}
@@ -66,7 +74,7 @@ export function DadosInput({ onSubmit, defaultValues, errorColor = 'red', button
                 {errors.password2 && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorSenha">{errors.password2.message}</span>}
             </div>
 
-            <Button name={buttonName} label="Botão de prosseguir" click={() => 0} />
+            <Button name={buttonName} label="Botão de prosseguir" />
         </form>
     );
 }

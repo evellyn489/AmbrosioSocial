@@ -71,7 +71,7 @@ export function Register() {
 
     const location = useLocation();
     const dataInitialRegister = location.state;
-
+    
     const onSubmit: SubmitHandler<CreateUserFormData> = (data) => {
         const registerDataForm = {
             birthdate: `${data.dia}/${data.mes}/${data.ano}`,
