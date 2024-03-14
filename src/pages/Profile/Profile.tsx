@@ -32,7 +32,7 @@ export function Profile() {
             <Menu isHome={false} isPerfil={true} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
 
             <div className={styles.asideMain}>
-                <aside style = {{background: darkTheme ? "linear-gradient(to bottom, rgba(148, 49, 209, 0.7), rgba(103, 136, 205, 0.8))" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}>
+                <aside style = {{background: darkTheme ? "#000" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}>
                     <div className={styles.foto}>
                         <img src={profile} alt="" />
                     </div>
