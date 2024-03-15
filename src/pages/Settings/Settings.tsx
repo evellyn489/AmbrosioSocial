@@ -2,9 +2,12 @@ import { useState, ChangeEvent } from "react";
 import styles from "./Settings.module.scss";
 import { Menu } from "../../components/Menu";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
+import { useNavigate } from "react-router-dom";
 
 export function Settings() {
     const { darkTheme, toggleTheme } = useTheme(); 
+
+    const navigate = useNavigate();
 
     const [opcoesVisiveisTamanho, setOpcoesVisiveisTamanho] = useState(false);
     const [opcoesVisiveisVisibilidade, setOpcoesVisiveisVisibilidade] = useState(false);
@@ -26,10 +29,10 @@ export function Settings() {
     };
 
     const handleLogout = () => {
-        const confirmLogout = window.confirm("Tem certeza que deseja sair?");
-        if (confirmLogout) {
-            //Redirecionar para a tela inicial
-        }
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('id');
+
+        navigate("/login");
     };
 
     const handleTamanhoChange = (event: ChangeEvent<HTMLInputElement>) => {

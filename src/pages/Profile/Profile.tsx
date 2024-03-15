@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import styles from "./Profile.module.scss";
 
@@ -12,6 +12,7 @@ import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
 import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
 
 
 export function Profile() {
@@ -24,7 +25,7 @@ export function Profile() {
     }
 
     const navigate = useNavigate();
-
+    const { userData } = useContext(UserContext)
 
     return (
         <div className={styles.container}>
@@ -37,7 +38,7 @@ export function Profile() {
                         <img src={profile} alt="" />
                     </div>
 
-                    <strong>Nome do usuário</strong>
+                    <strong>{userData?.name}</strong>
 
                     <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={handleClickFollowing} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
 

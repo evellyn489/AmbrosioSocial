@@ -4,6 +4,7 @@ import { Menu } from "../../components/Menu";
 import { Publication } from "../../components/Publication";
 import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
+import { useLocation } from "react-router-dom";
 
 export function Explore() {
     const [numPublications, setNumPublications] = useState(2); 
@@ -13,6 +14,8 @@ export function Explore() {
     const handleMorePublication = () => {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
     };
+
+    const location = useLocation();
 
     return (
         <div className={styles.container}>

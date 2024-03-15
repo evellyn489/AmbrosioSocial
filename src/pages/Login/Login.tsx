@@ -33,7 +33,6 @@ interface formData {
 export function Login() {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [token, setToken] = useState(null);
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<loginFormData>({
         resolver: zodResolver(loginSchema)
@@ -52,6 +51,7 @@ export function Login() {
             if (response.status == 200) {
                 const { authToken, user } = response.data;
                 localStorage.setItem('authToken', authToken);
+                localStorage.setItem('id', user.id);
 
                 alert('Usúrio logado!');
                 setLoading(false);
