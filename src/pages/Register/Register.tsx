@@ -1,14 +1,17 @@
+import { useState } from "react";
 import styles from "./Register.module.scss";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
 
-import { useLocation } from "react-router-dom";
-import { createUser } from "../../services/Users/axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaSpinner } from 'react-icons/fa';
+
+import { api } from "../../services/axios";
 
 const minAno = 2011;
 
@@ -59,28 +62,72 @@ const createUserFormSchema = z.object({
 type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 
 interface FormData {
-    birthdate: string;
+    name: string;
+    email: string;
+    password: string;
+    birthDate: string;
     gender: string;
     visibility: string;
 }
 
+interface FormDataFromLocation {
+    user: string;
+    email2: string;
+    password2: string;
+}
+
 export function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm<CreateUserFormData>({
+    const [loading, setLoading] = useState(false);
+
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm<CreateUserFormData>({
         resolver: zodResolver(createUserFormSchema)
     });
 
-    const location = useLocation();
-    const dataInitialRegister = location.state;
-    
-    const onSubmit: SubmitHandler<CreateUserFormData> = (data) => {
-        const registerDataForm = {
-            birthdate: `${data.dia}/${data.mes}/${data.ano}`,
-            gender: data.genero,
-            visibility: data.visibilidade
-        };
+    const navigate = useNavigate();
 
-        console.log('Dados do formulário:', registerDataForm);
+    const location = useLocation();
+
+    const buttonClassName = loading ? `${styles.button} ${styles.loading}` : styles.button;
+    
+    const createUser = async (data: FormData) => {
+        setLoading(true);
+
+        try {
+            const response = await api.post('/user', data);
+
+            if(response.status === 200) {
+                alert("Conta criada com sucesso!");
+                setLoading(false);
+                navigate("/login");
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
+
+    const onSubmit = () => {
+        const locationStateData: FormDataFromLocation = location.state;
+    
+        const formValues = getValues();
+
+        const name = locationStateData.user;
+        const email = locationStateData.email2;
+        const password = locationStateData.password2;
+        const birthDate = `${formValues.dia}/${formValues.mes}/${formValues.ano}`;
+        const visibility = formValues.visibilidade;
+        const gender = formValues.genero;
+        
+        const combinedData = {
+            name,
+            email,
+            password,
+            birthDate,
+            gender: gender || "Feminino",
+            visibility: visibility || "Público"
+        };
+    
+        createUser(combinedData);
+      }
     
     return (
         <div className={styles.container}>
@@ -212,7 +259,12 @@ export function Register() {
                         {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
 
-                    <Button name="CADASTRAR" label="Botão para enviar os dados de cadastro" />
+                    <Button 
+                        name={loading ? <FaSpinner className={styles.spin} />  : "CADASTRAR"}
+                        label="Botão para enviar os dados de cadastro"
+                        disabled={loading} 
+                        
+                    />
                 </form>
             </main>
         </div>
