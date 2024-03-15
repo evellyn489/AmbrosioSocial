@@ -78,6 +78,7 @@ interface FormDataFromLocation {
 
 export function Register() {
     const [loading, setLoading] = useState(false);
+    const [errorMessage, setErroMessage] = useState("");
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<CreateUserFormData>({
         resolver: zodResolver(createUserFormSchema)
@@ -87,10 +88,9 @@ export function Register() {
 
     const location = useLocation();
 
-    const buttonClassName = loading ? `${styles.button} ${styles.loading}` : styles.button;
-    
     const createUser = async (data: FormData) => {
         setLoading(true);
+        setErroMessage("");
 
         try {
             const response = await api.post('/user', data);
@@ -101,7 +101,9 @@ export function Register() {
                 navigate("/login");
             }
         } catch (error) {
-            console.error(error);
+            console.error(error)
+            setErroMessage("Erro ao criar o usuário. Verifique se todos os campos foram preenchidos corretamente.");
+            setLoading(false);
         }
     }
 
@@ -258,6 +260,8 @@ export function Register() {
                         </div>
                         {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
+
+                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                     <Button 
                         name={loading ? <FaSpinner className={styles.spin} />  : "CADASTRAR"}
