@@ -1,5 +1,3 @@
-// FontSizeContext.js
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface FontSizeContextType {
