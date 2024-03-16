@@ -10,6 +10,7 @@ import comment_darkTheme from "../..//assets/interaction/comment_darkTheme.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 import { useTheme } from '../../contexts/ThemeProvider/ThemeProvider';
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 import { UserContext } from '../../contexts/UserProvider/UserProvider';
 
 interface PublicationProps {
@@ -19,6 +20,8 @@ interface PublicationProps {
 
 export function Publication({text, image}: PublicationProps) {
     const { darkTheme } = useTheme();
+    const { fontSize} = useFontSize();
+
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
     const [commentVisible, setCommentVisible] = useState(false);
@@ -83,7 +86,7 @@ export function Publication({text, image}: PublicationProps) {
     };
     
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
             <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
                 
             <div className={styles.content}>

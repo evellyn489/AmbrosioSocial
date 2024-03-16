@@ -19,6 +19,7 @@ export function Explore() {
         <div className={styles.container}>
             <Menu isHome={false} isPerfil={false} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
             <div className={styles.content}>
+
                 <div className={styles.publicationsContainer}>
                     {
                         openPublication && (

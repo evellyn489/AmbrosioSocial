@@ -4,6 +4,8 @@ import { FcLike, FcComments } from "react-icons/fc";
 
 import profile_picture from "../../assets/publications/profile_picture.png";
 import { useState } from "react";
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
+
 
 interface NotificationProps {
     name: string;
@@ -13,6 +15,7 @@ interface NotificationProps {
 }
 
 export function Notification(props: NotificationProps) {
+    const { fontSize} = useFontSize();
     const [confirm, setConfirm] = useState(false);
 
     const handleClickConfirm = () => {
@@ -20,7 +23,7 @@ export function Notification(props: NotificationProps) {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
             {
                 props.like && (
                     <>

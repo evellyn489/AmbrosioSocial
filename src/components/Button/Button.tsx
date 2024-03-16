@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 import styles from "./Button.module.scss";
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 
 interface ButtonProps {
     name: string | ReactNode;
@@ -11,9 +12,11 @@ interface ButtonProps {
 }
 
 export function Button(props: ButtonProps) {
+    const { fontSize } = useFontSize();
+
     return(
         <button 
-            className={styles.button} 
+            className={`${styles.button} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}
             type="submit"
             onClick={props.click}
             aria-label={props.label}

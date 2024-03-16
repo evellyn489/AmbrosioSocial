@@ -2,10 +2,12 @@ import { useState, ChangeEvent } from "react";
 import styles from "./Settings.module.scss";
 import { Menu } from "../../components/Menu";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 import { useNavigate } from "react-router-dom";
 
 export function Settings() {
     const { darkTheme, toggleTheme } = useTheme(); 
+    const { fontSize, setFontSizeToSmall, setFontSizeToMedium, setFontSizeToLarge } = useFontSize();
 
     const navigate = useNavigate();
 
@@ -35,10 +37,6 @@ export function Settings() {
         navigate("/login");
     };
 
-    const handleTamanhoChange = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log("Tamanho selecionado:", event.target.value);
-    }
-
     const publicAccount = () => {
         //Funcionalidades da conta pública
         console.log("Conta pública selecionada");
@@ -58,9 +56,9 @@ export function Settings() {
     }
 
     return (
-        <div >
+        <div>
             <Menu isHome={true} isPerfil={false}/>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
                 <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho} aria-label="Botão de alterar tamanho da letra">ALTERAR TAMANHO DA LETRA</button>
                 {opcoesVisiveisTamanho && (
                     <div className={styles.options}>
@@ -71,7 +69,7 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Pequena" 
                                 aria-label="Pequena"
-                                onChange={handleTamanhoChange}
+                                onChange={setFontSizeToSmall}
                             />
                         </div>
                         <div>
@@ -81,7 +79,7 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Média" 
                                 aria-label="Média"
-                                onChange={handleTamanhoChange}
+                                onChange={setFontSizeToMedium}
                             />
                         </div>
                         <div>
@@ -91,7 +89,7 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Grande" 
                                 aria-label="Grande"
-                                onChange={handleTamanhoChange}
+                                onChange={setFontSizeToLarge}
                             />
                         </div>
                     </div>
