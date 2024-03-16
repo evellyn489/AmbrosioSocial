@@ -39,9 +39,7 @@ export function Profile() {
         };
 
         fetchPublications();
-    }, [])
-
-    console.log(publications)
+    }, [publications])
 
     function handleClickFollowing() {
         setFollowing(!following);

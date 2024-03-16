@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styles from "./Publication.module.scss";
 import profile_picture from "../../assets/publications/profile_picture.png";
-import rectangle_photo from "../../assets/publications/rectangle_photo.png"
 import like from "../../assets/interaction/like.png"
 import like_darkTheme from "../../assets/interaction/like_darkTheme.png"
 import like_clicked from "../../assets/interaction/like_clicked.png"
@@ -13,7 +12,12 @@ import { ReadMore } from '../ReadMore';
 import { useTheme } from '../../contexts/ThemeProvider/ThemeProvider';
 import { UserContext } from '../../contexts/UserProvider/UserProvider';
 
-export function Publication({text, image}: { text: string, image: string}) {
+interface PublicationProps {
+    text: string;
+    image?: string;
+}
+
+export function Publication({text, image}: PublicationProps) {
     const { darkTheme } = useTheme();
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
@@ -89,7 +93,11 @@ export function Publication({text, image}: { text: string, image: string}) {
                     <p className={styles.p}>
                         <ReadMore text={text} maxLength={200} />
                     </p>
-                    <img src={`${image}`} alt="foto postada pelo usuário" className={styles.photo}/>
+                    {image && 
+                        (
+                            <img src={`${image}`} alt="foto postada pelo usuário" className={styles.photo}/>
+                        )
+                    }
                 </div>
 
                 <div className={styles.interation}>
