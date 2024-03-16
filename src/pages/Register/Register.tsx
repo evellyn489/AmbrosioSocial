@@ -127,7 +127,7 @@ export function Register() {
             gender: gender || "Feminino",
             visibility: visibility || "Público"
         };
-    
+        
         createUser(combinedData);
       }
     

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import styles from "./Profile.module.scss";
 
@@ -13,12 +13,35 @@ import { Menu } from "../../components/Menu";
 import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider";
 import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { api } from "../../services/axios";
 
+interface PublicationProps {
+    id: string;
+    content: string;
+    image: string;
+}
 
 export function Profile() {
     const [following, setFollowing] = useState(false);
     const [openPublication, setOpenPublication] = useState(false);
+    const [publications, setPublications] = useState<PublicationProps[]>([]);
     const { darkTheme } = useTheme(); 
+
+    useEffect(() => {
+        const fetchPublications = async () => {
+            try {
+              const response = await api.get('/publication');
+              setPublications(response.data);
+              
+            } catch (error) {
+              console.error('Error fetching publications:', error);
+            }
+        };
+
+        fetchPublications();
+    }, [])
+
+    console.log(publications)
 
     function handleClickFollowing() {
         setFollowing(!following);
@@ -53,14 +76,20 @@ export function Profile() {
                 <main>
                     {
                         openPublication && (
-                            <CommentPublication />
+                            <CommentPublication setOpenPublication={setOpenPublication} />
                         )
                     }
-                    <Publication text="O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
-                    De acordo com o percusso de investigações sobre o texto, nas mais diversas correntes teóricas que se debruçam sobre esse objeto, o conceito foi se modificando e se ampliando. Hoje o texto não é considerado uma estrutura pronta, com unidade de sentido completa, pois consideram-se também os processos de planejamento,construção e recepção do texto." />
-
-                    <Publication text="O conceito de texto pode variar a depender da perspectiva teórica adotada para estudá-lo. A palavra texto, ao longo da história, foi ganhando diferentes sentidos, de modo que novas construções foram compreendidas como tal.
-                    De acordo com o percusso de investigações sobre o texto, nas mais diversas correntes teóricas que se debruçam sobre esse objeto, o conceito foi se modificando e se ampliando. Hoje o texto não é considerado uma estrutura pronta, com unidade de sentido completa, pois consideram-se também os processos de planejamento,construção e recepção do texto." />
+                    
+                    {
+                        publications &&
+                        publications.map(publication => (
+                            <Publication 
+                                key={publication.id}
+                                text={publication.content}
+                                image={publication.image}
+                            />
+                        ))
+                    }
                 </main>
             </div>
         </div>

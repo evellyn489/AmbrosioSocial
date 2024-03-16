@@ -15,8 +15,6 @@ export function Explore() {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
     };
 
-    const location = useLocation();
-
     return (
         <div className={styles.container}>
             <Menu isHome={false} isPerfil={false} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
@@ -24,7 +22,7 @@ export function Explore() {
                 <div className={styles.publicationsContainer}>
                     {
                         openPublication && (
-                            <CommentPublication />
+                            <CommentPublication setOpenPublication={setOpenPublication} />
                         )
                     }
 

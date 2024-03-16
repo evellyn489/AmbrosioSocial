@@ -1,38 +1,49 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./CommentPublication.module.scss";
+import { api } from "../../services/axios";
 
-export function CommentPublication() {
-    const [commentPublication, setCommentPublication] = useState<string>("");
+interface PublicationProps {
+    content: string;
+    image?: string;
+    userId: String | null;
+}
+
+interface CommentProps {
+    setOpenPublication: (value: boolean) => void;
+}
+
+export function CommentPublication({ setOpenPublication }: CommentProps) {
+    const [commentPublication, setCommentPublication] = useState("");
+    const [imageLink, setImageLink] = useState("");
     const [commentPublicationError, setCommentPublicationError] = useState<string | null>(null);
-    const [comments, setComments] = useState<string[]>([]);
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        const maxSize = 300 * 1024; 
+    const createPublication = async (data: PublicationProps) => {
+        try {
+            const response = await api.post('/publication', data);
 
-        if (file && file.size <= maxSize) {
-            console.log("Arquivo selecionado:", file);
-            // Realiza ação com o arquivo
-        } else {
-            alert("Por favor, selecione uma imagem menor ou igual a 300 KB.");
-            // Limpa o input de arquivo
-            event.target.value = "";
+            if (response.status == 200) {
+                setOpenPublication(false);
+                alert('Publicação criada')
+            }
+
+        } catch(error) {
+            console.error(error)
         }
-    };
+    }
 
-    const handleCommentClick = () => {
-        if (commentPublication.trim() === '') {
-            setCommentPublication('Por favor, digite um comentário antes de enviar.');
-            return;
+    const handlePublication = () => {
+        const content = commentPublication;
+        const image = imageLink;
+        const userId = localStorage.getItem('id');
+
+        const combinedData = {
+            content,
+            image,
+            userId
         }
 
-        setCommentPublicationError(null);
-
-        setComments([...comments, commentPublication]);
-        setCommentPublication(""); 
-        
-    };
-
+        createPublication(combinedData);
+    }
 
     return (
         <div className={styles.container}>
@@ -46,15 +57,15 @@ export function CommentPublication() {
             {commentPublicationError && <span className={styles.error}>{commentPublicationError}</span>}
 
             <input
-                type="file"
-                id="fileInput"
-                onChange={handleFileChange}
-                accept="image/*"
+                type="text"
+                placeholder="Link da imagem"
+                id="inputLink"
                 aria-label="Adicionar imagem"
-                className={styles.file}
+                className={styles.link}
+                onChange={(event) => setImageLink(event.target.value)}
             />
 
-            <button type="button" aria-label="Publicar" onClick={handleCommentClick}>Publicar</button>
+            <button type="button" aria-label="Publicar" onClick={handlePublication}>Publicar</button>
         </div>
     );
 }

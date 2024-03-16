@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from "./Publication.module.scss";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import rectangle_photo from "../../assets/publications/rectangle_photo.png"
@@ -11,8 +11,9 @@ import comment_darkTheme from "../..//assets/interaction/comment_darkTheme.png"
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 import { useTheme } from '../../contexts/ThemeProvider/ThemeProvider';
+import { UserContext } from '../../contexts/UserProvider/UserProvider';
 
-export function Publication({text}: { text: string}) {
+export function Publication({text, image}: { text: string, image: string}) {
     const { darkTheme } = useTheme();
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<string[]>([]);
@@ -62,6 +63,8 @@ export function Publication({text}: { text: string}) {
         }
     };
 
+    const { userData } = useContext(UserContext);
+
 
     const handleCommentClick = () => {
         if (commentText.trim() === '') {
@@ -81,12 +84,12 @@ export function Publication({text}: { text: string}) {
                 
             <div className={styles.content}>
                 <div className={styles.information}>
-                    <h1>Nome do usuário</h1>
+                    <h1>{userData?.name}</h1>
                     
                     <p className={styles.p}>
                         <ReadMore text={text} maxLength={200} />
                     </p>
-                    <img src={rectangle_photo} alt="foto postada pelo usuário" className={styles.photo}/>
+                    <img src={`${image}`} alt="foto postada pelo usuário" className={styles.photo}/>
                 </div>
 
                 <div className={styles.interation}>

@@ -36,7 +36,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         const idUser = localStorage.getItem('id');
         const response = await api.get(`/user/${idUser}`, {
           headers: {
-            Authorization: `Bearer ${authToken}`
+            authorization: `Bearer ${authToken}`
           }
         });
         const { name, id, email } = response.data;
