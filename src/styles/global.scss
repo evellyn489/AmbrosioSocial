@@ -7,14 +7,29 @@
 body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+
+    .smallFont {
+        font-size: small;
+      }
+      
+      .mediumFont {
+        font-size: medium;
+      }
+      
+      .largeFont {
+        font-size: larger;
+      }
+      
 }
+
+
 
 .light-theme {
     --background-color: white;
     --text-color: "black";
     --likeClicked: #004AAD;
 }
-   
+
 .dark-theme {
     --background-color: #121212;
     --text-color: white;
@@ -22,16 +37,16 @@ body {
     ::-webkit-scrollbar {
         width: 10px;
     }
-    
-     ::-webkit-scrollbar-track {
+
+    ::-webkit-scrollbar-track {
         background: #222;
-     }
-    
-     ::-webkit-scrollbar-thumb {
+    }
+
+    ::-webkit-scrollbar-thumb {
         background: #444;
-     }
-    
-     ::-webkit-scrollbar-thumb:hover {
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
 }

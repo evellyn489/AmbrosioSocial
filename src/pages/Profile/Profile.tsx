@@ -12,6 +12,7 @@ import { Publication } from "../../components/Publication";
 import { Menu } from "../../components/Menu";
 import { CommentPublication } from "../../components/CommentPublication";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider";
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 import { UserContext } from "../../contexts/UserProvider/UserProvider";
 import { api } from "../../services/axios";
 
@@ -26,6 +27,8 @@ export function Profile() {
     const [openPublication, setOpenPublication] = useState(false);
     const [publications, setPublications] = useState<PublicationProps[]>([]);
     const { darkTheme } = useTheme(); 
+    const { fontSize } = useFontSize();
+
 
     const { userId } = useParams();
 
@@ -58,7 +61,8 @@ export function Profile() {
             
             <Menu isHome={false} isPerfil={true} openPublication={openPublication} setOpenPublication={setOpenPublication}/>
 
-            <div className={styles.asideMain}>
+            <div className={`${styles.asideMain} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
+            
                 <aside style = {{background: darkTheme ? "#000" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}>
                     <div className={styles.foto}>
                         <img src={profile} alt="Foto de perfil do usuário" />
@@ -79,8 +83,8 @@ export function Profile() {
                         )
                     }
                 </aside>
-
-                <main>
+                
+                <main className={`${styles.main} ${fontSize === 'small' ? styles.smallFont : fontSize === 'medium' ? styles.mediumFont : styles.largeFont}`}>
                     {
                         openPublication && (
                             <CommentPublication setOpenPublication={setOpenPublication} />

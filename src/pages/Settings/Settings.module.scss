@@ -18,8 +18,20 @@
 
         font-family: 'Poppins', 'serif';
         cursor: pointer;
-    }
 
+        &.smallFont {
+            font-size: 8pt;
+        }
+
+        &.mediumFont {
+            font-size: 10pt;
+        }
+
+        &.largeFont {
+            font-size: 12pt;
+        }
+    }
+    
     .transitionButton {
         transition: background-color 0.3s ease;
     } 

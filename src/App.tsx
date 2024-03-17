@@ -1,14 +1,18 @@
+import './styles/global.scss';
+import { AppRoutes } from './Routes';
+import { ThemeProvider } from '../src/contexts/ThemeProvider';
+import { FontSizeProvider } from './contexts/FontSizeContext/FontSizeContext';
 import "./styles/global.scss";
-import { AppRoutes } from "./Routes";
-import { ThemeProvider } from "../src/contexts/ThemeProvider";
 import { UserProvider } from "./contexts/UserProvider";
 
 export function App() {
   return (
-    <ThemeProvider> 
-      <UserProvider>
+    <FontSizeProvider>
+      <ThemeProvider>
+        <UserProvider>
         <AppRoutes />
-      </UserProvider>
-    </ThemeProvider>
-  )
+        </UserProvider>
+      </ThemeProvider>
+    </FontSizeProvider>
+  );
 }
