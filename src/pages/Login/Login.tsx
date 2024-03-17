@@ -10,8 +10,7 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { api } from "../../services/axios";
 import { useNavigate } from "react-router-dom";
-import { FaSpinner } from "react-icons/fa";
-
+import { Spin } from "../../components/Spin";
 
 const loginSchema = z.object({
     email: z.string().email("Insira um email válido").transform(value => value.trim()).refine(value => {
@@ -97,7 +96,7 @@ export function Login() {
 
                     <div className={styles.buttonLink}>
                         <Button 
-                            name={loading ? <FaSpinner className={styles.spin} />  : "ENTRAR"}
+                            name={loading ? <Spin/>: "ENTRAR"}
                             label="Botão para logar na rede social" 
                             disabled={loading}
                         /> 

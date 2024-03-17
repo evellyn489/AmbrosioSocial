@@ -9,8 +9,7 @@ import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaSpinner } from 'react-icons/fa';
-
+import { Spin } from "../../components/Spin";
 import { api } from "../../services/axios";
 
 const minAno = 2011;
@@ -264,10 +263,9 @@ export function Register() {
                     {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                     <Button 
-                        name={loading ? <FaSpinner className={styles.spin} />  : "CADASTRAR"}
-                        label="Botão para enviar os dados de cadastro"
-                        disabled={loading} 
-                        
+                    name={loading ? <Spin /> : "CADASTRAR"}
+                    label="Botão para enviar os dados de cadastro"
+                    disabled={loading} 
                     />
                 </form>
             </main>
