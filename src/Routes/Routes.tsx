@@ -18,7 +18,7 @@ export function AppRoutes() {
                 <Route path="/login" element={<Login />}/>
                 <Route path="/forgotpassword" element={<ForgotPassword />}/>
                 <Route path="/explore" element={<Explore />}/>
-                <Route path="/profile" element={<Profile />}/>
+                <Route path="/profile/:userId" element={<Profile />}/>
                 <Route path="/settings" element={<Settings />}/>
                 <Route path="/editdata" element={<EditData />}/>
             </Routes>

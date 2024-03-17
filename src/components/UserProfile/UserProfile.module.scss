@@ -1,0 +1,22 @@
+div.container {
+    width: 100%;
+
+    border: 1px solid #EEE;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: #fff;
+
+    padding: 1em;
+    border-radius: 10px;
+
+    margin-bottom: 1em;
+
+    cursor: pointer;
+
+    img {
+        width: 20%;
+    }
+}

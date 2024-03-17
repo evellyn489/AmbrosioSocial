@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./CommentPublication.module.scss";
+
 import { api } from "../../services/axios";
 
 interface PublicationProps {
@@ -15,7 +16,6 @@ interface CommentProps {
 export function CommentPublication({ setOpenPublication }: CommentProps) {
     const [commentPublication, setCommentPublication] = useState("");
     const [imageLink, setImageLink] = useState("");
-    const [commentPublicationError, setCommentPublicationError] = useState<string | null>(null);
 
     const createPublication = async (data: PublicationProps) => {
         try {
@@ -54,7 +54,6 @@ export function CommentPublication({ setOpenPublication }: CommentProps) {
                 className={styles.textareaPublication}
                 aria-label="Caixa de texto para digitar algo na publicação"
             />
-            {commentPublicationError && <span className={styles.error}>{commentPublicationError}</span>}
 
             <input
                 type="text"

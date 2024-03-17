@@ -77,7 +77,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
 
             {
                 clickSearch && (
-                    <Search />
+                    <Search setClickSearch={setClickSearch} />
                 )
             }
             
@@ -99,7 +99,7 @@ export function Menu({ isHome, isPerfil, openPublication, setOpenPublication }: 
                         />
                     </a>
                 ) : (
-                    <a href="/profile" aria-label="Acessar perfil">
+                    <a href={`/profile/${localStorage.getItem("id")}`} aria-label="Acessar perfil">
                         <img
                             src={user}
                             alt="ícone branco de usuário como pessoa"

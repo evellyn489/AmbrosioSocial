@@ -2,6 +2,7 @@ div.container {
     width: 50%;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -14,5 +15,34 @@ div.container {
 
     input {
         width: 100%;
+    }
+
+    div.input {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        gap: 20px;
+
+        margin-bottom: 2em;
+    }
+
+    div.results {
+        width: 100%;
+        height: 420px;
+
+        padding-top: 3em;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+ 
+        overflow-y: scroll;
+
+        div.userProfile {
+            width: 60%;
+        }
     }
 }

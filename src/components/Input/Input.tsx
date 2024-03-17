@@ -5,6 +5,7 @@ interface InputProps<T extends FieldValues> {
     type: string;
     id: string;
     placeholder: string;
+    onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     register?: UseFormRegister<T>;
     label: string;
     error: string;
@@ -27,6 +28,7 @@ export function Input<T extends FieldValues>(props: InputProps<T>) {
             aria-label={label}
             aria-describedby={error}
             aria-required
+            onChange={props.onchange}
             defaultValue={defaultValue}
             style={textStyle}
             {...registerProps}

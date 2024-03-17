@@ -5,7 +5,7 @@ import styles from "./Profile.module.scss";
 import profile from "../../assets/publications/profile_picture.png";
 import { FaCheck } from "react-icons/fa";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
@@ -27,10 +27,13 @@ export function Profile() {
     const [publications, setPublications] = useState<PublicationProps[]>([]);
     const { darkTheme } = useTheme(); 
 
+    const { userId } = useParams();
+
+
     useEffect(() => {
         const fetchPublications = async () => {
             try {
-              const response = await api.get('/publication');
+              const response = await api.get(`/user/${userId}/publications`);
               setPublications(response.data);
               
             } catch (error) {
@@ -45,8 +48,10 @@ export function Profile() {
         setFollowing(!following);
     }
 
-    const navigate = useNavigate();
     const { userData } = useContext(UserContext)
+    
+    const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <div className={styles.container}>
@@ -56,10 +61,10 @@ export function Profile() {
             <div className={styles.asideMain}>
                 <aside style = {{background: darkTheme ? "#000" : "linear-gradient(to bottom, #9431D1, #6788CD)"}}>
                     <div className={styles.foto}>
-                        <img src={profile} alt="" />
+                        <img src={profile} alt="Foto de perfil do usuário" />
                     </div>
 
-                    <strong>{userData?.name}</strong>
+                    <strong>{userId != localStorage.getItem('id') ? location.state.name : userData?.name}</strong>
 
                     <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={handleClickFollowing} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
 
@@ -68,7 +73,11 @@ export function Profile() {
                         <p>y seguindo</p>
                     </div>
 
-                    <Button name="Editar dados" label="Botão de editar os dados do usuário" click={() => navigate("/editdata")}/>
+                    {
+                        localStorage.getItem('id') == userId && (
+                            <Button name="Editar dados" label="Botão de editar os dados do usuário" click={() => navigate("/editdata")}/>
+                        )
+                    }
                 </aside>
 
                 <main>
@@ -79,7 +88,7 @@ export function Profile() {
                     }
                     
                     {
-                        publications &&
+                        publications.length != 0 ? (
                         publications.map(publication => (
                             <Publication 
                                 key={publication.id}
@@ -87,6 +96,9 @@ export function Profile() {
                                 image={publication.image}
                             />
                         ))
+                        ) : (
+                            <p style={{color: darkTheme ? "#fff" : "#000", lineHeight: "70vh"}}>Nenhuma publicação. Faça sua primeira publicação</p>
+                        )
                     }
                 </main>
             </div>
