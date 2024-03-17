@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react"; 
+import { useState, ChangeEvent, useEffect } from "react"; 
 import styles from "./Settings.module.scss";
 import { Menu } from "../../components/Menu";
 import { useTheme } from "../../contexts/ThemeProvider/ThemeProvider"; 
@@ -9,11 +9,56 @@ export function Settings() {
     const { darkTheme, toggleTheme } = useTheme(); 
     const { fontSize, setFontSizeToSmall, setFontSizeToMedium, setFontSizeToLarge } = useFontSize();
 
+    const fontSizeClass = fontSize === 'small' ? styles.smallFont : fontSize === 'medium' ? styles.mediumFont : styles.largeFont;
+
+
     const navigate = useNavigate();
 
     const [opcoesVisiveisTamanho, setOpcoesVisiveisTamanho] = useState(false);
     const [opcoesVisiveisVisibilidade, setOpcoesVisiveisVisibilidade] = useState(false);
 
+    // Função para definir o tamanho da fonte com base no valor armazenado no localStorage
+    const setFontSizeFromLocalStorage = () => {
+        const storedFontSize = localStorage.getItem('fontSize');
+        if (storedFontSize) {
+            switch (storedFontSize) {
+                case 'small':
+                    setFontSizeToSmall();
+                    break;
+                case 'medium':
+                    setFontSizeToMedium();
+                    break;
+                case 'large':
+                    setFontSizeToLarge();
+                    break;
+            }
+        } else {
+            setFontSizeToMedium(); // Definição padrão para "Média"
+        }
+    };
+
+    // Efeito para recuperar a preferência de tamanho de fonte ao montar o componente
+    useEffect(() => {
+        setFontSizeFromLocalStorage();
+    }, []);
+
+    // Funções modificadas para armazenar a preferência de tamanho de fonte no localStorage
+    const handleFontSizeChange = (size: 'small' | 'medium' | 'large') => {
+        localStorage.setItem('fontSize', size);
+        switch (size) {
+            case 'small':
+                setFontSizeToSmall();
+                break;
+            case 'medium':
+                setFontSizeToMedium();
+                break;
+            case 'large':
+                setFontSizeToLarge();
+                break;
+        }
+    };
+
+    // Restante do código...
     const toggleOpcoesVisiveisTamanho = () => {
         setOpcoesVisiveisTamanho(!opcoesVisiveisTamanho);
         
@@ -58,9 +103,10 @@ export function Settings() {
     return (
         <div>
             <Menu isHome={true} isPerfil={false}/>
-            <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
-                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisTamanho} aria-label="Botão de alterar tamanho da letra">ALTERAR TAMANHO DA LETRA</button>
-                {opcoesVisiveisTamanho && (
+                <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
+
+                    <button className={`${styles.transitionButton} ${fontSizeClass}`} onClick={toggleOpcoesVisiveisTamanho} aria-label="Botão de alterar tamanho da letra">ALTERAR TAMANHO DA LETRA</button>
+                    {opcoesVisiveisTamanho && (
                     <div className={styles.options}>
                         <div>
                             <label htmlFor="Pequena">Pequena</label>
@@ -69,7 +115,8 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Pequena" 
                                 aria-label="Pequena"
-                                onChange={setFontSizeToSmall}
+                                checked={fontSize === 'small'}
+                                onChange={() => handleFontSizeChange('small')}
                             />
                         </div>
                         <div>
@@ -79,7 +126,8 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Média" 
                                 aria-label="Média"
-                                onChange={setFontSizeToMedium}
+                                checked={fontSize === 'medium'}
+                                onChange={() => handleFontSizeChange('medium')}
                             />
                         </div>
                         <div>
@@ -89,14 +137,14 @@ export function Settings() {
                                 name="Tamanho" 
                                 value="Grande" 
                                 aria-label="Grande"
-                                onChange={setFontSizeToLarge}
+                                checked={fontSize === 'large'}
+                                onChange={() => handleFontSizeChange('large')}
                             />
                         </div>
                     </div>
                 )}
-
-                <button className={styles.transitionButton} onClick={toggleTheme} aria-label="Botão de alterar tema do sistema">ALTERAR TEMA DO SISTEMA</button> 
-                <button className={styles.transitionButton} onClick={toggleOpcoesVisiveisVisibilidade} aria-label="Botão de alterar visibilidade da conta">ALTERAR VISIBILIDADE DA CONTA</button>
+                <button className={`${styles.transitionButton} ${fontSizeClass}`} onClick={toggleTheme} aria-label="Botão de alterar tema do sistema">ALTERAR TEMA DO SISTEMA</button> 
+                <button className={`${styles.transitionButton} ${fontSizeClass}`} onClick={toggleOpcoesVisiveisVisibilidade} aria-label="Botão de alterar visibilidade da conta">ALTERAR VISIBILIDADE DA CONTA</button>
                 {opcoesVisiveisVisibilidade && (
                     <div className={styles.options}>
                         <div>
@@ -122,7 +170,7 @@ export function Settings() {
                     </div>
                 )}
 
-                <button className={styles.transitionButton} onClick={handleLogout} aria-label="Botão de sair da conta">SAIR DA CONTA</button>
+                <button className={`${styles.transitionButton} ${fontSizeClass}`} onClick={handleLogout} aria-label="Botão de sair da conta">SAIR DA CONTA</button>
                 
             </div>
         </div>
