@@ -78,6 +78,7 @@ export function Settings() {
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('id');
+        localStorage.removeItem('isFollowing');
 
         navigate("/login");
     };

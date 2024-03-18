@@ -19,19 +19,31 @@ import { api } from "../../services/axios";
 interface PublicationProps {
     id: string;
     content: string;
-    image: string;
+    image?: string;
+    userId: string;
+    userName: string;
+}
+
+interface UserProps {
+    name: string;
 }
 
 export function Profile() {
     const [following, setFollowing] = useState(false);
     const [openPublication, setOpenPublication] = useState(false);
     const [publications, setPublications] = useState<PublicationProps[]>([]);
+    const [followersCount, setFollowersCount] = useState(0);
+    const [followingCount, setFollowingCount] = useState(0);
+    const [user, setUser] = useState<UserProps | null>(null);
+
     const { darkTheme } = useTheme(); 
     const { fontSize } = useFontSize();
-
-
     const { userId } = useParams();
 
+    const { userData } = useContext(UserContext)
+    
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const fetchPublications = async () => {
@@ -47,14 +59,100 @@ export function Profile() {
         fetchPublications();
     }, [publications])
 
-    function handleClickFollowing() {
-        setFollowing(!following);
-    }
+    useEffect(() => {
+        const fetchUserData = async () => {
+          try {
+            const response = await api.get(`/user/${userId}`);
+            setUser(response.data);
 
-    const { userData } = useContext(UserContext)
+          } catch (error) {
+            console.error('Erro ao buscar dados do usuário:', error);
+          }
+        };
     
-    const navigate = useNavigate();
-    const location = useLocation();
+        fetchUserData();
+      }, [userId]);
+
+
+    const followUser = async (id: string, followingId: string) => {
+        try {
+           const response = await api.post(`/follow/users/${id}/follow`, { followingId });
+           return response.data;
+        } catch (error) {
+           console.error('Erro ao seguir usuário:', error);
+           throw error;
+        }
+    };
+
+    const unfollowUser = async (id: string, followingId: string) => {
+        try {
+           const response = await api.delete(`/follow/users/${id}/unfollow/${followingId}`);
+           return response.data;
+        } catch (error) {
+           console.error('Erro ao parar de seguir usuário:', error);
+           throw error;
+        }
+    };
+
+    const getFollowersUsers = async (id: string) => {
+        try {
+           const response = await api.get(`/follow/users/${id}/followers`);
+           return response.data;
+        } catch (error) {
+           console.error('Erro ao buscar seguidores do usuário:', error);
+           throw new Error("Erro ao buscar seguidores do usuário");
+        }
+    };
+
+    const getFollowingUsers = async (id: string) => {
+        try {
+           const response = await api.get(`/follow/users/${id}/following`);
+           return response.data;
+
+        } catch (error) {
+           console.error('Erro ao buscar usuários seguidos:', error);
+           throw error;
+        }
+    };
+
+    const fetchFollowData = async () => {
+        try {
+            if (userId) {
+                const followersResponse = await getFollowersUsers(userId);
+                setFollowersCount(followersResponse.length);
+                
+                const followingResponse = await getFollowingUsers(userId);
+                setFollowingCount(followingResponse.length);
+            }
+        } catch (error) {
+          console.error('Erro ao buscar dados de seguidores e seguindo:', error);
+        }
+     };
+
+    useEffect(() => {
+        fetchFollowData();
+        const isFollowing = localStorage.getItem('isFollowing');
+
+        if (isFollowing) {
+            setFollowing(JSON.parse(isFollowing));
+        }
+    }, [userId, userData]);
+    
+    const handleClickFollowing = async (followingId: string) => {
+        if (userData?.id) {
+            if (following) {
+                await unfollowUser(userData.id, followingId);
+            } else {
+                await followUser(userData.id, followingId);
+            }
+        }
+        setFollowing(!following);
+    
+        localStorage.removeItem('isFollowing');
+        localStorage.setItem('isFollowing', JSON.stringify(!following));
+
+        fetchFollowData();
+    };
 
     return (
         <div className={styles.container}>
@@ -68,13 +166,21 @@ export function Profile() {
                         <img src={profile} alt="Foto de perfil do usuário" />
                     </div>
 
-                    <strong>{userId != localStorage.getItem('id') ? location.state.name : userData?.name}</strong>
+                    <strong>{user?.name}</strong>
 
-                    <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={handleClickFollowing} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
-
+                    {
+                        userId != userData?.id && (
+                            <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={() =>{
+                                if (userId) {
+                                    handleClickFollowing(userId);
+                                }
+                            }} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
+                        )
+                    }
+    
                     <div className={styles.data}>
-                        <p>x seguidores</p>
-                        <p>y seguindo</p>
+                        <p>{followersCount} seguidores</p>
+                        <p>{followingCount} seguindo</p>
                     </div>
 
                     {
@@ -98,6 +204,8 @@ export function Profile() {
                                 key={publication.id}
                                 text={publication.content}
                                 image={publication.image}
+                                userId={publication.userId}
+                                userName={user?.name}
                             />
                         ))
                         ) : (

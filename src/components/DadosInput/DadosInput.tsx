@@ -64,7 +64,7 @@ export function DadosInput({ onSubmit, defaultValues, errorColor = 'red', button
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
             <div className={styles.inputs}>
-                <Input type="text" placeholder="Nome" id="user" label="Modificar nome" error="errorNome" register={register} textColor="black"/>
+                <Input type="text" placeholder="Nome - Ex: Ana Silva" id="user" label="Modificar nome" error="errorNome" register={register} textColor="black"/>
                 {errors.user && <span className={`${styles.errorMessage} ${styles[errorColor]}`} id="errorNome">{errors.user.message}</span>}
 
                 <Input type="text" placeholder="Email" id="email2" label="Modificar email" error="errorEmail" register={register} textColor="black"/>

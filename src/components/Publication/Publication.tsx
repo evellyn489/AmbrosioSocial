@@ -16,9 +16,11 @@ import { UserContext } from '../../contexts/UserProvider/UserProvider';
 interface PublicationProps {
     text: string;
     image?: string;
+    userId: string;
+    userName?: string;
 }
 
-export function Publication({text, image}: PublicationProps) {
+export function Publication({ text, image, userId, userName }: PublicationProps) {
     const { darkTheme } = useTheme();
     const { fontSize} = useFontSize();
 
@@ -91,7 +93,7 @@ export function Publication({text, image}: PublicationProps) {
                 
             <div className={styles.content}>
                 <div className={styles.information}>
-                    <h1>{userData?.name}</h1>
+                    <h1>{userId != userData?.id ? userName: userData?.name}</h1>
                     
                     <p className={styles.p}>
                         <ReadMore text={text} maxLength={200} />
