@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from "./Publication.module.scss";
 import profile_picture from "../../assets/publications/profile_picture.png";
 import like from "../../assets/interaction/like.png"
@@ -18,17 +18,31 @@ interface PublicationProps {
     image?: string;
     userId: string;
     userName?: string;
+    publicationId: string;
 }
 
-export function Publication({ text, image, userId, userName }: PublicationProps) {
+export function Publication({ text, image, userId, userName, publicationId }: PublicationProps) {
     const { darkTheme } = useTheme();
     const { fontSize} = useFontSize();
 
-    const [likes, setLikes] = useState(0);
-    const [comments, setComments] = useState<string[]>([]);
+    const likesKey = `likes_${publicationId}`;
+    const commentsKey = `comments_${publicationId}`;
+
+    const [likes, setLikes] = useState<number>(() => {
+        const storedLikes = localStorage.getItem(likesKey);
+        return storedLikes ? parseInt(storedLikes) : 0;
+    });
+
+    const [comments, setComments] = useState<string[]>(() => {
+        const storedComments = localStorage.getItem(commentsKey);
+        return storedComments ? JSON.parse(storedComments) : [];
+    });
+
     const [commentVisible, setCommentVisible] = useState(false);
     const [commentText, setCommentText] = useState<string>('');
-    const [likeClicked, setLikeClicked] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(() => {
+        return localStorage.getItem(likesKey) === '1';
+    });
     const [likeIcon, setLikeIcon] = useState(like);
     const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
     const [commentError, setCommentError] = useState<string | null>(null);
@@ -41,11 +55,21 @@ export function Publication({ text, image, userId, userName }: PublicationProps)
         setCommentText(event.target.value); 
     };
 
+    useEffect(() => {
+        localStorage.setItem(`likes_${publicationId}`, likes.toString());
+        console.log(localStorage.setItem(`likes_${publicationId}`, likes.toString()))
+    }, [likes, userId]);
+
+    useEffect(() => {
+        localStorage.setItem(`comments_${publicationId}`, JSON.stringify(comments));
+    }, [comments, userId]);
+
     const handleLikeClick = () => {
         
         if (!likeClicked) {
             setLikes(likes + 1);
             setLikeClicked(true);
+            localStorage.setItem(likesKey, '1');
 
             if (!darkTheme){
                 setLikeIcon(like_clicked);
@@ -59,6 +83,7 @@ export function Publication({ text, image, userId, userName }: PublicationProps)
         } else {
             setLikes(likes - 1);
             setLikeClicked(false);
+            localStorage.removeItem(likesKey);
             setLikeIcon(like);
             setLikeNumColor(styles.defaultNumColor);
         }
@@ -74,18 +99,20 @@ export function Publication({ text, image, userId, userName }: PublicationProps)
 
     const { userData } = useContext(UserContext);
 
-
     const handleCommentClick = () => {
         if (commentText.trim() === '') {
             setCommentError('Por favor, digite um comentário antes de enviar.');
             return;
         }
-
+    
         setCommentError(null);
-
-        setComments([...comments, commentText]);
+    
+        const newCommentList = [...comments, commentText];
+        setComments(newCommentList); 
+        localStorage.setItem(commentsKey, JSON.stringify(newCommentList));
         setCommentText(""); 
     };
+    
     
     return (
         <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
@@ -107,13 +134,12 @@ export function Publication({ text, image, userId, userName }: PublicationProps)
 
                 <div className={styles.interation}>
                     <button 
-                         className={`${styles.like} ${darkTheme ? styles['likeDark'] : ''} ${likeClicked ? styles['likeClicked'] : ''}`}
+                        className={`${styles.like} ${darkTheme ? styles['likeDark'] : ''} ${likes > 0 ? styles['likeClicked'] : ''}`}
 
                         onClick={handleLikeClick}
-                        aria-label={likeClicked ? 'Descurtir' : 'Curtir'}
+                        aria-label={likes > 0 ? 'Descurtir' : 'Curtir'}
                     >
-                        <img src={darkTheme ? (likeClicked ? like_clickedDark : like_darkTheme) : (likeClicked ? like_clicked : likeIcon)} alt="botão de curtida" title={likeClicked ? 'Descurtir' : 'Curtir'}/>
-
+                        <img src={darkTheme ? (likes > 0 ? like_clickedDark : like_darkTheme) : (likes > 0 ? like_clicked : like)} alt="botão de curtida" title={likes > 0 ? 'Descurtir' : 'Curtir'}/>
                         <span className={likeNumColor}>{likes}</span>
                     </button>
 
@@ -130,7 +156,7 @@ export function Publication({ text, image, userId, userName }: PublicationProps)
 
                 <div className={`${styles.commentSpace} ${commentVisible && styles.visible}`}>
                     {comments.map((comment, index) => (
-                        <Comment key={index} nomeUsuario="Nome do usuário" texto={comment} />
+                        <Comment key={index} nomeUsuario={userId != userData?.id ? userData?.name : userName} texto={comment} />
                     ))}
                     
                     <div className={styles.reply}>

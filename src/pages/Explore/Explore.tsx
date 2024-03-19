@@ -43,6 +43,7 @@ export function Explore() {
 
         fetchFollowingPosts();
     }, []);
+    console.log(publications)
 
     return (
         <div className={styles.container}>
@@ -62,6 +63,7 @@ export function Explore() {
                                 <Publication
                                     key={publication.id}
                                     text={publication.content}
+                                    publicationId={publication.id}
                                     image={publication.image}
                                     userId={publication.userId}
                                     userName={publication.user.name}

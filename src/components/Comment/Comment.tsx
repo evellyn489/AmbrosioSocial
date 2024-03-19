@@ -3,7 +3,7 @@ import profile_picture from "../../assets/publications/profile_picture.png";
 import { ReadMore } from '../ReadMore';
 
 interface ComentarioProps {
-    nomeUsuario: string;
+    nomeUsuario?: string;
     texto: string;
 }
 
