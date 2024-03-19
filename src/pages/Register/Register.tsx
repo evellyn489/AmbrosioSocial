@@ -7,10 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
+import { Spin } from "../../components/Spin";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { Spin } from "../../components/Spin";
 import { api } from "../../services/axios";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const minAno = 2011;
 
@@ -77,7 +80,6 @@ interface FormDataFromLocation {
 
 export function Register() {
     const [loading, setLoading] = useState(false);
-    const [errorMessage, setErroMessage] = useState("");
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<CreateUserFormData>({
         resolver: zodResolver(createUserFormSchema)
@@ -89,19 +91,21 @@ export function Register() {
 
     const createUser = async (data: FormData) => {
         setLoading(true);
-        setErroMessage("");
 
         try {
             const response = await api.post('/user', data);
 
             if(response.status === 200) {
-                alert("Conta criada com sucesso!");
+                toast.success("Conta criada com sucesso!");
+
                 setLoading(false);
-                navigate("/login");
+
+                setTimeout(() => {
+                    navigate("/login");
+                }, 2000);
             }
         } catch (error) {
-            console.error(error)
-            setErroMessage("Erro ao criar o usuário. Verifique se todos os campos foram preenchidos corretamente.");
+            toast.error("Erro ao criar o usuário. Verifique se todos os campos foram preenchidos corretamente.");
             setLoading(false);
         }
     }
@@ -132,6 +136,7 @@ export function Register() {
     
     return (
         <div className={styles.container}>
+            <ToastContainer />
             <Logo />
 
             <main className={styles.titleForm}>
@@ -259,8 +264,6 @@ export function Register() {
                         </div>
                         {errors.visibilidade && <span id="errorVisibilidade">{errors.visibilidade.message}</span>}
                     </div>
-
-                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                     <Button 
                     name={loading ? <Spin /> : "CADASTRAR"}

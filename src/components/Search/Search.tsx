@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { Input } from "../Input";
 import styles from "./Search.module.scss";
-import { api } from "../../services/axios";
+
+import { Input } from "../Input";
 import { UserProfile } from "../UserProfile/UserProfile";
 import { Button } from "../Button";
+
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/axios";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface SearchProps {
     id: string;
@@ -18,7 +23,6 @@ interface SearchUserProps {
 export function Search({ setClickSearch }: SearchUserProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState<SearchProps[]>([]);
-    const [errorMessage, setErrorMessage] = useState('');
     
     const navigate = useNavigate();
 
@@ -30,7 +34,7 @@ export function Search({ setClickSearch }: SearchUserProps) {
             navigate(`/profile/${userId}`, { state: userProfile.data })
 
         } catch (error) {
-            console.error(error)
+            toast.error("Erro ao buscar o usuário pesquisado. Verifique se o termo pesquisado foi inserido corretamente.");
         }
     }
 
@@ -40,13 +44,14 @@ export function Search({ setClickSearch }: SearchUserProps) {
             setSearchResults(response.data)
 
         } catch(error) {
-            console.error(error);
-            setErrorMessage("Erro ao pesquisar. Verifique se o termo pesquisado foi inserido corretamente.");
+            toast.error("Erro ao pesquisar. Verifique se o termo pesquisado foi inserido corretamente.");
         }
     }
 
     return (
         <div className={styles.container}>
+            <ToastContainer />
+
             <div className={styles.input}>
                 <Input 
                     type="text" 
@@ -60,8 +65,6 @@ export function Search({ setClickSearch }: SearchUserProps) {
 
                 <Button name="Pesquisar" click={handleSearch} label="Pesquisar"/>
             </div>
-
-            {errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
 
             <div className={styles.results}>
                 <div className={styles.userProfile}>

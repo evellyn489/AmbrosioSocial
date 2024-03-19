@@ -3,6 +3,10 @@ import styles from "./CommentPublication.module.scss";
 
 import { api } from "../../services/axios";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Spin } from "../Spin";
+
 interface PublicationProps {
     content: string;
     image?: string;
@@ -16,18 +20,25 @@ interface CommentProps {
 export function CommentPublication({ setOpenPublication }: CommentProps) {
     const [commentPublication, setCommentPublication] = useState("");
     const [imageLink, setImageLink] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const createPublication = async (data: PublicationProps) => {
+        setLoading(true);
+
         try {
             const response = await api.post('/publication', data);
 
             if (response.status == 200) {
-                setOpenPublication(false);
-                alert('Publicação criada')
+                toast.success("Publicação criada com sucesso.");
+                setLoading(false);
+
+                setTimeout(() => {
+                    setOpenPublication(false);
+                }, 2000);
             }
 
         } catch(error) {
-            console.error(error)
+            toast.error("Erro ao criar publicação.");
         }
     }
 
@@ -47,6 +58,7 @@ export function CommentPublication({ setOpenPublication }: CommentProps) {
 
     return (
         <div className={styles.container}>
+            <ToastContainer />
             <textarea 
                 value={commentPublication}  
                 onChange={(event) => setCommentPublication(event.target.value)}  
@@ -64,7 +76,14 @@ export function CommentPublication({ setOpenPublication }: CommentProps) {
                 onChange={(event) => setImageLink(event.target.value)}
             />
 
-            <button type="button" aria-label="Publicar" onClick={handlePublication}>Publicar</button>
+            <button 
+                type="button" 
+                disabled={loading} 
+                aria-label="Publicar" 
+                onClick={handlePublication}
+            >
+                {loading ? <Spin /> : "Publicar"}
+            </button>
         </div>
     );
 }

@@ -8,9 +8,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Logo } from "../../components/Logo";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { Spin } from "../../components/Spin";
+
 import { api } from "../../services/axios";
 import { useNavigate } from "react-router-dom";
-import { Spin } from "../../components/Spin";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const loginSchema = z.object({
     email: z.string().email("Insira um email válido").transform(value => value.trim()).refine(value => {
@@ -30,7 +34,6 @@ interface formData {
 }
 
 export function Login() {
-    const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<loginFormData>({
@@ -39,28 +42,29 @@ export function Login() {
 
     const navigate = useNavigate();
 
-
     const makeLogin = async (data: formData) => {
         setLoading(true)
-        setErrorMessage("");
 
         try {
             const response = await api.post('/auth/login', data)
 
             if (response.status == 200) {
+                toast.success('Login realizado com sucesso!');
+
                 const { authToken, user } = response.data;
                 localStorage.setItem('authToken', authToken);
                 localStorage.setItem('id', user.id);
 
-                alert('Usúrio logado!');
                 setLoading(false);
 
-                navigate('/explore', { state: user });
+                setTimeout(() => {
+                    navigate('/explore', { state: user });
+                }, 2000);
             }
 
         } catch(error) {
-            console.error(error);
-            setErrorMessage("Erro ao fazer login. Verifique se o email e senha foram inseridos corretamente.");
+            toast.error("Erro ao fazer login. Verifique se o email e senha foram inseridos corretamente.");
+           
             setLoading(false);
         }
     }
@@ -80,6 +84,7 @@ export function Login() {
 
     return(
         <div className={styles.container}>
+            <ToastContainer />
             <Logo />
 
             <main className={styles.forms}>
@@ -91,8 +96,6 @@ export function Login() {
                         <Input type="password" placeholder="Senha" id="password" label="Adicionar senha" error="errorSenha2" register={register}/>
                         {errors.password && <span id="errorSenha2">{errors.password.message}</span>}
                     </div>
-
-                    {errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
 
                     <div className={styles.buttonLink}>
                         <Button 
