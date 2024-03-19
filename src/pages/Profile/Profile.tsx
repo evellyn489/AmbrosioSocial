@@ -146,9 +146,9 @@ export function Profile() {
                 await followUser(userData.id, followingId);
             }
         }
+
         setFollowing(!following);
     
-        localStorage.removeItem('isFollowing');
         localStorage.setItem('isFollowing', JSON.stringify(!following));
 
         fetchFollowData();
