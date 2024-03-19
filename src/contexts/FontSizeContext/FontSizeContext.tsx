@@ -1,3 +1,4 @@
+// FontSizeContext.tsx
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface FontSizeContextType {
@@ -5,33 +6,34 @@ interface FontSizeContextType {
   setFontSizeToSmall: () => void;
   setFontSizeToMedium: () => void;
   setFontSizeToLarge: () => void;
+  setGlobalFontSize: (size: string) => void; // Adicione esta função
 }
 
 const FontSizeContext = createContext<FontSizeContextType>({
   fontSize: 'medium',
   setFontSizeToSmall: () => {},
   setFontSizeToMedium: () => {},
-  setFontSizeToLarge: () => {}
+  setFontSizeToLarge: () => {},
+  setGlobalFontSize: () => {} // Inicialize a função
 });
 
 export const FontSizeProvider = ({ children }: { children: ReactNode }) => {
   const [fontSize, setFontSize] = useState(() => {
-    // Verifica se há um tamanho de fonte salvo no localStorage
     const savedFontSize = localStorage.getItem('fontSize');
-    return savedFontSize || 'medium'; // Se não houver, usa 'medium' como padrão
+    return savedFontSize || 'medium';
   });
 
   useEffect(() => {
-    // Salva o tamanho da fonte no localStorage sempre que ele mudar
     localStorage.setItem('fontSize', fontSize);
   }, [fontSize]);
 
   const setFontSizeToSmall = () => setFontSize('small');
   const setFontSizeToMedium = () => setFontSize('medium');
   const setFontSizeToLarge = () => setFontSize('large');
+  const setGlobalFontSize = (size: string) => setFontSize(size); // Implemente esta função
 
   return (
-    <FontSizeContext.Provider value={{ fontSize, setFontSizeToSmall, setFontSizeToMedium, setFontSizeToLarge }}>
+    <FontSizeContext.Provider value={{ fontSize, setFontSizeToSmall, setFontSizeToMedium, setFontSizeToLarge, setGlobalFontSize }}>
       {children}
     </FontSizeContext.Provider>
   );

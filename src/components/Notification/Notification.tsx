@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 
 
+
 interface NotificationProps {
     name: string;
     like?: boolean;
@@ -54,10 +55,14 @@ export function Notification(props: NotificationProps) {
                                             <button 
                                                 className={styles.confirm}
                                                 onClick={handleClickConfirm}
+                                                style={{ fontSize: fontSize === 'small' ? '0.8rem' : fontSize === 'medium' ? '1rem' : '1.2rem' }}
                                             >
                                                 Confirmar
                                             </button>
-                                            <button className={styles.delete}>
+                                            <button 
+                                                className={styles.delete}
+                                                style={{ fontSize: fontSize === 'small' ? '0.8rem' : fontSize === 'medium' ? '1rem' : '1.2rem' }}
+                                            >
                                                 Excluir
                                             </button>
                                         </div>

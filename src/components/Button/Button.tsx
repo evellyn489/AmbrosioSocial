@@ -1,3 +1,4 @@
+// Button.tsx
 import { ReactNode } from "react";
 
 import styles from "./Button.module.scss";
@@ -9,10 +10,11 @@ interface ButtonProps {
     icon?: ReactNode;
     disabled?: boolean;
     click?: () => void;
+    useFontSizeClasses?: boolean; 
 }
 
 export function Button(props: ButtonProps) {
-    const { fontSize } = useFontSize();
+    const { fontSize } = useFontSize(); 
 
     return(
         <button 
@@ -21,6 +23,7 @@ export function Button(props: ButtonProps) {
             onClick={props.click}
             aria-label={props.label}
             disabled={props.disabled}
+            style={{ fontSize: fontSize === 'small' ? '9pt' : fontSize === 'medium' ? '12pt' : '15pt' }}
         >
             {props.name}
             {props.icon}
