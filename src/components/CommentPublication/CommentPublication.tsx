@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Spin } from "../Spin";
 
+import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
+
 interface PublicationProps {
     content: string;
     image?: string;
@@ -18,6 +20,7 @@ interface CommentProps {
 }
 
 export function CommentPublication({ setOpenPublication }: CommentProps) {
+    const { fontSize } = useFontSize();
     const [commentPublication, setCommentPublication] = useState("");
     const [imageLink, setImageLink] = useState("");
     const [loading, setLoading] = useState(false);
@@ -76,14 +79,15 @@ export function CommentPublication({ setOpenPublication }: CommentProps) {
                 onChange={(event) => setImageLink(event.target.value)}
             />
 
-            <button 
-                type="button" 
-                disabled={loading} 
-                aria-label="Publicar" 
-                onClick={handlePublication}
-            >
-                {loading ? <Spin /> : "Publicar"}
-            </button>
+        <button 
+            type="button" 
+            disabled={loading} 
+            aria-label="Publicar" 
+            onClick={handlePublication}
+            style={{ fontSize: fontSize === 'small' ? '0.8rem' : fontSize === 'medium' ? '1rem' : '1.2rem' }}
+        >
+            {loading ? <Spin /> : "Publicar"}
+        </button>
         </div>
     );
 }
