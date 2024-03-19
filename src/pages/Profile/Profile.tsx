@@ -43,7 +43,6 @@ export function Profile() {
     const { userData } = useContext(UserContext)
     
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
         const fetchPublications = async () => {
@@ -170,11 +169,18 @@ export function Profile() {
 
                     {
                         userId != userData?.id && (
-                            <Button  name={`${following ? "Seguindo" : "Seguir"}`} click={() =>{
-                                if (userId) {
-                                    handleClickFollowing(userId);
-                                }
-                            }} icon={following && <FaCheck />} label="Botão de seguir o usuário"/>
+                            
+                        <Button
+                        name={`${following ? "Seguindo" : "Seguir"}`}
+                        click={() => {
+                            if (userId) {
+                                handleClickFollowing(userId);
+                            }
+                        }}
+                        icon={following && <FaCheck />}
+                        label="Botão de seguir o usuário"
+                        useFontSizeClasses 
+                    />
                         )
                     }
     
