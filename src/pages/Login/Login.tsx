@@ -33,7 +33,11 @@ interface formData {
     password: string;
 }
 
-export function Login() {
+interface LoginProps {
+    setLoggedIn: (value: boolean) => void
+}
+
+export function Login({ setLoggedIn }: LoginProps) {
     const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<loginFormData>({
@@ -50,6 +54,8 @@ export function Login() {
 
             if (response.status == 200) {
                 toast.success('Login realizado com sucesso!');
+
+                setLoggedIn(true);
 
                 const { authToken, user } = response.data;
                 localStorage.setItem('authToken', authToken);

@@ -13,11 +13,16 @@ interface DadosFormData {
   password2: string;
 }
 
-export function InitialRegister() {
+interface InitialRegisterProps {
+  setProcessCompleted: (value: boolean) => void;
+}
+
+export function InitialRegister({ setProcessCompleted }: InitialRegisterProps) {
   const navigate = useNavigate();
 
   const onSubmit = (data: DadosFormData) => {
     try {
+      setProcessCompleted(true);
       navigate('/register', { state: data });
 
     } catch (error) {
