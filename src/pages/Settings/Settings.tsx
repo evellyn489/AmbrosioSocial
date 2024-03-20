@@ -6,7 +6,7 @@ import { useFontSize } from "../../contexts/FontSizeContext/FontSizeContext";
 import { useNavigate } from "react-router-dom";
 
 export function Settings() {
-    const { darkTheme, toggleTheme } = useTheme(); 
+    const { toggleTheme } = useTheme(); 
     const { fontSize, setFontSizeToSmall, setFontSizeToMedium, setFontSizeToLarge } = useFontSize();
 
     const fontSizeClass = fontSize === 'small' ? styles.smallFont : fontSize === 'medium' ? styles.mediumFont : styles.largeFont;

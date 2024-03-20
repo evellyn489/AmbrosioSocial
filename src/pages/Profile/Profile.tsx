@@ -5,7 +5,7 @@ import styles from "./Profile.module.scss";
 import profile from "../../assets/publications/profile_picture.png";
 import { FaCheck } from "react-icons/fa";
 
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Publication } from "../../components/Publication";
@@ -212,6 +212,7 @@ export function Profile() {
                                 image={publication.image}
                                 userId={publication.userId}
                                 userName={user?.name}
+                                publicationId={publication.id}
                             />
                         ))
                         ) : (
