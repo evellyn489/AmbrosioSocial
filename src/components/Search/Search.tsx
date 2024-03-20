@@ -10,6 +10,7 @@ import { api } from "../../services/axios";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Spin } from "../Spin";
 
 interface SearchProps {
     id: string;
@@ -23,18 +24,22 @@ interface SearchUserProps {
 export function Search({ setClickSearch }: SearchUserProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState<SearchProps[]>([]);
+    const [loading, setLoading] = useState(false);
     
     const navigate = useNavigate();
 
     const handleUserProfile = async (userId: string) => {
+        setLoading(true);
+
         try {
             const userProfile = await api.get(`/user/${userId}`);
-            
             setClickSearch(false);
+            setLoading(false);
             navigate(`/profile/${userId}`, { state: userProfile.data })
 
         } catch (error) {
             toast.error("Erro ao buscar o usuário pesquisado. Verifique se o termo pesquisado foi inserido corretamente.");
+            setLoading(false);
         }
     }
 
@@ -63,7 +68,7 @@ export function Search({ setClickSearch }: SearchUserProps) {
                     error="search" 
                 />
 
-                <Button name="Pesquisar" click={handleSearch} label="Pesquisar"/>
+                <Button name={loading ? <Spin /> : "Pesquisar"} disabled={loading} click={handleSearch} label="Pesquisar"/>
             </div>
 
             <div className={styles.results}>
