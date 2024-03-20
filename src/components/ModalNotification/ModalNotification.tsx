@@ -11,6 +11,7 @@ export const ModalNotification = forwardRef<HTMLDivElement, ModalNotificationPro
     (props, ref) => {
         const { darkTheme } = useTheme(); 
         const themeClass = darkTheme ? styles.darkTheme : styles.lightTheme;
+        console.log(props)
         return (
             <div className={`${styles.container} ${themeClass}`} ref={ref}>
                 <Notification name="Nome de usuário" follow/>

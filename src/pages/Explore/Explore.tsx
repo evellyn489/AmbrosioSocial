@@ -28,6 +28,7 @@ export function Explore() {
 
     const handleMorePublication = () => {
         setNumPublications(prevNumPublications => prevNumPublications + 2); 
+        console.log(numPublications)
     };
 
     useEffect(() => {
