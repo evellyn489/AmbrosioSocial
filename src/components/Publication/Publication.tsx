@@ -78,6 +78,7 @@ export function Publication({ text, image, userId, userName, publicationId }: Pu
     
                 if (!darkTheme){
                     setLikeIcon(like_clicked);
+                    console.log(likeIcon)
                     setLikeNumColor(styles.likeNumColor);
                 }
     
