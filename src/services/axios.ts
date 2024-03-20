@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3002'
+    baseURL: 'https://ambrosiosocial-api.onrender.com/'
 })
 
 api.interceptors.request.use(
