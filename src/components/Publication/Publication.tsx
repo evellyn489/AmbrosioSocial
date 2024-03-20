@@ -7,6 +7,8 @@ import like_clicked from "../../assets/interaction/like_clicked.png"
 import like_clickedDark from "../../assets/interaction/like_clickedDark.png"
 import comment from "../../assets/interaction/comment.png"
 import comment_darkTheme from "../..//assets/interaction/comment_darkTheme.png"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Comment } from "../Comment"
 import { ReadMore } from '../ReadMore';
 import { useTheme } from '../../contexts/ThemeProvider/ThemeProvider';
@@ -40,8 +42,8 @@ export function Publication({ text, image, userId, userName, publicationId }: Pu
 
     const [commentVisible, setCommentVisible] = useState(false);
     const [commentText, setCommentText] = useState<string>('');
-    const [likeClicked, setLikeClicked] = useState(() => {
-        return localStorage.getItem(likesKey) === '1';
+    const [likeClicked, setLikeClicked] = useState<boolean>(() => {
+        return localStorage.getItem(`likeClicked_${publicationId}`) === 'true';
     });
     const [likeIcon, setLikeIcon] = useState(like);
     const [likeNumColor, setLikeNumColor] = useState<string>(styles.defaultNumColor);
@@ -57,44 +59,50 @@ export function Publication({ text, image, userId, userName, publicationId }: Pu
 
     useEffect(() => {
         localStorage.setItem(`likes_${publicationId}`, likes.toString());
-        console.log(localStorage.setItem(`likes_${publicationId}`, likes.toString()))
-    }, [likes, userId]);
+        localStorage.setItem(`likeClicked_${publicationId}`, likeClicked.toString());
+    }, [likes, likeClicked, publicationId]);
 
     useEffect(() => {
         localStorage.setItem(`comments_${publicationId}`, JSON.stringify(comments));
     }, [comments, userId]);
 
     const handleLikeClick = () => {
-        
-        if (!likeClicked) {
-            setLikes(likes + 1);
-            setLikeClicked(true);
-            localStorage.setItem(likesKey, '1');
-
-            if (!darkTheme){
-                setLikeIcon(like_clicked);
-                setLikeNumColor(styles.likeNumColor);
-            }
-
-            else {
-                setLikeIcon(like_clickedDark);
-            }
+        if (userId === userData?.id) {
+                toast.info("Você não pode curtir sua própria publicação.");
     
         } else {
-            setLikes(likes - 1);
-            setLikeClicked(false);
-            localStorage.removeItem(likesKey);
-            setLikeIcon(like);
-            setLikeNumColor(styles.defaultNumColor);
+            if (!likeClicked) {
+                setLikes(likes + 1);
+                setLikeClicked(true);
+                localStorage.setItem(likesKey, '1');
+    
+                if (!darkTheme){
+                    setLikeIcon(like_clicked);
+                    setLikeNumColor(styles.likeNumColor);
+                }
+    
+                else {
+                    setLikeIcon(like_clickedDark);
+                }
+        
+            } else {
+                setLikes(likes - 1);
+                setLikeClicked(false);
+                localStorage.removeItem(likesKey);
+                setLikeIcon(like);
+                setLikeNumColor(styles.defaultNumColor);
+            }
+            
+            const likeButton = document.getElementById("likeButton");
+            if (likeButton) {
+                likeButton.classList.add(styles.clicked);
+                setTimeout(() => {
+                    likeButton.classList.remove(styles.clicked);
+                }, 200);
+            }
         }
         
-        const likeButton = document.getElementById("likeButton");
-        if (likeButton) {
-            likeButton.classList.add(styles.clicked);
-            setTimeout(() => {
-                likeButton.classList.remove(styles.clicked);
-            }, 200);
-        }
+        
     };
 
     const { userData } = useContext(UserContext);
@@ -105,17 +113,18 @@ export function Publication({ text, image, userId, userName, publicationId }: Pu
             return;
         }
     
+
         setCommentError(null);
-    
-        const newCommentList = [...comments, commentText];
-        setComments(newCommentList); 
-        localStorage.setItem(commentsKey, JSON.stringify(newCommentList));
-        setCommentText(""); 
+        const newCommentText = { text: commentText, authorName: userData?.name };
+        setComments(prevComments => [...prevComments, newCommentText.text]); 
+        localStorage.setItem(`comments_${publicationId}`, JSON.stringify([...comments, newCommentText]));
+        setCommentText("");
     };
     
     
     return (
         <div className={`${styles.container} ${fontSize === 'small' ? 'smallFont' : fontSize === 'medium' ? 'mediumFont' : 'largeFont'}`}>
+            <ToastContainer />
             <img src={profile_picture} alt="foto de perfil do usuário" title="Foto de perfil" className={styles.profile_picture}/>  
                 
             <div className={styles.content}>
